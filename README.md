@@ -33,6 +33,27 @@ npm start        # http://localhost:8080
 
 **Ключ API не обязателен.** Без `GEMINI_API_KEY` всё работает: смысловая близость считается через TF-IDF, первая фраза — шаблоном на трёх языках. С ключом подключаются эмбеддинги Gemini (`gemini-embedding-001`) и персонализированная первая фраза от Gemini Flash. Ключ хранится только в `.env` / переменных окружения и в репозиторий не попадает (`.gitignore`).
 
+### Деплой на сервер (VPS с Docker)
+
+```bash
+git clone https://github.com/Armannn2121/tezmeet.git && cd tezmeet
+cp .env.example .env              # при желании впишите GEMINI_API_KEY
+PORT=80 docker compose up -d --build
+```
+
+Сервис поднимется на `http://<IP-сервера>`. Данные участников хранятся в томе `tezmeet-data` и переживают перезапуск. Для HTTPS достаточно поставить перед ним Caddy (`reverse_proxy localhost:8080`).
+
+---
+
+## Материалы для сдачи
+
+| Что | Где |
+|---|---|
+| Анкеты (120 шт.) | [data/profiles.json](data/profiles.json), [data/profiles.csv](data/profiles.csv) |
+| Презентация (9 слайдов) | [presentation/TezMeet.pdf](presentation/TezMeet.pdf), исходник [presentation/slides.html](presentation/slides.html) |
+| Сценарий питча на 7 минут с демо | [presentation/PITCH.md](presentation/PITCH.md) |
+| Метрики качества | `npm run eval` — [scripts/eval.ts](scripts/eval.ts) |
+
 ---
 
 ## Путь «анкета → результат» (≈ 1 минута)

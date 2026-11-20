@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<title>TezMeet — питч</title>
+<style>
+@font-face { font-family: 'InterDeck'; src: url(fonts/inter-latin-wght-normal.woff2) format('woff2'); font-weight: 100 900; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'InterDeck'; src: url(fonts/inter-cyrillic-wght-normal.woff2) format('woff2'); font-weight: 100 900; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: 'InterDeck'; src: url(fonts/inter-cyrillic-ext-wght-normal.woff2) format('woff2'); font-weight: 100 900; unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+@page { size: 1280px 720px; margin: 0; }
+:root {
+  --bg: #F2F2F7; --card: #FFFFFF; --ink: #000; --ink2: rgba(60,60,67,.62); --ink3: rgba(60,60,67,.3); --sep: rgba(60,60,67,.18);
+  --blue: #007AFF; --indigo: #5856D6; --green: #34C759; --orange: #FF9500; --purple: #AF52DE; --pink: #FF2D55; --teal: #30B0C7; --red: #FF3B30;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #d9d9de; }
+body { font-family: 'InterDeck', -apple-system, 'Segoe UI', sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
+.slide { width: 1280px; height: 720px; position: relative; overflow: hidden; background: var(--bg); padding: 64px 72px; margin: 0 auto 24px; page-break-after: always; break-after: page; }
+@media print { body { background: none; } .slide { margin: 0; } }
+.dark { background: #000; color: #fff; }
+.dark .glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; filter: blur(120px); opacity: .55; }
+.kicker { font-size: 18px; font-weight: 600; color: var(--blue); letter-spacing: 0; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.kicker .n { width: 28px; height: 28px; border-radius: 8px; background: var(--blue); color: #fff; display: grid; place-items: center; font-size: 14px; }
+h1 { font-size: 52px; line-height: 1.08; font-weight: 800; letter-spacing: -0.025em; margin: 0 0 18px; max-width: 900px; }
+h2 { font-size: 22px; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.015em; }
+p, li { font-size: 19px; line-height: 1.45; color: var(--ink2); margin: 0; }
+.lead { font-size: 22px; color: var(--ink2); max-width: 760px; }
+.card { background: var(--card); border-radius: 22px; padding: 26px 28px; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+.grid { display: grid; gap: 20px; }
+.sq { width: 48px; height: 48px; border-radius: 13px; display: grid; place-items: center; color: #fff; font-size: 24px; margin-bottom: 16px; }
+.big { font-size: 64px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--ink); }
+.big small { font-size: 28px; font-weight: 700; color: var(--ink2); margin-left: 4px; }
+.phone { width: 300px; border-radius: 44px; background: #fff; padding: 10px; box-shadow: 0 30px 60px rgba(0,0,0,.18), 0 0 0 1px rgba(0,0,0,.06); }
+.phone img { width: 100%; display: block; border-radius: 34px; }
+.foot { position: absolute; left: 72px; right: 72px; bottom: 30px; display: flex; justify-content: space-between; font-size: 13px; color: var(--ink3); }
+.dark .foot { color: rgba(255,255,255,.35); }
+.chip { white-space: nowrap; flex: none; display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px; border-radius: 17px; background: rgba(120,120,128,.12); font-size: 16px; font-weight: 500; color: var(--ink); }
+.bubble { background: var(--blue); color: #fff; border-radius: 20px; padding: 12px 16px; font-size: 17px; line-height: 1.4; }
+table.m { border-collapse: separate; border-spacing: 4px; font-size: 14px; }
+table.m th { font-weight: 600; color: var(--ink2); padding: 4px 6px; text-align: center; font-size: 13px; }
+table.m th.r { text-align: right; padding-right: 12px; font-size: 15px; color: var(--ink); }
+table.m td { width: 92px; height: 50px; border-radius: 10px; text-align: center; font-weight: 700; font-size: 16px; }
+.check { color: var(--green); font-weight: 800; margin-right: 10px; }
+</style>
+</head>
+<body>
+
+<!-- 1. Титул -->
+<section class="slide dark">
+  <div class="glow" style="background:#5E5CE6; left:-260px; top:-380px"></div>
+  <div class="glow" style="background:#0A84FF; right:-380px; bottom:-460px; opacity:.45"></div>
+  <div style="position:relative; display:flex; height:100%; align-items:center; gap:64px">
+    <div style="flex:1">
+      <img src="img/icon.svg" alt="" style="width:96px; height:96px; border-radius:22px; margin-bottom:34px; box-shadow:0 20px 50px rgba(10,132,255,.4)" />
+      <h1 style="font-size:76px; margin-bottom:22px">TezMeet</h1>
+      <p style="font-size:30px; color:#fff; font-weight:600; line-height:1.3; max-width:620px">AI подскажет, с кем познакомиться на IT-мероприятии — и почему</p>
+      <p style="font-size:20px; color:rgba(255,255,255,.6); margin-top:22px">Qazaq IT Community · трек AI for Digital Economy &amp; Smart Business</p>
+    </div>
+    <div class="phone" style="background:#1c1c1e; transform:rotate(3deg)"><img src="img/for-you.jpg" alt="Экран рекомендаций TezMeet" /></div>
+  </div>
+</section>
+
+<!-- 2. Проблема -->
+<section class="slide">
+  <div class="kicker"><span class="n">1</span> Проблема</div>
+  <h1>300 человек в зале — и знакомства наугад</h1>
+  <p class="lead">Люди уходят с митапа, так и не встретив нужного собеседника, а рекрутеры не находят кандидатов, которые сидели в соседнем ряду.</p>
+  <div class="grid" style="grid-template-columns:repeat(3,1fr); margin-top:46px">
+    <div class="card"><div class="big">300+</div><p style="margin-top:12px">участников приходит на митапы и конференции сообщества</p></div>
+    <div class="card"><div class="big">6</div><p style="margin-top:12px">разных целей: работа, найм, менторство, кофаундер, обмен опытом</p></div>
+    <div class="card"><div class="big">1</div><p style="margin-top:12px">вечер, чтобы найти «своих» людей — без подсказки это лотерея</p></div>
+  </div>
+  <div class="foot"><span>TezMeet</span><span>2</span></div>
+</section>
+
+<!-- 3. Решение -->
+<section class="slide">
+  <div style="display:flex; gap:56px; height:100%">
+    <div style="flex:1">
+      <div class="kicker"><span class="n">2</span> Решение</div>
+      <h1>Анкета за минуту — 5 нужных людей за миллисекунды</h1>
+      <div class="grid" style="grid-template-columns:1fr; gap:16px; margin-top:28px">
+        <div class="card" style="display:flex; gap:18px; padding:20px 24px"><div class="sq" style="background:var(--blue); margin:0">1</div><div><h2>Анкета</h2><p>Цель, роль, опыт, стек, интересы, «о себе» — или «посмотреть на примере»</p></div></div>
+        <div class="card" style="display:flex; gap:18px; padding:20px 24px"><div class="sq" style="background:var(--purple); margin:0">2</div><div><h2>Топ-5 с объяснением</h2><p>Почему именно этот человек — и готовая первая фраза для знакомства</p></div></div>
+        <div class="card" style="display:flex; gap:18px; padding:20px 24px"><div class="sq" style="background:var(--green); margin:0">3</div><div><h2>Встреча 1:1</h2><p>Общий свободный слот и номер стола подбираются сами</p></div></div>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center"><div class="phone"><img src="img/for-you.jpg" alt="Рекомендации" /></div></div>
+  </div>
+  <div class="foot"><span>TezMeet</span><span>3</span></div>
+</section>
+
+<!-- 4. Взаимность целей -->
+<section class="slide">
+  <div style="display:flex; gap:48px; height:100%; align-items:center; padding-bottom:30px">
+    <div style="width:380px">
+      <div class="kicker"><span class="n">3</span> Главное правило</div>
+      <h1 style="font-size:44px">Цели подбираются взаимно</h1>
+      <p>Ищущему работу показываем тех, кто нанимает, — а не других соискателей. Пары с совместимостью 0 отсекаются <b style="color:var(--ink)">до</b> скоринга, остальные признаки умножаются на совместимость целей.</p>
+      <p style="margin-top:18px">Итог на 120 анкетах: <b style="color:var(--ink)">0 нарушений из 600</b> рекомендаций.</p>
+    </div>
+    <div class="card" style="flex:1; padding:22px 18px">
+      <table class="m">
+        <tr><th></th><th>Нанимает</th><th>Ищет работу</th><th>Ментор</th><th>Ищет ментора</th><th>Кофаундер</th><th>Обмен</th></tr>
+        <tr><th class="r">Ищу работу</th><td style="background:#34C759;color:#fff">1.0</td><td style="background:#FFE5E3;color:#FF3B30">✕</td><td style="background:#d7f5df">.45</td><td style="background:#FFE5E3;color:#FF3B30">✕</td><td style="background:#eefaf1">.25</td><td style="background:#e6f8eb">.30</td></tr>
+        <tr><th class="r">Нанимаю</th><td style="background:#FFE5E3;color:#FF3B30">✕</td><td style="background:#34C759;color:#fff">1.0</td><td style="background:#eefaf1">.20</td><td style="background:#d7f5df">.40</td><td style="background:#f3fbf5">.15</td><td style="background:#eefaf1">.25</td></tr>
+        <tr><th class="r">Ищу ментора</th><td style="background:#e6f8eb">.30</td><td style="background:#FFE5E3;color:#FF3B30">✕</td><td style="background:#34C759;color:#fff">1.0</td><td style="background:#FFE5E3;color:#FF3B30">✕</td><td style="background:#f3fbf5">.10</td><td style="background:#e2f7e7">.35</td></tr>
+        <tr><th class="r">Стану ментором</th><td style="background:#f3fbf5">.10</td><td style="background:#d7f5df">.40</td><td style="background:#FFE5E3;color:#FF3B30">✕</td><td style="background:#34C759;color:#fff">1.0</td><td style="background:#eefaf1">.20</td><td style="background:#e2f7e7">.35</td></tr>
+        <tr><th class="r">Ищу кофаундера</th><td style="background:#eefaf1">.20</td><td style="background:#eefaf1">.25</td><td style="background:#e2f7e7">.35</td><td style="background:#FFE5E3;color:#FF3B30">✕</td><td style="background:#34C759;color:#fff">1.0</td><td style="background:#e6f8eb">.30</td></tr>
+        <tr><th class="r">Обмен опытом</th><td style="background:#e2f7e7">.35</td><td style="background:#e6f8eb">.30</td><td style="background:#cdf2d7">.50</td><td style="background:#e2f7e7">.35</td><td style="background:#d7f5df">.40</td><td style="background:#34C759;color:#fff">1.0</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="foot"><span>Матрица GOAL_FIT · shared/catalog.ts</span><span>4</span></div>
+</section>
+
+<!-- 5. Как считается совпадение -->
+<section class="slide">
+  <div class="kicker"><span class="n">4</span> Как работает подбор</div>
+  <h1>Прозрачный скоринг</h1>
+  <p class="lead">Объяснение строится из тех же признаков, что и балл, — оно не может «соврать» о причине. Своя модель не обучается.</p>
+  <div style="display:flex; gap:28px; margin-top:28px">
+    <div class="card" style="flex:1.15">
+      <h2 style="margin-bottom:18px">Вес признака</h2>
+      <div style="display:grid; grid-template-columns:150px 1fr 48px; gap:12px 14px; align-items:center; font-size:17px">
+        <span>Цель</span><div style="height:16px; width:100%; background:var(--green); border-radius:5px"></div><b>30%</b>
+        <span>Стек</span><div style="height:16px; width:73%; background:var(--blue); border-radius:5px"></div><b>22%</b>
+        <span>Роль</span><div style="height:16px; width:67%; background:var(--indigo); border-radius:5px"></div><b>20%</b>
+        <span>Смысл «о себе»</span><div style="height:16px; width:43%; background:var(--purple); border-radius:5px"></div><b>13%</b>
+        <span>Интересы</span><div style="height:16px; width:33%; background:var(--orange); border-radius:5px"></div><b>10%</b>
+        <span>Опыт</span><div style="height:16px; width:17%; background:var(--teal); border-radius:5px"></div><b>5%</b>
+      </div>
+    </div>
+    <div style="flex:1; display:grid; gap:12px">
+      <div class="card" style="padding:14px 22px"><h2>Стек «семействами»</h2><p>Go = Go — 1.0; React ~ Vue — 0.35</p></div>
+      <div class="card" style="padding:14px 22px"><h2>Смысл текста</h2><p>Эмбеддинги Gemini, без ключа — TF-IDF</p></div>
+      <div class="card" style="padding:14px 22px"><h2>Обратная связь</h2><p>«Не подошло» понижает похожих, список пересчитывается сразу</p></div>
+      <div class="card" style="padding:14px 22px"><h2>Разнообразие (MMR)</h2><p>Пятёрка не из одной компании и одной роли</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Объяснение и первая фраза -->
+<section class="slide">
+  <div style="display:flex; gap:56px; height:100%">
+    <div style="flex:1">
+      <div class="kicker"><span class="n">5</span> Объяснение и первая фраза</div>
+      <h1 style="font-size:46px">Не просто «совпадение 93%», а повод подойти</h1>
+      <div class="card" style="margin-top:22px">
+        <p style="color:var(--ink); font-size:18px">Қайрат нанимает backend-разработчиков в TumarLabs — это ваша роль, и нужен ваш стек: Go, PostgreSQL и Docker.</p>
+        <div class="bubble" style="margin-top:16px">Здравствуйте, Қайрат! Вижу, вы ищете backend-разработчиков. У меня 2 года опыта с Go и PostgreSQL — расскажете, какие задачи у команды?</div>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:22px; flex-wrap:wrap">
+        <span class="chip">Қазақша</span><span class="chip">Русский</span><span class="chip">English</span><span class="chip" style="color:var(--purple)">✦ Gemini персонализирует фразу</span>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center"><div class="phone"><img src="img/details.jpg" alt="Из чего сложилось совпадение" /></div></div>
+  </div>
+  <div class="foot"><span>Шаблон мгновенно · LLM в фоне — 3 секунды не зависят от API</span><span>6</span></div>
+</section>
+
+<!-- 7. Качество -->
+<section class="slide">
+  <div class="kicker"><span class="n">6</span> Качество и скорость</div>
+  <h1>Проверено на всех 120 анкетах</h1>
+  <div class="grid" style="grid-template-columns:repeat(4,1fr); margin-top:40px">
+    <div class="card"><div class="big" style="color:var(--green)">0</div><p style="margin-top:14px">нарушений взаимности целей из 600 рекомендаций</p></div>
+    <div class="card"><div class="big">96,7<small>%</small></div><p style="margin-top:14px">рекомендаций — с основной совместимой целью</p></div>
+    <div class="card"><div class="big">2,7<small>мс</small></div><p style="margin-top:14px">подбор на сервере (p50), max 15 мс — лимит 3000 мс</p></div>
+    <div class="card"><div class="big">120</div><p style="margin-top:14px">синтетических анкет, 19 ролей, 3 языка (JSON + CSV)</p></div>
+  </div>
+  <div class="card" style="margin-top:22px; padding:18px 26px; display:flex; align-items:center; gap:16px">
+    <span class="chip" style="font-family:Consolas,monospace">npm run eval</span>
+    <p>прогоняет все анкеты и 6 «жюри-анкет» и печатает топ-5 с объяснениями — метрики воспроизводимы.</p>
+  </div>
+  <div class="foot"><span>scripts/eval.ts</span><span>7</span></div>
+</section>
+
+<!-- 8. Всё из ТЗ -->
+<section class="slide">
+  <div style="display:flex; gap:48px; height:100%">
+    <div style="flex:1">
+      <div class="kicker"><span class="n">7</span> Требования</div>
+      <h1 style="font-size:44px">Все Must, Should и Could — работают</h1>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px">
+        <div class="card" style="padding:20px 22px">
+          <h2 style="color:var(--blue); font-size:16px; margin-bottom:10px">MUST</h2>
+          <p><span class="check">✓</span>Анкета из 6 полей + цель</p>
+          <p><span class="check">✓</span>Топ-5 с объяснением</p>
+          <p><span class="check">✓</span>Взаимность целей</p>
+          <p><span class="check">✓</span>Веб-интерфейс</p>
+          <p><span class="check">✓</span>120 анкет, &lt; 3 с</p>
+        </div>
+        <div class="card" style="padding:20px 22px">
+          <h2 style="color:var(--purple); font-size:16px; margin-bottom:10px">SHOULD · COULD</h2>
+          <p><span class="check">✓</span>kk / ru / en</p>
+          <p><span class="check">✓</span>Первая фраза</p>
+          <p><span class="check">✓</span>Фидбэк и пересчёт</p>
+          <p><span class="check">✓</span>Встречи 1:1 по слотам</p>
+          <p><span class="check">✓</span>Дашборд и стенды</p>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center"><div class="phone"><img src="img/hall.jpg" alt="Дашборд организатора" /></div></div>
+  </div>
+  <div class="foot"><span>Вкладка «Зал» — дашборд организатора</span><span>8</span></div>
+</section>
+
+<!-- 9. Запуск и финал -->
+<section class="slide dark">
+  <div class="glow" style="background:#5E5CE6; right:-300px; top:-420px"></div>
+  <div class="glow" style="background:#0A84FF; left:-420px; bottom:-520px; opacity:.4"></div>
+  <div style="position:relative">
+    <div class="kicker" style="color:#0A84FF"><span class="n" style="background:#0A84FF">8</span> Запуск</div>
+    <h1 style="font-size:60px">Одна команда — и сервис работает</h1>
+    <div style="display:inline-block; margin-top:14px; background:#1c1c1e; border-radius:16px; padding:18px 26px; font-family:Consolas,monospace; font-size:24px; color:#fff">docker compose up --build <span style="color:rgba(255,255,255,.4)">→ localhost:8080</span></div>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr); margin-top:44px; gap:18px">
+      <div style="background:#1c1c1e; border-radius:20px; padding:22px 24px"><h2 style="color:#fff">Без ключа — работает</h2><p style="color:rgba(255,255,255,.6)">TF-IDF и шаблоны; Gemini — опционально</p></div>
+      <div style="background:#1c1c1e; border-radius:20px; padding:22px 24px"><h2 style="color:#fff">Без зависимостей</h2><p style="color:rgba(255,255,255,.6)">Сервер на чистом Node.js, UI — React в стиле iOS</p></div>
+      <div style="background:#1c1c1e; border-radius:20px; padding:22px 24px"><h2 style="color:#fff">Дальше</h2><p style="color:rgba(255,255,255,.6)">Telegram-бот, QR-бейджи, история знакомств между митапами</p></div>
+    </div>
+    <p style="font-size:30px; color:#fff; font-weight:700; margin-top:44px">Спасибо! Попробуйте вживую — заполните анкету</p>
+  </div>
+</section>
+
+</body>
+</html>
