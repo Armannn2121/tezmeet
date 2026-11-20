@@ -143,6 +143,38 @@ const dict = {
   how2: { kk: 'Балл: мақсат, рөл, стек, мәтін мағынасы, қызығушылық, тәжірибе', ru: 'Скоринг: цель, роль, стек, смысл текста, интересы, опыт', en: 'Scoring: goal, role, stack, text meaning, interests, experience' },
   how3: { kk: 'Кері байланыс: «Сәйкес емес» ұқсас адамдарды төмендетеді', ru: 'Обратная связь: «Не подошло» понижает похожих людей', en: 'Feedback: “Not a fit” demotes similar people' },
 
+  // Басты бет
+  home: { kk: 'Басты', ru: 'Главная', en: 'Home' },
+  hello: { kk: 'Сәлем, {name}', ru: 'Привет, {name}', en: 'Hi, {name}' },
+  attendeesN: { kk: '{n} қатысушы', ru: '{n} участников', en: '{n} attendees' },
+  meetingsN: { kk: '{n} кездесу', ru: 'встреч: {n}', en: '{n} meetings' },
+  topForYou: { kk: 'Сізге ұсынылғандар', ru: 'Рекомендации для вас', en: 'Recommended for you' },
+  seeAll: { kk: 'Барлығы', ru: 'Все', en: 'See all' },
+  upcoming: { kk: 'Кездесулерім', ru: 'Мои встречи', en: 'My meetings' },
+  recentChats: { kk: 'Соңғы хабарламалар', ru: 'Последние сообщения', en: 'Recent messages' },
+  noChatsShort: { kk: 'Әзірге хабарлама жоқ. Ұсынылған адамға «Жазу» басыңыз.', ru: 'Сообщений пока нет. Нажмите «Написать» у рекомендации.', en: 'No messages yet. Tap “Message” on a match.' },
+
+  // Чаттар
+  chats: { kk: 'Чаттар', ru: 'Чаты', en: 'Chats' },
+  write: { kk: 'Жазу', ru: 'Написать', en: 'Message' },
+  searchChats: { kk: 'Іздеу', ru: 'Поиск', en: 'Search' },
+  noChats: { kk: 'Әзірге хабарлама жоқ', ru: 'Сообщений пока нет', en: 'No messages yet' },
+  noChatsD: { kk: '«Сізге» бетінде адамды таңдап, «Жазу» басыңыз — алғашқы фраза дайын тұрады.', ru: 'Выберите человека во вкладке «Для вас» и нажмите «Написать» — первая фраза уже будет готова.', en: 'Pick someone in “For you” and tap “Message” — the opening line is ready for you.' },
+  you: { kk: 'Сіз', ru: 'Вы', en: 'You' },
+  messagePh: { kk: 'Хабарлама', ru: 'Сообщение', en: 'Message' },
+  send: { kk: 'Жіберу', ru: 'Отправить', en: 'Send' },
+  delivered: { kk: 'Жеткізілді', ru: 'Доставлено', en: 'Delivered' },
+  read: { kk: 'Оқылды', ru: 'Прочитано', en: 'Read' },
+  failed: { kk: 'Жіберілмеді — қайталау үшін басыңыз', ru: 'Не отправлено — нажмите, чтобы повторить', en: 'Not sent — tap to retry' },
+  today: { kk: 'Бүгін', ru: 'Сегодня', en: 'Today' },
+  yesterday: { kk: 'Кеше', ru: 'Вчера', en: 'Yesterday' },
+  syntheticNote: { kk: 'Бұл — жюри тексеруіне арналған синтетикалық анкета: хабарлама сақталады, бірақ жауап келмейді. Нақты қатысушылар бір-біріне жаза алады.', ru: 'Это синтетическая анкета для проверки жюри: сообщение сохранится, но ответа не будет. Реальные участники переписываются друг с другом.', en: 'This is a synthetic profile for judging: your message is saved, but nobody will reply. Real attendees can chat with each other.' },
+  newMessage: { kk: 'Жаңа хабарлама', ru: 'Новое сообщение', en: 'New message' },
+  open: { kk: 'Ашу', ru: 'Открыть', en: 'Open' },
+  back: { kk: 'Артқа', ru: 'Назад', en: 'Back' },
+  offline: { kk: 'Байланыс жоқ — қайта қосылуда…', ru: 'Нет связи — переподключаемся…', en: 'Offline — reconnecting…' },
+  messagesTile: { kk: 'Хабарлама', ru: 'Сообщений', en: 'Messages' },
+
   error: { kk: 'Қате', ru: 'Ошибка', en: 'Error' },
   networkError: { kk: 'Сервермен байланыс жоқ. Қайталап көріңіз.', ru: 'Нет связи с сервером. Попробуйте ещё раз.', en: 'Cannot reach the server. Please try again.' },
   retry: { kk: 'Қайталау', ru: 'Повторить', en: 'Retry' },
@@ -160,6 +192,27 @@ const MONTHS: Record<Lang, string[]> = {
 export function fmtDate(iso: string, lang: Lang) {
   const [, m, d] = iso.split('-').map(Number);
   return lang === 'en' ? `${MONTHS.en[m - 1]} ${d}` : `${d} ${MONTHS[lang][m - 1]}`;
+}
+
+const hhmm = (d: Date) => `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+const sameDay = (a: Date, b: Date) => a.toDateString() === b.toDateString();
+const dayMonth = (d: Date, lang: Lang) => (lang === 'en' ? `${MONTHS.en[d.getMonth()].slice(0, 3)} ${d.getDate()}` : `${d.getDate()} ${MONTHS[lang][d.getMonth()].slice(0, 3)}`);
+
+// Чат тізімі: бүгін — «14:05», кеше — «Кеше», ертерек — «20 қар»
+export function fmtChatTime(iso: string, lang: Lang, t: (k: 'yesterday') => string) {
+  const d = new Date(iso);
+  const now = new Date();
+  if (sameDay(d, now)) return hhmm(d);
+  if (sameDay(d, new Date(now.getTime() - 86_400_000))) return t('yesterday');
+  return dayMonth(d, lang);
+}
+
+// Сұхбаттағы бөлгіш: «Бүгін 14:05»
+export function fmtSeparator(iso: string, lang: Lang, t: (k: 'today' | 'yesterday') => string) {
+  const d = new Date(iso);
+  const now = new Date();
+  const day = sameDay(d, now) ? t('today') : sameDay(d, new Date(now.getTime() - 86_400_000)) ? t('yesterday') : dayMonth(d, lang);
+  return `${day} ${hhmm(d)}`;
 }
 
 export function fmtYears(n: number, lang: Lang) {

@@ -1,5 +1,5 @@
 import type { EVENT, GOALS, INTERESTS, ROLES } from '../../shared/catalog.ts';
-import type { MeetingView, Profile, ProfileInput, RecResponse, Verdict } from '../../shared/types.ts';
+import type { ChatSummary, ChatThread, MeetingView, Message, Profile, ProfileInput, RecResponse, Verdict } from '../../shared/types.ts';
 import type { Lang } from '../../shared/catalog.ts';
 
 export class ApiError extends Error {
@@ -49,6 +49,7 @@ export type Dashboard = {
   roles: { id: string; n: number }[];
   feedback: { met: number; skip: number };
   meetings: number;
+  messages: number;
   slotLoad: { slot: string; n: number }[];
 };
 
@@ -70,4 +71,56 @@ export const api = {
   book: (targetId: string, slot?: string) => req<MeetingView>('/api/me/meetings', { method: 'POST', body: json({ targetId, slot }) }),
   cancelMeeting: (id: string) => req<{ ok: true }>(`/api/me/meetings/${id}`, { method: 'DELETE' }),
   dashboard: () => req<Dashboard>('/api/dashboard'),
+  chats: () => req<{ chats: ChatSummary[]; unread: number }>('/api/me/chats'),
+  thread: (otherId: string) => req<ChatThread>(`/api/me/chats/${otherId}`),
+  send: (otherId: string, text: string) => req<Message>(`/api/me/chats/${otherId}`, { method: 'POST', body: json({ text }) }),
+  markRead: (otherId: string) => req<{ ok: true }>(`/api/me/chats/${otherId}/read`, { method: 'POST' }),
 };
+
+// Нақты уақыттағы оқиғалар (SSE) — fetch арқылы, токен URL-де емес, тақырыпта.
+// Байланыс үзілсе, 1→2→4…→15 секундтан соң қайта қосылады.
+export type LiveEvent =
+  | { type: 'message'; message: Message; from?: Profile }
+  | { type: 'read'; by: string; at: string };
+
+export function connectEvents(onEvent: (e: LiveEvent) => void, onStatus?: (online: boolean) => void): () => void {
+  let stopped = false;
+  let ctrl: AbortController | null = null;
+  let delay = 1000;
+  const run = async () => {
+    while (!stopped) {
+      try {
+        ctrl = new AbortController();
+        const res = await fetch('/api/me/events', { headers: token ? { authorization: `Bearer ${token}` } : {}, signal: ctrl.signal });
+        if (!res.ok || !res.body) throw new Error(`events ${res.status}`);
+        onStatus?.(true);
+        delay = 1000;
+        const reader = res.body.getReader();
+        const dec = new TextDecoder();
+        let buf = '';
+        for (;;) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          buf += dec.decode(value, { stream: true });
+          let i: number;
+          while ((i = buf.indexOf('\n\n')) >= 0) {
+            const block = buf.slice(0, i);
+            buf = buf.slice(i + 2);
+            const ev = block.match(/^event: (.+)$/m)?.[1];
+            const data = block.match(/^data: (.+)$/m)?.[1];
+            if (ev && data) {
+              try { onEvent({ type: ev, ...JSON.parse(data) } as LiveEvent); } catch { /* бүлінген оқиға */ }
+            }
+          }
+        }
+      } catch {
+        if (stopped) return;
+      }
+      onStatus?.(false);
+      await new Promise((r) => setTimeout(r, delay));
+      delay = Math.min(delay * 2, 15000);
+    }
+  };
+  run();
+  return () => { stopped = true; ctrl?.abort(); };
+}

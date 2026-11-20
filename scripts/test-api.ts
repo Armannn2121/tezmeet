@@ -8,7 +8,7 @@ import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { GOAL_FIT, type GoalId } from '../shared/catalog.ts';
-import type { MeetingView, Profile, RecResponse } from '../shared/types.ts';
+import type { ChatSummary, ChatThread, MeetingView, Message, Profile, RecResponse } from '../shared/types.ts';
 
 const PORT = 18000 + Math.floor(Math.random() * 1000);
 const BASE = `http://127.0.0.1:${PORT}`;
@@ -208,6 +208,50 @@ async function main() {
     assert.equal((await call<MeetingView[]>('GET', '/api/me/meetings', { token: A.token })).body.length, 0);
   });
 
+  await test('chat: send, live delivery, unread, read receipt', async () => {
+    // B-нің оқиғалар ағынына қосыламыз (EventSource сияқты, бірақ токен тақырыпта)
+    const ctrl = new AbortController();
+    const stream = await fetch(`${BASE}/api/me/events`, { headers: { authorization: `Bearer ${B.token}` }, signal: ctrl.signal });
+    assert.equal(stream.headers.get('content-type')?.startsWith('text/event-stream'), true);
+    const reader = stream.body!.getReader();
+    const received = (async () => {
+      let buf = '';
+      for (;;) {
+        const { value, done } = await reader.read();
+        if (done) return null;
+        buf += new TextDecoder().decode(value);
+        const m = buf.match(/event: message\ndata: (.+)\n\n/);
+        if (m) return JSON.parse(m[1]) as { message: Message; from: Profile };
+      }
+    })();
+
+    assert.equal((await call('POST', `/api/me/chats/${B.p.id}`, { token: A.token, body: { text: '   ' } })).body.error, 'message_empty');
+    assert.equal((await call('POST', `/api/me/chats/${A.p.id}`, { token: A.token, body: { text: 'hi' } })).status, 404, 'not to yourself');
+    const sent = await call<Message>('POST', `/api/me/chats/${B.p.id}`, { token: A.token, body: { text: 'Сәлем! Кездесейік пе?' } });
+    assert.equal(sent.status, 201);
+
+    const live = await Promise.race([received, new Promise<null>((r) => setTimeout(() => r(null), 3000))]);
+    ctrl.abort();
+    assert.ok(live, 'message arrives over the live stream');
+    assert.equal(live!.message.text, 'Сәлем! Кездесейік пе?');
+    assert.equal(live!.from.id, A.p.id);
+
+    const list = (await call<{ chats: ChatSummary[]; unread: number }>('GET', '/api/me/chats', { token: B.token })).body;
+    assert.equal(list.unread, 1);
+    assert.equal(list.chats[0].other.id, A.p.id);
+    assert.equal(list.chats[0].last.text, 'Сәлем! Кездесейік пе?');
+
+    const thread = (await call<ChatThread>('GET', `/api/me/chats/${A.p.id}`, { token: B.token })).body;
+    assert.equal(thread.messages.length, 1);
+    assert.equal((await call<{ unread: number }>('GET', '/api/me/chats', { token: B.token })).body.unread, 0, 'opening marks as read');
+    await call('POST', `/api/me/chats/${A.p.id}`, { token: B.token, body: { text: 'Иә, 12:00-де' } });
+    const aThread = (await call<ChatThread>('GET', `/api/me/chats/${B.p.id}`, { token: A.token })).body;
+    assert.deepEqual(aThread.messages.map((m) => m.text), ['Сәлем! Кездесейік пе?', 'Иә, 12:00-де']);
+    assert.ok(aThread.readByOther && aThread.readByOther >= sent.body.at, 'A sees that B read the message');
+    assert.equal((await call('GET', `/api/me/chats/${A.p.id}`, { token: C.token })).body.messages.length, 0, 'a third person cannot read A–B');
+    assert.equal((await call('GET', '/api/me/chats')).status, 401);
+  });
+
   await test('editing the profile changes recommendations', async () => {
     const r = await call<Profile>('PUT', '/api/me', { token: A.token, body: { ...seeker, goal: 'mentor_seek', experience: 0 } });
     assert.equal(r.status, 200);
@@ -224,6 +268,7 @@ async function main() {
     assert.equal(d.total, 123);
     assert.equal(d.real, 3);
     assert.equal(d.meetings, 1);
+    assert.equal(d.messages, 2);
     assert.ok(d.feedback.met >= 2);
     assert.ok(d.interests.length > 10);
     assert.equal(d.slotLoad.find((s: { slot: string }) => s.slot === '12:00').n, 1);
@@ -246,6 +291,7 @@ async function main() {
     assert.equal(me.status, 200);
     assert.equal(me.body.name, hirer.name);
     assert.equal((await call<Profile[]>('GET', '/api/me/contacts', { token: B.token })).body.length, 1);
+    assert.equal((await call<ChatThread>('GET', `/api/me/chats/${A.p.id}`, { token: B.token })).body.messages.length, 2, 'messages persist');
   });
 
   await stop();

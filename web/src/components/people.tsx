@@ -4,7 +4,7 @@ import type { MeetingView, Profile, Recommendation } from '../../../shared/types
 import { useApp } from '../App.tsx';
 import { api } from '../api.ts';
 import { fmtYears, type Key } from '../i18n.ts';
-import { IconCheck, IconClock, IconTelegram, Spinner } from './icons.tsx';
+import { IconCalendar, IconChats, IconCheck, IconClock, IconTelegram, Spinner } from './icons.tsx';
 import { Avatar, GoalTag, Row, Section, Sheet, haptic, toast } from './ui.tsx';
 
 export function metaLine(p: Profile, lang: 'kk' | 'ru' | 'en', t: (k: Key) => string) {
@@ -17,8 +17,10 @@ const PART_KEYS: Record<string, Key> = {
 };
 
 // Адамның толық профилі + сәйкестік неден құралғаны
-export function PersonSheet({ person, rec, me, onClose, showContact }: { person: Profile | null; rec?: Recommendation; me: Profile; onClose: () => void; showContact?: boolean }) {
-  const { t, lang } = useApp();
+export function PersonSheet({ person, rec, me, onClose, showContact, onMeet }: {
+  person: Profile | null; rec?: Recommendation; me: Profile; onClose: () => void; showContact?: boolean; onMeet?: (p: Profile) => void;
+}) {
+  const { t, lang, openChat } = useApp();
   const p = person;
   return (
     <Sheet open={!!p} onClose={onClose} right={<button className="nav-btn bold" onClick={onClose}>{t('done')}</button>}>
@@ -30,6 +32,19 @@ export function PersonSheet({ person, rec, me, onClose, showContact }: { person:
             <p>{metaLine(p, lang, t)}</p>
             <GoalTag goal={p.goal} label={goalShort(p.goal, lang)} />
           </div>
+          {p.id !== me.id && (
+            <div className="contact-actions">
+              {/* Жазу: чат ашылады, ұсыныстан келсе — алғашқы фраза дайын тұрады */}
+              <button type="button" onClick={() => { onClose(); openChat(p, rec?.icebreaker); }}>
+                <IconChats width={22} height={22} /><span>{t('write')}</span>
+              </button>
+              {onMeet && (
+                <button type="button" onClick={() => onMeet(p)}>
+                  <IconCalendar width={22} height={22} /><span>{t('meet')}</span>
+                </button>
+              )}
+            </div>
+          )}
           {rec && (
             <Section header={t('whyMatch')}>
               <div className="about-text">{rec.explanation}</div>

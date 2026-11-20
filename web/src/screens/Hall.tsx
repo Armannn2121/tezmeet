@@ -32,8 +32,8 @@ export function Hall() {
           <div className="tiles">
             <div className="tile"><div className="k">{t('participants')}</div><div className="v">{d.total}</div><div className="f">{t('registered', { n: d.real })}</div></div>
             <div className="tile"><div className="k">{t('meetingsBooked')}</div><div className="v">{d.meetings}</div></div>
-            <div className="tile"><div className="k">{t('metRate')}</div><div className="v">{fb ? Math.round((d.feedback.met / fb) * 100) : 0}<small>%</small></div></div>
-            <div className="tile"><div className="k"><span className="dot" style={{ background: 'var(--green)' }} />{t('met')}</div><div className="v">{d.feedback.met}<small>/ {fb}</small></div></div>
+            <div className="tile"><div className="k">{t('metRate')}</div><div className="v">{fb ? Math.round((d.feedback.met / fb) * 100) : 0}<small>%</small></div><div className="f">{d.feedback.met} / {fb}</div></div>
+            <div className="tile"><div className="k"><span className="dot" style={{ background: 'var(--blue)' }} />{t('messagesTile')}</div><div className="v">{d.messages}</div></div>
           </div>
 
           <Section header={t('supplyDemand')} footer={t('supplyFooter')}>

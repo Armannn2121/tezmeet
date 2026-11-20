@@ -3,12 +3,12 @@ import { goalShort } from '../../../shared/catalog.ts';
 import type { Profile, RecResponse, Recommendation, Verdict } from '../../../shared/types.ts';
 import { useApp } from '../App.tsx';
 import { api } from '../api.ts';
-import { IconCalendar, IconCheck, IconCopy, IconPeople, IconRefresh, IconSparkles, IconStore, IconX, Spinner } from '../components/icons.tsx';
+import { IconCalendar, IconChats, IconCheck, IconCopy, IconPeople, IconRefresh, IconSparkles, IconStore, IconX, Spinner } from '../components/icons.tsx';
 import { MeetSheet, PersonSheet, metaLine } from '../components/people.tsx';
 import { Avatar, GoalTag, NavBar, Ring, Section, copyText, haptic, toast } from '../components/ui.tsx';
 
 export function ForYou() {
-  const { t, lang, user, meta, errorText } = useApp();
+  const { t, lang, user, meta, errorText, openChat } = useApp();
   const [data, setData] = useState<RecResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [ai, setAi] = useState<Record<string, string>>({});
@@ -16,7 +16,7 @@ export function ForYou() {
   const [leaving, setLeaving] = useState<Record<string, 'left' | 'right'>>({});
   const [person, setPerson] = useState<Recommendation | null>(null);
   const [meetWith, setMeetWith] = useState<Profile | null>(null);
-  const [booked, setBooked] = useState<Record<string, string>>({}); // адам id → «13:00»
+  const [booked, setBooked] = useState<Record<string, { slot: string; table: number }>>({}); // адам id → кездесу
   const aiAsked = useRef(new Set<string>());
 
   const load = useCallback(async () => {
@@ -31,7 +31,7 @@ export function ForYou() {
   useEffect(() => { load(); }, [load]);
 
   const loadMeetings = useCallback(() => {
-    api.meetings().then((ms) => setBooked(Object.fromEntries(ms.map((m) => [m.other.id, m.slot])))).catch(() => {});
+    api.meetings().then((ms) => setBooked(Object.fromEntries(ms.map((m) => [m.other.id, { slot: m.slot, table: m.table }])))).catch(() => {});
   }, []);
   useEffect(() => { loadMeetings(); }, [loadMeetings]);
 
@@ -124,6 +124,7 @@ export function ForYou() {
                 <div className="name">{p.name}</div>
                 <div className="meta">{metaLine(p, lang, t)}</div>
                 <GoalTag goal={p.goal} label={goalShort(p.goal, lang)} />
+                {booked[p.id] && <span className="meet-tag"><IconCalendar width={12} height={12} /> {booked[p.id].slot} · {t('table', { n: booked[p.id].table })}</span>}
               </div>
               <div title={quality}><Ring value={rec.score} /></div>
             </button>
@@ -146,7 +147,9 @@ export function ForYou() {
             </div>
             <div className="actions">
               <button type="button" className="pill-btn green wide" onClick={() => feedback(rec, 'met')}><IconCheck /> {t('met')}</button>
-              <button type="button" className="pill-btn blue" onClick={() => setMeetWith(p)}><IconCalendar /> {booked[p.id] ?? t('meet')}</button>
+              {/* Жазу: чат ашылады, ішінде алғашқы фраза дайын тұрады */}
+              <button type="button" className="pill-btn blue" onClick={() => openChat(p, line)}><IconChats /> {t('write')}</button>
+              <button type="button" className={`pill-btn icon${booked[p.id] ? ' blue' : ''}`} onClick={() => setMeetWith(p)} aria-label={t('meet')} title={t('meet')}><IconCalendar /></button>
               <button type="button" className="pill-btn gray icon" onClick={() => feedback(rec, 'skip')} aria-label={t('skip')} title={t('skip')}><IconX /></button>
             </div>
           </article>
@@ -169,7 +172,7 @@ export function ForYou() {
         </div>
       )}
 
-      <PersonSheet person={person?.profile ?? null} rec={person ?? undefined} me={user} onClose={() => setPerson(null)} />
+      <PersonSheet person={person?.profile ?? null} rec={person ?? undefined} me={user} onClose={() => setPerson(null)} onMeet={(p) => { setPerson(null); setMeetWith(p); }} />
       <MeetSheet person={meetWith} onClose={() => setMeetWith(null)} onChanged={loadMeetings} />
     </div>
   );

@@ -66,3 +66,9 @@ export type Meeting = {
 };
 
 export type MeetingView = Meeting & { other: Profile };
+
+export type Message = { id: string; from: string; to: string; text: string; at: string };
+
+export type ChatSummary = { other: Profile; last: Message; unread: number };
+
+export type ChatThread = { other: Profile; messages: Message[]; readByOther: string | null };

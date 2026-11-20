@@ -92,6 +92,26 @@ export const IconTelegram = (p: P) => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...p}><path d="M20.7 4.3 3.4 11c-1 .4-1 1.8.1 2.1l4.2 1.3 1.6 5.1c.2.7 1.1.9 1.6.4l2.4-2.3 4.3 3.2c.6.4 1.4.1 1.6-.6l3-14.3c.2-.9-.7-1.7-1.5-1.3Zm-3.3 3.6-7.3 6.7-.3 3-1.3-4.2 8.5-5.8c.3-.2.6.1.4.3Z" /></svg>
 );
 
+export const IconHouse = (p: P) => (
+  <svg viewBox="0 0 28 28" fill="currentColor" aria-hidden {...p}>
+    <path d="M12.6 3.6a2.2 2.2 0 0 1 2.8 0l9 7.4c.6.5.2 1.5-.6 1.5H22v9.8c0 1.2-1 2.2-2.2 2.2h-3.3v-6.3c0-.6-.4-1-1-1h-3c-.6 0-1 .4-1 1v6.3H8.2C7 24.5 6 23.5 6 22.3v-9.8H4.2c-.8 0-1.2-1-.6-1.5l9-7.4Z" />
+  </svg>
+);
+export const IconChats = (p: P) => (
+  <svg viewBox="0 0 28 28" fill="currentColor" aria-hidden {...p}>
+    <path d="M11.5 3.5c5.2 0 9.5 3.5 9.5 7.9s-4.3 7.9-9.5 7.9c-.9 0-1.8-.1-2.6-.3l-3.8 2c-.6.3-1.2-.2-1.1-.8l.6-3C3 15.7 2 13.6 2 11.4c0-4.4 4.3-7.9 9.5-7.9Z" />
+    <path d="M22.6 10.4c2.1 1.3 3.4 3.3 3.4 5.6 0 1.8-.8 3.4-2.1 4.6l.5 2.3c.1.6-.5 1-1 .7l-2.9-1.5c-.7.2-1.4.3-2.2.3-1.7 0-3.3-.4-4.6-1.2 4.9-.6 8.8-4.1 8.9-8.4v-2.4Z" opacity=".55" />
+  </svg>
+);
+export const IconSendUp = (p: P) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden {...p}>
+    <path d="M12 19V5M6 11l6-6 6 6" />
+  </svg>
+);
+export const IconInfo = (p: P) => (
+  <S strokeWidth={2} {...p}><circle cx="12" cy="12" r="8.5" /><path d="M12 11v5M12 8h.01" /></S>
+);
+
 // iOS UIActivityIndicator — 8 жолақ
 export const Spinner = ({ lg }: { lg?: boolean }) => (
   <svg className={`spinner${lg ? ' lg' : ''}`} viewBox="0 0 24 24" aria-label="loading">

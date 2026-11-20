@@ -165,7 +165,7 @@ const AV_COLORS = [
   ['#FF9500', '#FF5E3A'], ['#5AC8FA', '#007AFF'], ['#4CD964', '#30B0C7'], ['#AF52DE', '#5856D6'],
   ['#FF2D55', '#FF6482'], ['#FFCC00', '#FF9500'], ['#5856D6', '#007AFF'], ['#34C759', '#00C7BE'],
 ];
-export function Avatar({ name, size = '' }: { name: string; size?: '' | 'sm' | 'lg' }) {
+export function Avatar({ name, size = '' }: { name: string; size?: '' | 'xs' | 'sm' | 'lg' }) {
   const initials = name.split(/\s+/).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
   let h = 0;
   for (const ch of name) h = (h * 31 + ch.charCodeAt(0)) >>> 0;

@@ -7,7 +7,7 @@ import { existsSync, readFileSync, statSync } from 'node:fs';
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import { extname, join, normalize } from 'node:path';
 import { EVENT, GOALS, INTERESTS, ROLES, SLOTS, STACK, type GoalId, type Lang, type RoleId } from '../shared/catalog.ts';
-import type { Meeting, MeetingView, Profile, RecResponse, Verdict } from '../shared/types.ts';
+import type { ChatSummary, ChatThread, Meeting, MeetingView, Message, Profile, RecResponse, Verdict } from '../shared/types.ts';
 import { CONFIG } from './config.ts';
 import { embedBatch, embedEnabled, loadEmbedCache, saveEmbedCache } from './embed.ts';
 import { aiIcebreakers, llmEnabled } from './llm.ts';
@@ -203,8 +203,39 @@ function dashboard() {
     roles,
     feedback: { met: fb.filter((f) => f.verdict === 'met').length, skip: fb.filter((f) => f.verdict === 'skip').length },
     meetings: ms.length,
+    messages: store.messageCount(),
     slotLoad,
   };
+}
+
+// ── Нақты уақыт: Server-Sent Events ─────────────────────────────
+// Браузер /api/me/events-ке fetch арқылы қосылады (токен тақырыпта, URL-де емес)
+const subscribers = new Map<string, Set<ServerResponse>>();
+
+function emit(userId: string, event: string, data: unknown) {
+  for (const res of subscribers.get(userId) ?? []) res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+}
+
+function openEvents(req: IncomingMessage, res: ServerResponse, me: Profile) {
+  res.writeHead(200, { 'content-type': 'text/event-stream; charset=utf-8', 'cache-control': 'no-store', connection: 'keep-alive', 'x-accel-buffering': 'no' });
+  res.write(': connected\n\n');
+  const set = subscribers.get(me.id) ?? new Set();
+  set.add(res);
+  subscribers.set(me.id, set);
+  const ping = setInterval(() => res.write(': ping\n\n'), 25_000);
+  req.on('close', () => {
+    clearInterval(ping);
+    set.delete(res);
+    if (!set.size) subscribers.delete(me.id);
+  });
+}
+
+function chatList(me: Profile): { chats: ChatSummary[]; unread: number } {
+  const chats = store.chatsOf(me.id)
+    .map((c) => ({ other: store.getProfile(c.otherId), last: c.last, unread: c.unread }))
+    .filter((c): c is { other: Profile; last: Message; unread: number } => !!c.other)
+    .map((c) => ({ ...c, other: view(c.other, me.id) }));
+  return { chats, unread: chats.reduce((n, c) => n + c.unread, 0) };
 }
 
 // ── Маршруттар ─────────────────────────────────────────────────────
@@ -248,6 +279,34 @@ async function api(req: IncomingMessage, res: ServerResponse, url: URL) {
       matcher.index(store.allProfiles());
       await embedOne(p);
       return send(res, 200, p);
+    }
+    if (m === 'GET' && sub === 'events') return openEvents(req, res, me);
+    if (m === 'GET' && sub === 'chats') return send(res, 200, chatList(me));
+    if (seg[2] === 'chats' && seg[3]) {
+      const other = store.getProfile(seg[3]);
+      if (!other || other.id === me.id) throw new HttpError(404, 'target_not_found');
+      if (m === 'GET' && !seg[4]) {
+        const readAt = store.markRead(me.id, other.id);
+        if (readAt) emit(other.id, 'read', { by: me.id, at: readAt });
+        const thread: ChatThread = { other: view(other, me.id), messages: store.conversation(me.id, other.id), readByOther: store.lastRead(other.id, me.id) };
+        return send(res, 200, thread);
+      }
+      if (m === 'POST' && seg[4] === 'read') {
+        const readAt = store.markRead(me.id, other.id);
+        if (readAt) emit(other.id, 'read', { by: me.id, at: readAt });
+        return send(res, 200, { ok: true });
+      }
+      if (m === 'POST' && !seg[4]) {
+        limit(req, 'message', 40);
+        const text = String((await readJson(req)).text ?? '').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '').trim().slice(0, 1000);
+        if (!text) throw new HttpError(422, 'message_empty');
+        const msg: Message = { id: randomUUID(), from: me.id, to: other.id, text, at: new Date().toISOString() };
+        store.addMessage(msg);
+        // Алушыға — хабарлама мен жіберуші; жіберушінің басқа құрылғыларына — тек хабарлама
+        emit(other.id, 'message', { message: msg, from: view(me, other.id) });
+        emit(me.id, 'message', { message: msg });
+        return send(res, 201, msg);
+      }
     }
     if (m === 'GET' && sub === 'recommendations') return send(res, 200, recommend(me, asLang(url.searchParams.get('lang'))));
     if (m === 'POST' && sub === 'icebreakers') {
