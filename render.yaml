@@ -1,0 +1,14 @@
+# Render.com-ға бір батырмамен орнату (тегін тариф): https://render.com/deploy?repo=https://github.com/Armannn2121/tezmeet
+# Тегін тарифте сервис 15 минут қолданылмаса ұйықтайды — алғашқы ашылу ~1 минут.
+# Тегін тарифте диск жоқ: қайта іске қосылғанда қатысушылар енгізген анкеталар өшеді (120 демо-анкета қалады).
+services:
+  - type: web
+    name: tezmeet
+    runtime: docker
+    plan: free
+    region: frankfurt
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false

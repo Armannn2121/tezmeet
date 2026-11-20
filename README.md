@@ -33,6 +33,12 @@ npm start        # http://localhost:8080
 
 **Ключ API не обязателен.** Без `GEMINI_API_KEY` всё работает: смысловая близость считается через TF-IDF, первая фраза — шаблоном на трёх языках. С ключом подключаются эмбеддинги Gemini (`gemini-embedding-001`) и персонализированная первая фраза от Gemini Flash. Ключ хранится только в `.env` / переменных окружения и в репозиторий не попадает (`.gitignore`).
 
+### Публичная ссылка за 5 минут (Render, бесплатно)
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Armannn2121/tezmeet)
+
+Кнопка разворачивает Docker-образ по [render.yaml](render.yaml) и выдаёт адрес вида `https://tezmeet-xxxx.onrender.com`. На бесплатном тарифе сервис засыпает после 15 минут простоя (первое открытие ~1 минута) и не хранит данные между перезапусками — для постоянной работы используйте VPS ниже.
+
 ### Деплой на сервер (VPS с Docker)
 
 ```bash
