@@ -4,3 +4,4 @@ var/
 .env
 *.log
 .claude/settings.local.json
+.claude/
