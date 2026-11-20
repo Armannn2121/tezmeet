@@ -55,6 +55,7 @@ const EN_PLURAL: Record<RoleId, string> = {
   product_manager: 'product managers', project_manager: 'project managers', cto: 'team leads', founder: 'founders', recruiter: 'recruiters', student: 'students',
 };
 const plural = (r: RoleId, lang: Lang) => (lang === 'ru' ? RU_ACC[r][1] : lang === 'en' ? EN_PLURAL[r] : role(r, lang));
+export const rolePlural = plural;
 const accusative = (r: RoleId, lang: Lang) => (lang === 'ru' ? RU_ACC[r][0] : role(r, lang));
 const roles = (rs: RoleId[] | undefined, lang: Lang) => list((rs ?? []).map((r) => plural(r, lang)), lang, 2);
 

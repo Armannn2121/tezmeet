@@ -81,7 +81,8 @@ export const api = {
 // Байланыс үзілсе, 1→2→4…→15 секундтан соң қайта қосылады.
 export type LiveEvent =
   | { type: 'message'; message: Message; from?: Profile }
-  | { type: 'read'; by: string; at: string };
+  | { type: 'read'; by: string; at: string }
+  | { type: 'typing'; from: string };
 
 export function connectEvents(onEvent: (e: LiveEvent) => void, onStatus?: (online: boolean) => void): () => void {
   let stopped = false;

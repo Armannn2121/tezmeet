@@ -10,6 +10,7 @@ import { EVENT, GOALS, INTERESTS, ROLES, SLOTS, STACK, type GoalId, type Lang, t
 import type { ChatSummary, ChatThread, Meeting, MeetingView, Message, Profile, RecResponse, Verdict } from '../shared/types.ts';
 import { CONFIG } from './config.ts';
 import { embedBatch, embedEnabled, loadEmbedCache, saveEmbedCache } from './embed.ts';
+import { composeReply } from './autoreply.ts';
 import { aiIcebreakers, llmEnabled } from './llm.ts';
 import { Matcher, docText, recommendBooths } from './match.ts';
 import * as store from './store.ts';
@@ -230,6 +231,46 @@ function openEvents(req: IncomingMessage, res: ServerResponse, me: Profile) {
   });
 }
 
+// ── Демо-анкеталардың жауабы ────────────────────────────────────
+// Хабарламаны «оқиды», «жазып жатыр…» көрсетеді, жауап ұзындығына сай кідіріп жауап береді.
+// Қатарынан бірнеше хабарлама жазылса — соңғысынан кейін бір рет жауап береді.
+const replies = new Map<string, number>(); // «бот:адам» → соңғы тапсырма нөмірі
+let replyGen = 0;
+const SPEED = process.env.AUTOREPLY_SPEED === 'fast' ? 0.05 : 1;
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+function scheduleReply(bot: Profile, user: Profile) {
+  const key = `${bot.id}:${user.id}`;
+  const gen = ++replyGen;
+  replies.set(key, gen);
+  const alive = () => replies.get(key) === gen;
+  (async () => {
+    await sleep((700 + Math.random() * 900) * SPEED);
+    if (!alive()) return;
+    const readAt = store.markRead(bot.id, user.id);
+    if (readAt) emit(user.id, 'read', { by: bot.id, at: readAt });
+    emit(user.id, 'typing', { from: bot.id });
+    const started = Date.now();
+    const m = store.allMeetings().find((x) => (x.a === bot.id && x.b === user.id) || (x.a === user.id && x.b === bot.id));
+    const text = await composeReply({
+      bot, user,
+      history: store.conversation(bot.id, user.id, 40),
+      meeting: m ? { slot: m.slot, table: m.table } : null,
+      freeSlots: freeSlots(bot, user),
+      hiresFor: bot.goal === 'hire' ? matcher.want(bot) : [],
+    }, user.lang);
+    if (!alive()) return;
+    emit(user.id, 'typing', { from: bot.id });
+    const typing = Math.min(4500, 800 + text.length * 25) * SPEED;
+    await sleep(Math.max(0, typing - (Date.now() - started)));
+    if (!alive()) return;
+    replies.delete(key);
+    const msg: Message = { id: randomUUID(), from: bot.id, to: user.id, text, at: new Date().toISOString() };
+    store.addMessage(msg);
+    emit(user.id, 'message', { message: msg, from: view(bot, user.id) });
+  })().catch((e) => console.error('autoreply failed:', e));
+}
+
 function chatList(me: Profile): { chats: ChatSummary[]; unread: number } {
   const chats = store.chatsOf(me.id)
     .map((c) => ({ other: store.getProfile(c.otherId), last: c.last, unread: c.unread }))
@@ -305,6 +346,7 @@ async function api(req: IncomingMessage, res: ServerResponse, url: URL) {
         // Алушыға — хабарлама мен жіберуші; жіберушінің басқа құрылғыларына — тек хабарлама
         emit(other.id, 'message', { message: msg, from: view(me, other.id) });
         emit(me.id, 'message', { message: msg });
+        if (other.synthetic) scheduleReply(other, me);
         return send(res, 201, msg);
       }
     }

@@ -111,7 +111,8 @@ export class Matcher {
     this.targets = new Map(profiles.map((p) => [p.id, inferTargets(p)]));
   }
 
-  private want(p: Profile): RoleId[] {
+  // Адам кімді іздейді: таңдағаны, не мәтін мен стектен шығарылғаны
+  want(p: Profile): RoleId[] {
     return this.targets.get(p.id) ?? inferTargets(p);
   }
 

@@ -19,7 +19,7 @@ let server: ChildProcess;
 async function start() {
   server = spawn(process.execPath, ['server/index.ts'], {
     cwd: root,
-    env: { ...process.env, PORT: String(PORT), DATA_DIR: dataDir, GEMINI_API_KEY: '' },
+    env: { ...process.env, PORT: String(PORT), DATA_DIR: dataDir, GEMINI_API_KEY: '', AUTOREPLY_SPEED: 'fast' },
     stdio: ['ignore', 'pipe', 'pipe'],
   });
   for (let i = 0; i < 50; i++) {
@@ -252,6 +252,48 @@ async function main() {
     assert.equal((await call('GET', '/api/me/chats')).status, 401);
   });
 
+  await test('demo profiles reply: read, typing, one reply per burst, honest when asked', async () => {
+    const recs = (await call<RecResponse>('GET', '/api/me/recommendations', { token: C.token })).body;
+    const bot = recs.items.find((i) => i.profile.synthetic)!.profile;
+    const ctrl = new AbortController();
+    const stream = await fetch(`${BASE}/api/me/events`, { headers: { authorization: `Bearer ${C.token}` }, signal: ctrl.signal });
+    const reader = stream.body!.getReader();
+    const seen: string[] = [];
+    const got = (async () => {
+      let buf = '';
+      for (;;) {
+        const { value, done } = await reader.read();
+        if (done) return null;
+        buf += new TextDecoder().decode(value);
+        for (const m of buf.matchAll(/event: (\w+)\ndata: (.+)\n\n/g)) {
+          const data = JSON.parse(m[2]);
+          if (!seen.includes(m[1])) seen.push(m[1]);
+          if (m[1] === 'message' && data.message.from === bot.id) return data as { message: Message; from: Profile };
+        }
+      }
+    })();
+    // Қатарынан екі хабарлама — бір ғана жауап келуі керек
+    await call('POST', `/api/me/chats/${bot.id}`, { token: C.token, body: { text: 'Привет!' } });
+    await call('POST', `/api/me/chats/${bot.id}`, { token: C.token, body: { text: 'Расскажите, чем занимается ваша команда?' } });
+    const reply = await Promise.race([got, new Promise<null>((r) => setTimeout(() => r(null), 5000))]);
+    assert.ok(reply, 'demo profile replies');
+    assert.ok(seen.includes('read') && seen.includes('typing'), `read + typing before reply (${seen.join(',')})`);
+    assert.ok(reply!.message.text.length > 10);
+    assert.match(reply!.message.text, /[а-яё]/i, 'answers in the language of the message');
+    await new Promise((r) => setTimeout(r, 800));
+    const th = (await call<ChatThread>('GET', `/api/me/chats/${bot.id}`, { token: C.token })).body;
+    assert.equal(th.messages.filter((m) => m.from === bot.id).length, 1, 'one reply for a burst of messages');
+    assert.ok(th.readByOther, 'demo profile marked the messages as read');
+
+    await call('POST', `/api/me/chats/${bot.id}`, { token: C.token, body: { text: 'Ты бот?' } });
+    await new Promise((r) => setTimeout(r, 1500));
+    const th2 = (await call<ChatThread>('GET', `/api/me/chats/${bot.id}`, { token: C.token })).body;
+    assert.match(th2.messages[th2.messages.length - 1].text, /автоматически/, 'honest answer to a sincere question');
+    ctrl.abort();
+    // Шынайы қатысушыға автоматты жауап жоқ
+    assert.equal((await call<ChatThread>('GET', `/api/me/chats/${A.p.id}`, { token: B.token })).body.messages.filter((m) => m.from === A.p.id).length, 1);
+  });
+
   await test('editing the profile changes recommendations', async () => {
     const r = await call<Profile>('PUT', '/api/me', { token: A.token, body: { ...seeker, goal: 'mentor_seek', experience: 0 } });
     assert.equal(r.status, 200);
@@ -268,7 +310,7 @@ async function main() {
     assert.equal(d.total, 123);
     assert.equal(d.real, 3);
     assert.equal(d.meetings, 1);
-    assert.equal(d.messages, 2);
+    assert.equal(d.messages, 7);
     assert.ok(d.feedback.met >= 2);
     assert.ok(d.interests.length > 10);
     assert.equal(d.slotLoad.find((s: { slot: string }) => s.slot === '12:00').n, 1);

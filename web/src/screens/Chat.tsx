@@ -23,6 +23,8 @@ export function Chat({ otherId }: { otherId: string }) {
   const [person, setPerson] = useState<Profile | null>(null);
   const [meet, setMeet] = useState<Profile | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [typing, setTyping] = useState(false);
+  const typingTimer = useRef<number>(undefined);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const stick = useRef(true); // төменде тұрсақ — жаңа хабарламада төмен айналдырамыз
 
@@ -44,11 +46,18 @@ export function Chat({ otherId }: { otherId: string }) {
   // Нақты уақыт: жаңа хабарлама мен «оқылды» белгісі
   useEffect(() => onLive((e) => {
     if (e.type === 'read' && e.by === otherId) setReadByOther(e.at);
+    if (e.type === 'typing' && e.from === otherId) {
+      setTyping(true);
+      window.clearTimeout(typingTimer.current);
+      typingTimer.current = window.setTimeout(() => setTyping(false), 12000);
+      stick.current = window.innerHeight + window.scrollY >= document.body.scrollHeight - 120;
+    }
     if (e.type !== 'message') return;
     const m = e.message;
     const mine = m.from === user.id && m.to === otherId;
     const theirs = m.from === otherId && m.to === user.id;
     if (!mine && !theirs) return;
+    if (theirs) { setTyping(false); window.clearTimeout(typingTimer.current); }
     setMessages((xs) => (xs && !xs.some((x) => x.id === m.id) ? [...xs, m] : xs));
     if (theirs && document.visibilityState === 'visible') api.markRead(otherId).then(refreshChats).catch(() => {});
   }), [onLive, otherId, user.id, refreshChats]);
@@ -68,7 +77,9 @@ export function Chat({ otherId }: { otherId: string }) {
 
   useLayoutEffect(() => {
     if (stick.current) window.scrollTo({ top: document.body.scrollHeight });
-  }, [messages]);
+  }, [messages, typing]);
+
+  useEffect(() => () => window.clearTimeout(typingTimer.current), []);
 
   // Мәтін өрісі 1–5 жолға дейін өседі
   useLayoutEffect(() => {
@@ -126,7 +137,9 @@ export function Chat({ otherId }: { otherId: string }) {
           {other && <Avatar name={other.name} size="xs" />}
           <span className="chat-peer-text">
             <span className="chat-peer-name">{other?.name ?? ' '}</span>
-            {other && <span className="chat-peer-role">{roleLabel(other.role, lang)}{other.company ? ` · ${other.company}` : ''}</span>}
+            {other && (typing
+              ? <span className="chat-peer-role typing">{t('typing')}</span>
+              : <span className="chat-peer-role">{roleLabel(other.role, lang)}{other.company ? ` · ${other.company}` : ''}</span>)}
           </span>
         </button>
         <button type="button" className="nav-btn" aria-label={t('meet')} onClick={() => other && setMeet(other)} disabled={!other}>
@@ -137,9 +150,7 @@ export function Chat({ otherId }: { otherId: string }) {
       <main className="chat-body" aria-live="polite">
         {error && <div className="empty"><p>{error}</p><button className="btn tinted small" style={{ marginTop: 12 }} onClick={load}>{t('retry')}</button></div>}
         {!messages && !error && <div className="center"><Spinner lg /></div>}
-        {other?.synthetic && (
-          <div className="chat-note"><IconInfo width={16} height={16} /> <span>{t('syntheticNote')}</span></div>
-        )}
+        {other?.synthetic && <div className="chat-note subtle"><IconInfo width={13} height={13} /> <span>{t('syntheticNote')}</span></div>}
         {messages?.map((m, i) => {
           const prev = messages[i - 1];
           const next = messages[i + 1];
@@ -164,6 +175,11 @@ export function Chat({ otherId }: { otherId: string }) {
             </div>
           );
         })}
+        {typing && (
+          <div className="msg-row theirs first" aria-label={t('typing')}>
+            <div className="msg tail typing-bubble"><span /><span /><span /></div>
+          </div>
+        )}
       </main>
 
       <footer className="composer">
