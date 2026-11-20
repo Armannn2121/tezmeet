@@ -1,0 +1,20 @@
+[
+  { "id": "b1", "name": "NomadPay", "location": "A1", "interests": ["fintech", "mobile", "security"], "stack": ["Go", "Kotlin", "Swift", "PostgreSQL", "Kafka"], "goals": ["job_seek", "exchange"],
+    "tagline": { "kk": "Төлем жүйесі: Go және мобильді әзірлеушілерге вакансиялар", "ru": "Платёжный сервис: вакансии для Go- и мобильных разработчиков", "en": "Payments platform: open roles for Go and mobile engineers" } },
+  { "id": "b2", "name": "SteppeAI", "location": "A2", "interests": ["ai", "llm", "data"], "stack": ["Python", "PyTorch", "LLM", "LangChain"], "goals": ["job_seek", "exchange", "cofounder"],
+    "tagline": { "kk": "Қазақ тіліне арналған LLM: демо және ML-инженерлерге тағылымдама", "ru": "LLM для казахского языка: демо и стажировка для ML-инженеров", "en": "LLMs for the Kazakh language: demo and ML internships" } },
+  { "id": "b3", "name": "SamalCloud", "location": "B1", "interests": ["cloud", "security", "opensource"], "stack": ["Kubernetes", "Terraform", "Docker", "Linux", "AWS"], "goals": ["job_seek", "exchange"],
+    "tagline": { "kk": "Отандық бұлт: Kubernetes бойынша тегін воркшоп", "ru": "Локальное облако: бесплатный воркшоп по Kubernetes", "en": "Local cloud: free Kubernetes workshop" } },
+  { "id": "b4", "name": "AqylEdu", "location": "B2", "interests": ["edtech", "teaching", "career", "product"], "stack": ["Python", "Django", "React", "Figma"], "goals": ["mentor_offer", "mentor_seek", "job_seek"],
+    "tagline": { "kk": "Онлайн-мектеп: менторлар іздейміз, студенттерге курстар", "ru": "Онлайн-школа: ищем менторов, курсы для студентов", "en": "Online school: hiring mentors, courses for students" } },
+  { "id": "b5", "name": "Astana Startup Garage", "location": "C1", "interests": ["startups", "fintech", "agritech", "healthtech"], "stack": ["Product Analytics", "Figma", "LLM"], "goals": ["cofounder", "exchange", "mentor_seek"],
+    "tagline": { "kk": "Акселератор: кофаундер-матчинг және инвесторлармен кездесу", "ru": "Акселератор: кофаундер-матчинг и встречи с инвесторами", "en": "Accelerator: co-founder matching and investor meetings" } },
+  { "id": "b6", "name": "BerkutSec", "location": "C2", "interests": ["security", "govtech", "web3"], "stack": ["Pentest", "SIEM", "OWASP", "Network Security"], "goals": ["job_seek", "exchange", "mentor_seek"],
+    "tagline": { "kk": "CTF-челлендж және SOC-талдаушыларға вакансиялар", "ru": "CTF-челлендж и вакансии SOC-аналитиков", "en": "CTF challenge and SOC analyst openings" } },
+  { "id": "b7", "name": "TulparGames", "location": "D1", "interests": ["gamedev", "design", "hackathons"], "stack": ["Unity", "C#", "Unreal Engine", "Blender"], "goals": ["job_seek", "cofounder", "exchange"],
+    "tagline": { "kk": "Инди-ойын студиясы: плейтест және геймджем тіркеу", "ru": "Инди-студия: плейтест и регистрация на геймджем", "en": "Indie studio: playtest and game jam sign-up" } },
+  { "id": "b8", "name": "AltynData", "location": "D2", "interests": ["data", "ecommerce", "logistics", "product"], "stack": ["SQL", "ClickHouse", "Airflow", "Power BI", "Spark"], "goals": ["job_seek", "exchange", "mentor_seek"],
+    "tagline": { "kk": "Деректер платформасы: аналитиктерге кейс-чемпионат", "ru": "Платформа данных: кейс-чемпионат для аналитиков", "en": "Data platform: case championship for analysts" } },
+  { "id": "b9", "name": "Qazaq IT Community", "location": "Hall", "interests": ["career", "opensource", "teaching", "hackathons", "remote"], "stack": ["Git"], "goals": ["mentor_seek", "mentor_offer", "exchange", "job_seek"],
+    "tagline": { "kk": "Қауымдастық стенді: менторлық бағдарлама мен келесі митаптар", "ru": "Стенд сообщества: менторская программа и следующие митапы", "en": "Community booth: mentoring program and upcoming meetups" } }
+]

@@ -1,0 +1,4571 @@
+[
+  {
+    "id": "p001",
+    "name": "Бауыржан Ли",
+    "role": "recruiter",
+    "company": "AqylEdu",
+    "experience": 11,
+    "stack": [
+      "Go",
+      "PostgreSQL",
+      "Kafka",
+      "Docker",
+      "Employer Branding"
+    ],
+    "interests": [
+      "fintech",
+      "teaching",
+      "remote",
+      "career",
+      "opensource"
+    ],
+    "about": "AqylEdu компаниясында IT-рекрутер болып жұмыс істеймін. Ашық вакансиялар: бэкенд-әзірлеуші. Бізге Go, PostgreSQL, Kafka білетін адамдар керек.",
+    "goal": "hire",
+    "lookingFor": [
+      "backend"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:40",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p002",
+    "name": "Салтанат Тоқтарова",
+    "role": "recruiter",
+    "company": "OrdaGovTech",
+    "experience": 5,
+    "stack": [
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "Redis",
+      "Tech Interviewing"
+    ],
+    "interests": [
+      "edtech",
+      "startups",
+      "career",
+      "remote"
+    ],
+    "about": "IT recruiter at OrdaGovTech. Open roles: backend developer and fullstack developer, must know Python, Django, PostgreSQL. Fast process — two stages in a week.",
+    "goal": "hire",
+    "lookingFor": [
+      "backend",
+      "fullstack"
+    ],
+    "slots": [
+      "11:00",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:20",
+      "13:40",
+      "14:40",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p003",
+    "name": "Айбек Серіков",
+    "role": "recruiter",
+    "company": "BaspanaTech",
+    "experience": 6,
+    "stack": [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Employer Branding"
+    ],
+    "interests": [
+      "ecommerce",
+      "remote",
+      "career"
+    ],
+    "about": "Ищу сильных людей в команду BaspanaTech: фронтенд-разработчик и fullstack-разработчик. Важен опыт: TypeScript, React, Next.js. Готовы брать junior+ с хорошим потенциалом.",
+    "goal": "hire",
+    "lookingFor": [
+      "frontend",
+      "fullstack"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:20",
+      "12:40",
+      "14:20",
+      "14:40",
+      "15:00",
+      "15:20",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p004",
+    "name": "Сабина Омарова",
+    "role": "recruiter",
+    "company": "TulparGames",
+    "experience": 12,
+    "stack": [
+      "Flutter",
+      "Dart",
+      "Kotlin",
+      "Swift",
+      "Tech Interviewing"
+    ],
+    "interests": [
+      "fintech",
+      "remote"
+    ],
+    "about": "We are hiring mobile developer at TulparGames. Team stack: Flutter, Dart, Kotlin. We build for fintech, hybrid format and mentoring inside.",
+    "goal": "hire",
+    "lookingFor": [
+      "mobile"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "13:00",
+      "13:40",
+      "14:40",
+      "15:20",
+      "15:40",
+      "16:20"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p005",
+    "name": "Аяулым Петрова",
+    "role": "recruiter",
+    "company": "ZhebeDev",
+    "experience": 7,
+    "stack": [
+      "Python",
+      "PyTorch",
+      "LLM",
+      "SQL",
+      "Tech Interviewing"
+    ],
+    "interests": [
+      "ai",
+      "career",
+      "startups",
+      "remote"
+    ],
+    "about": "Нанимаем data scientist и ML-инженер в ZhebeDev. Стек команды: Python, PyTorch, LLM. Работаем в AI-продуктах, есть гибрид и обучение.",
+    "goal": "hire",
+    "lookingFor": [
+      "data_scientist",
+      "ml_engineer"
+    ],
+    "slots": [
+      "11:00",
+      "12:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "14:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p006",
+    "name": "Арман Ибраев",
+    "role": "recruiter",
+    "company": "ZhebeDev",
+    "experience": 10,
+    "stack": [
+      "SQL",
+      "Python",
+      "Power BI",
+      "ClickHouse",
+      "Employer Branding"
+    ],
+    "interests": [
+      "data",
+      "remote",
+      "teaching",
+      "career"
+    ],
+    "about": "We are hiring data analyst and data engineer at ZhebeDev. Team stack: SQL, Python, Power BI. We build for data analytics, hybrid format and mentoring inside.",
+    "goal": "hire",
+    "lookingFor": [
+      "data_analyst",
+      "data_engineer"
+    ],
+    "slots": [
+      "12:00",
+      "12:40",
+      "13:40",
+      "14:00",
+      "14:40",
+      "15:00",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p007",
+    "name": "Ақбота Смагулова",
+    "role": "recruiter",
+    "company": "TumarLabs",
+    "experience": 6,
+    "stack": [
+      "Kubernetes",
+      "Terraform",
+      "AWS",
+      "Linux",
+      "Sourcing"
+    ],
+    "interests": [
+      "cloud",
+      "teaching"
+    ],
+    "about": "IT-рекрутер в TumarLabs. Открыты вакансии: DevOps-инженер, важен опыт с Kubernetes, Terraform, AWS. Быстрый процесс — 2 этапа за неделю.",
+    "goal": "hire",
+    "lookingFor": [
+      "devops"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:00",
+      "13:20",
+      "14:40",
+      "16:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p008",
+    "name": "Мадина Ержанова",
+    "role": "recruiter",
+    "company": "IrbisMobile",
+    "experience": 12,
+    "stack": [
+      "Playwright",
+      "Postman",
+      "Python",
+      "CI/CD",
+      "Tech Interviewing"
+    ],
+    "interests": [
+      "ecommerce",
+      "teaching",
+      "startups"
+    ],
+    "about": "Нанимаем QA-инженер в IrbisMobile. Стек команды: Playwright, Postman, Python. Работаем в e-commerce, есть гибрид и обучение.",
+    "goal": "hire",
+    "lookingFor": [
+      "qa"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:00",
+      "13:00",
+      "15:00",
+      "15:40",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p009",
+    "name": "Ақбота Жақсылықова",
+    "role": "cto",
+    "company": "SamalCloud",
+    "experience": 8,
+    "stack": [
+      "Figma",
+      "UX Research",
+      "Product Analytics"
+    ],
+    "interests": [
+      "product",
+      "startups",
+      "teaching"
+    ],
+    "about": "Тимлид в SamalCloud. Открыты вакансии: продуктовый дизайнер и продакт-менеджер, важен опыт с Figma, UX Research, Product Analytics. Быстрый процесс — 2 этапа за неделю.",
+    "goal": "hire",
+    "lookingFor": [
+      "designer",
+      "product_manager"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:00",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:40",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p010",
+    "name": "Айбек Дүйсенов",
+    "role": "cto",
+    "company": "TumarLabs",
+    "experience": 12,
+    "stack": [
+      "Java",
+      "Spring",
+      "Kubernetes",
+      "PostgreSQL"
+    ],
+    "interests": [
+      "govtech",
+      "opensource"
+    ],
+    "about": "Team lead at TumarLabs. Open roles: backend developer and DevOps engineer, must know Java, Spring, Kubernetes. Fast process — two stages in a week.",
+    "goal": "hire",
+    "lookingFor": [
+      "backend",
+      "devops"
+    ],
+    "slots": [
+      "12:00",
+      "12:20",
+      "14:00",
+      "14:40",
+      "15:00",
+      "15:20",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p011",
+    "name": "Әлихан Байжанов",
+    "role": "cto",
+    "company": "SamalCloud",
+    "experience": 12,
+    "stack": [
+      "Pentest",
+      "SIEM",
+      "Network Security",
+      "Linux"
+    ],
+    "interests": [
+      "security",
+      "cloud",
+      "fintech",
+      "opensource"
+    ],
+    "about": "SamalCloud командасына қауіпсіздік маманы іздейміз. Стек: Pentest, SIEM, Network Security. Сала — киберқауіпсіздік, гибрид формат бар.",
+    "goal": "hire",
+    "lookingFor": [
+      "security"
+    ],
+    "slots": [
+      "11:00",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p012",
+    "name": "Медет Жақсылықов",
+    "role": "cto",
+    "company": "BerkutSec",
+    "experience": 6,
+    "stack": [
+      "Unity",
+      "C#",
+      "Blender"
+    ],
+    "interests": [
+      "gamedev",
+      "fintech",
+      "opensource",
+      "startups",
+      "ai"
+    ],
+    "about": "Ищу сильных людей в команду BerkutSec: разработчик игр. Важен опыт: Unity, C#, Blender. Готовы брать junior+ с хорошим потенциалом.",
+    "goal": "hire",
+    "lookingFor": [
+      "gamedev"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:20",
+      "13:00",
+      "13:40",
+      "15:00",
+      "15:40",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p013",
+    "name": "Қайрат Темірбеков",
+    "role": "cto",
+    "company": "TumarLabs",
+    "experience": 6,
+    "stack": [
+      "Go",
+      "PostgreSQL",
+      "Kafka",
+      "Docker"
+    ],
+    "interests": [
+      "fintech",
+      "cloud",
+      "opensource",
+      "ai"
+    ],
+    "about": "We are hiring backend developer at TumarLabs. Team stack: Go, PostgreSQL, Kafka. We build for fintech, hybrid format and mentoring inside.",
+    "goal": "hire",
+    "lookingFor": [
+      "backend"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "14:20",
+      "14:40",
+      "15:20",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p014",
+    "name": "Данияр Дүйсенов",
+    "role": "cto",
+    "company": "SaryarqaAnalytics",
+    "experience": 6,
+    "stack": [
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "Redis"
+    ],
+    "interests": [
+      "edtech",
+      "cloud",
+      "teaching"
+    ],
+    "about": "Team lead at SaryarqaAnalytics. Open roles: backend developer and fullstack developer, must know Python, Django, PostgreSQL. Fast process — two stages in a week.",
+    "goal": "hire",
+    "lookingFor": [
+      "backend",
+      "fullstack"
+    ],
+    "slots": [
+      "11:00",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:00",
+      "15:20",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p015",
+    "name": "Карина Жақсылықова",
+    "role": "cto",
+    "company": "AqylEdu",
+    "experience": 6,
+    "stack": [
+      "TypeScript",
+      "React",
+      "Next.js"
+    ],
+    "interests": [
+      "ecommerce",
+      "fintech",
+      "startups"
+    ],
+    "about": "We are hiring frontend developer and fullstack developer at AqylEdu. Team stack: TypeScript, React, Next.js. We build for e-commerce, hybrid format and mentoring inside.",
+    "goal": "hire",
+    "lookingFor": [
+      "frontend",
+      "fullstack"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:20",
+      "12:40",
+      "13:20",
+      "13:40",
+      "14:20",
+      "15:00",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p016",
+    "name": "Мадина Рахимова",
+    "role": "founder",
+    "company": "SteppeAI",
+    "experience": 9,
+    "stack": [
+      "Flutter",
+      "Dart",
+      "Kotlin",
+      "Swift"
+    ],
+    "interests": [
+      "fintech",
+      "healthtech",
+      "startups",
+      "hackathons"
+    ],
+    "about": "Ищу сильных людей в команду SteppeAI: мобильный разработчик. Важен опыт: Flutter, Dart, Kotlin. Готовы брать junior+ с хорошим потенциалом.",
+    "goal": "hire",
+    "lookingFor": [
+      "mobile"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:40",
+      "13:20",
+      "14:20",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p017",
+    "name": "Дарья Ким",
+    "role": "founder",
+    "company": "NomadPay",
+    "experience": 3,
+    "stack": [
+      "Python",
+      "PyTorch",
+      "LLM",
+      "SQL"
+    ],
+    "interests": [
+      "ai",
+      "agritech"
+    ],
+    "about": "NomadPay командасына data scientist және ML-инженер іздейміз. Стек: Python, PyTorch, LLM. Сала — AI өнімдері, гибрид формат бар.",
+    "goal": "hire",
+    "lookingFor": [
+      "data_scientist",
+      "ml_engineer"
+    ],
+    "slots": [
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "15:20",
+      "16:00"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p018",
+    "name": "Бауыржан Тоқтаров",
+    "role": "founder",
+    "company": "NomadPay",
+    "experience": 12,
+    "stack": [
+      "SQL",
+      "Python",
+      "Power BI",
+      "ClickHouse"
+    ],
+    "interests": [
+      "data",
+      "ai"
+    ],
+    "about": "Фаундер в NomadPay. Открыты вакансии: аналитик данных и дата-инженер, важен опыт с SQL, Python, Power BI. Быстрый процесс — 2 этапа за неделю.",
+    "goal": "hire",
+    "lookingFor": [
+      "data_analyst",
+      "data_engineer"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:00",
+      "12:40",
+      "13:40",
+      "14:00",
+      "14:20",
+      "15:00",
+      "15:20",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p019",
+    "name": "Мөлдір Дүйсенова",
+    "role": "founder",
+    "company": "IrbisMobile",
+    "experience": 10,
+    "stack": [
+      "Kubernetes",
+      "Terraform",
+      "AWS",
+      "Linux"
+    ],
+    "interests": [
+      "cloud",
+      "edtech",
+      "startups",
+      "ai",
+      "opensource"
+    ],
+    "about": "Фаундер в IrbisMobile. Открыты вакансии: DevOps-инженер, важен опыт с Kubernetes, Terraform, AWS. Быстрый процесс — 2 этапа за неделю.",
+    "goal": "hire",
+    "lookingFor": [
+      "devops"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:00",
+      "12:40",
+      "13:20",
+      "14:00",
+      "14:20",
+      "15:00",
+      "15:20",
+      "16:00"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p020",
+    "name": "Сергей Смагулов",
+    "role": "founder",
+    "company": "SamalCloud",
+    "experience": 9,
+    "stack": [
+      "Playwright",
+      "Postman",
+      "Python",
+      "CI/CD"
+    ],
+    "interests": [
+      "ecommerce",
+      "edtech"
+    ],
+    "about": "Нанимаем QA-инженер в SamalCloud. Стек команды: Playwright, Postman, Python. Работаем в e-commerce, есть гибрид и обучение.",
+    "goal": "hire",
+    "lookingFor": [
+      "qa"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:20",
+      "13:20",
+      "13:40",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p021",
+    "name": "Санжар Тоқтаров",
+    "role": "frontend",
+    "experience": 4,
+    "stack": [
+      "React",
+      "Next.js",
+      "Vue",
+      "Tailwind",
+      "HTML/CSS"
+    ],
+    "interests": [
+      "opensource",
+      "remote",
+      "design",
+      "fintech",
+      "ai"
+    ],
+    "about": "Фронтенд-разработчик, 4 года опыта. Работаю с React, Next.js, Vue. Ищу работу в команде, которая делает продукт в AI-продуктах. Тестовое задание — не проблема.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:40",
+      "13:00",
+      "13:20",
+      "14:20",
+      "14:40",
+      "15:00",
+      "15:20",
+      "16:00"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p022",
+    "name": "Томирис Шәкенова",
+    "role": "frontend",
+    "experience": 2,
+    "stack": [
+      "Next.js",
+      "Vue",
+      "React",
+      "Angular",
+      "Figma",
+      "Playwright"
+    ],
+    "interests": [
+      "ecommerce",
+      "opensource"
+    ],
+    "about": "Фронтенд-разработчик, 2 года опыта. Работаю с Next.js, Vue, React. Ищу работу в команде, которая делает продукт в e-commerce. Тестовое задание — не проблема.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:40",
+      "13:20",
+      "13:40",
+      "14:20",
+      "15:20",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p023",
+    "name": "Руслан Сапаров",
+    "role": "frontend",
+    "experience": 4,
+    "stack": [
+      "Next.js",
+      "Vue",
+      "Tailwind",
+      "Figma",
+      "Node.js"
+    ],
+    "interests": [
+      "design",
+      "opensource"
+    ],
+    "about": "Фронтенд-разработчик, 4 года опыта. Работаю с Next.js, Vue, Tailwind. Ищу работу в команде, которая делает продукт в образовании. Тестовое задание — не проблема.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:40",
+      "15:00",
+      "15:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p024",
+    "name": "Балжан Тоқтарова",
+    "role": "frontend",
+    "experience": 2,
+    "stack": [
+      "TypeScript",
+      "JavaScript",
+      "Node.js",
+      "HTML/CSS",
+      "Angular"
+    ],
+    "interests": [
+      "ecommerce",
+      "fintech",
+      "design",
+      "career"
+    ],
+    "about": "Фронтенд-разработчик, 2 года опыта, основной стек — TypeScript, JavaScript, Node.js. Хочу перейти в продуктовую компанию в e-commerce и расти до middle+.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:20",
+      "13:40",
+      "14:20",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:00"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p025",
+    "name": "Балжан Дүйсенова",
+    "role": "backend",
+    "experience": 3,
+    "stack": [
+      "C#",
+      ".NET",
+      "Redis"
+    ],
+    "interests": [
+      "cloud",
+      "logistics",
+      "ecommerce"
+    ],
+    "about": "Бэкенд-разработчик, 3 года опыта, основной стек — C#, .NET, Redis. Хочу перейти в продуктовую компанию в облачной инфраструктуре и расти до middle+.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:00",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:20",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p026",
+    "name": "Алексей Ержанов",
+    "role": "backend",
+    "experience": 4,
+    "stack": [
+      "Python",
+      "FastAPI",
+      "Docker",
+      "Kafka"
+    ],
+    "interests": [
+      "ecommerce",
+      "logistics"
+    ],
+    "about": "Backend developer, 4 years of experience, main stack is Python, FastAPI, Docker. Want to move to a product company in e-commerce and grow to middle+.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "13:40",
+      "14:20",
+      "15:20",
+      "15:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p027",
+    "name": "Ерасыл Ибраев",
+    "role": "backend",
+    "experience": 2,
+    "stack": [
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "Docker"
+    ],
+    "interests": [
+      "cloud",
+      "govtech",
+      "ecommerce"
+    ],
+    "about": "Последние проекты — на PHP, Laravel, MySQL. 2 года опыта. Ищу офис или гибрид в Астане, хочу работать в облачной инфраструктуре.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:00",
+      "12:40",
+      "13:00",
+      "13:40",
+      "14:20",
+      "15:00",
+      "15:20",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p028",
+    "name": "Ерасыл Серіков",
+    "role": "backend",
+    "experience": 2,
+    "stack": [
+      "Java",
+      "Spring",
+      "PostgreSQL",
+      "Docker",
+      "Kubernetes"
+    ],
+    "interests": [
+      "logistics",
+      "fintech",
+      "govtech",
+      "cloud"
+    ],
+    "about": "Соңғы жобаларымды Java, Spring, PostgreSQL арқылы жасадым. 2 жыл тәжірибем бар. Тест тапсырмаға дайынмын.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "13:00",
+      "15:20",
+      "15:40",
+      "16:00"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p029",
+    "name": "Темірлан Дүйсенов",
+    "role": "fullstack",
+    "experience": 4,
+    "stack": [
+      "TypeScript",
+      "Next.js",
+      "Tailwind"
+    ],
+    "interests": [
+      "hackathons"
+    ],
+    "about": "Последние проекты — на TypeScript, Next.js, Tailwind. 4 года опыта. Ищу офис или гибрид в Астане, хочу работать в образовании.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:20",
+      "14:40",
+      "15:00",
+      "15:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p030",
+    "name": "Гүлназ Ержанова",
+    "role": "fullstack",
+    "experience": 2,
+    "stack": [
+      "TypeScript",
+      "React",
+      "Django"
+    ],
+    "interests": [
+      "remote",
+      "edtech",
+      "hackathons"
+    ],
+    "about": "Fullstack developer, 2 years of experience, main stack is TypeScript, React, Django. Want to move to a product company in education and grow to middle+.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:20",
+      "13:00",
+      "13:20",
+      "14:40",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p031",
+    "name": "Әлихан Смагулов",
+    "role": "mobile",
+    "experience": 3,
+    "stack": [
+      "Kotlin",
+      "Android",
+      "Figma"
+    ],
+    "interests": [
+      "startups",
+      "ecommerce",
+      "healthtech"
+    ],
+    "about": "Мобильный разработчик, 3 года опыта, основной стек — Kotlin, Android, Figma. Хочу перейти в продуктовую компанию в медтехе и расти до middle+.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "15:00",
+      "15:20",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p032",
+    "name": "Ринат Ахметов",
+    "role": "mobile",
+    "experience": 3,
+    "stack": [
+      "Flutter",
+      "Dart",
+      "Firebase",
+      "CI/CD"
+    ],
+    "interests": [
+      "fintech",
+      "healthtech",
+      "design",
+      "startups"
+    ],
+    "about": "Последние проекты — на Flutter, Dart, Firebase. 3 года опыта. Ищу офис или гибрид в Астане, хочу работать в финтехе.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:00",
+      "12:40",
+      "13:20",
+      "14:40",
+      "15:20",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p033",
+    "name": "Виктория Байжанова",
+    "role": "mobile",
+    "experience": 1,
+    "stack": [
+      "Kotlin",
+      "Android",
+      "CI/CD",
+      "Figma"
+    ],
+    "interests": [
+      "startups",
+      "fintech",
+      "healthtech"
+    ],
+    "about": "Мобильный разработчик, 1 год опыта, основной стек — Kotlin, Android, CI/CD. Хочу перейти в продуктовую компанию в e-commerce и расти до middle+.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:20",
+      "12:40",
+      "13:40",
+      "14:00",
+      "14:40",
+      "15:00",
+      "15:20",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p034",
+    "name": "Мадина Дүйсенова",
+    "role": "data_analyst",
+    "experience": 4,
+    "stack": [
+      "Power BI",
+      "Python",
+      "SQL",
+      "Product Analytics"
+    ],
+    "interests": [
+      "product",
+      "data",
+      "ecommerce"
+    ],
+    "about": "Мамандығым — дерек талдаушы, 4 жыл тәжірибем бар. Негізгі стегім: Power BI, Python, SQL. E-commerce саласында өнім жасайтын командадан жұмыс іздеймін.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "13:20",
+      "14:00",
+      "14:20",
+      "16:40"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p035",
+    "name": "Бекзат Ким",
+    "role": "data_analyst",
+    "experience": 4,
+    "stack": [
+      "Power BI",
+      "SQL",
+      "Python",
+      "ClickHouse"
+    ],
+    "interests": [
+      "data",
+      "govtech",
+      "ecommerce"
+    ],
+    "about": "Последние проекты — на Power BI, SQL, Python. 4 года опыта. Ищу офис или гибрид в Астане, хочу работать в аналитике данных.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:40",
+      "12:20",
+      "13:00",
+      "13:40",
+      "14:00",
+      "15:00",
+      "15:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p036",
+    "name": "Ольга Ахметова",
+    "role": "data_analyst",
+    "experience": 2,
+    "stack": [
+      "Power BI",
+      "Pandas",
+      "SQL",
+      "PostgreSQL",
+      "Amplitude"
+    ],
+    "interests": [
+      "data",
+      "ecommerce",
+      "product",
+      "career"
+    ],
+    "about": "Последние проекты — на Power BI, Pandas, SQL. 2 года опыта. Ищу офис или гибрид в Астане, хочу работать в аналитике данных.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:20",
+      "13:00",
+      "13:40",
+      "14:40",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p037",
+    "name": "Бекзат Тоқтаров",
+    "role": "data_scientist",
+    "experience": 4,
+    "stack": [
+      "SQL",
+      "scikit-learn",
+      "Python",
+      "Spark",
+      "LLM",
+      "Computer Vision"
+    ],
+    "interests": [
+      "fintech",
+      "healthtech",
+      "ai"
+    ],
+    "about": "Data scientist with 4 years of experience. I work with SQL, scikit-learn, Python. Looking for a product team in fintech, happy to do a test task.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:00",
+      "13:20",
+      "13:40",
+      "14:20",
+      "15:20",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p038",
+    "name": "Дана Шәкенова",
+    "role": "data_scientist",
+    "experience": 1,
+    "stack": [
+      "Pandas",
+      "SQL",
+      "scikit-learn",
+      "NLP",
+      "Computer Vision",
+      "TensorFlow"
+    ],
+    "interests": [
+      "fintech",
+      "data"
+    ],
+    "about": "Data scientist, 1 год опыта, основной стек — Pandas, SQL, scikit-learn. Хочу перейти в продуктовую компанию в финтехе и расти до middle+.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:20",
+      "13:40",
+      "14:40",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p039",
+    "name": "Нұрсұлтан Сейтқали",
+    "role": "ml_engineer",
+    "experience": 3,
+    "stack": [
+      "Docker",
+      "PyTorch",
+      "NLP"
+    ],
+    "interests": [
+      "llm",
+      "opensource"
+    ],
+    "about": "Соңғы жобаларымды Docker, PyTorch, NLP арқылы жасадым. 3 жыл тәжірибем бар. Тест тапсырмаға дайынмын.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "12:00",
+      "13:00",
+      "13:20",
+      "14:40",
+      "15:40",
+      "16:00"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p040",
+    "name": "Ерасыл Ли",
+    "role": "ml_engineer",
+    "experience": 3,
+    "stack": [
+      "PyTorch",
+      "Docker",
+      "TensorFlow",
+      "LangChain"
+    ],
+    "interests": [
+      "cloud"
+    ],
+    "about": "ML-инженер, 3 жыл тәжірибем бар. PyTorch, Docker, TensorFlow қолданамын. Астанадағы өнімдік компанияға ауысқым келеді, сала — бұлттық инфрақұрылым.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "14:20",
+      "14:40",
+      "15:20",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p041",
+    "name": "Асқар Мусин",
+    "role": "qa",
+    "experience": 3,
+    "stack": [
+      "Cypress",
+      "Pytest",
+      "Selenium",
+      "CI/CD",
+      "Jira"
+    ],
+    "interests": [
+      "career"
+    ],
+    "about": "Последние проекты — на Cypress, Pytest, Selenium. 3 года опыта. Ищу офис или гибрид в Астане, хочу работать в e-commerce.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "13:00",
+      "14:20",
+      "14:40",
+      "15:20",
+      "16:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p042",
+    "name": "Темірлан Байжанов",
+    "role": "qa",
+    "experience": 4,
+    "stack": [
+      "Playwright",
+      "Postman",
+      "Cypress",
+      "Python",
+      "JMeter",
+      "SQL"
+    ],
+    "interests": [
+      "career",
+      "ecommerce"
+    ],
+    "about": "QA-инженер, 4 года опыта, основной стек — Playwright, Postman, Cypress. Хочу перейти в продуктовую компанию в финтехе и расти до middle+.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:40",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p043",
+    "name": "Мөлдір Ким",
+    "role": "designer",
+    "experience": 2,
+    "stack": [
+      "Prototyping",
+      "UX Research",
+      "Figma",
+      "Blender",
+      "HTML/CSS"
+    ],
+    "interests": [
+      "design",
+      "mobile",
+      "edtech",
+      "ecommerce",
+      "opensource"
+    ],
+    "about": "Product designer with 2 years of experience. I work with Prototyping, UX Research, Figma. Looking for a product team in education, happy to do a test task.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "12:00",
+      "12:40",
+      "13:00",
+      "13:20",
+      "14:00",
+      "14:40",
+      "15:20",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p044",
+    "name": "Мөлдір Ержанова",
+    "role": "designer",
+    "experience": 4,
+    "stack": [
+      "UX Research",
+      "Prototyping",
+      "Product Analytics",
+      "A/B Testing",
+      "HTML/CSS"
+    ],
+    "interests": [
+      "product",
+      "mobile",
+      "edtech",
+      "design"
+    ],
+    "about": "Продуктовый дизайнер, 4 года опыта. Работаю с UX Research, Prototyping, Product Analytics. Ищу работу в команде, которая делает продукт в образовании. Тестовое задание — не проблема.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "15:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p045",
+    "name": "Бауыржан Сапаров",
+    "role": "devops",
+    "experience": 1,
+    "stack": [
+      "Linux",
+      "Terraform",
+      "Azure"
+    ],
+    "interests": [
+      "cloud",
+      "security",
+      "startups"
+    ],
+    "about": "Мамандығым — DevOps-инженер, 1 жыл тәжірибем бар. Негізгі стегім: Linux, Terraform, Azure. Бұлттық инфрақұрылым саласында өнім жасайтын командадан жұмыс іздеймін.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:40",
+      "14:40",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:40"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p046",
+    "name": "Ерлан Ибраев",
+    "role": "student",
+    "experience": 1,
+    "stack": [
+      "Python",
+      "JavaScript",
+      "Figma",
+      "Flutter",
+      "Pandas"
+    ],
+    "interests": [
+      "gamedev",
+      "hackathons",
+      "edtech",
+      "opensource"
+    ],
+    "about": "Студент, 1 год опыта, основной стек — Python, JavaScript, Figma. Хочу перейти в продуктовую компанию в геймдеве и расти до middle+.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:40",
+      "14:20",
+      "15:00",
+      "15:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p047",
+    "name": "Арман Әбенов",
+    "role": "student",
+    "experience": 1,
+    "stack": [
+      "Java",
+      "JavaScript",
+      "SQL",
+      "Flutter"
+    ],
+    "interests": [
+      "gamedev"
+    ],
+    "about": "Мамандығым — студент, 1 жыл тәжірибем бар. Негізгі стегім: Java, JavaScript, SQL. Геймдев саласында өнім жасайтын командадан жұмыс іздеймін.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:20",
+      "13:00",
+      "13:40",
+      "14:00",
+      "14:40",
+      "16:40"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p048",
+    "name": "Виктор Ахметов",
+    "role": "student",
+    "experience": 0,
+    "stack": [
+      "SQL",
+      "Python",
+      "Java",
+      "Figma",
+      "Git",
+      "HTML/CSS"
+    ],
+    "interests": [
+      "opensource",
+      "ai"
+    ],
+    "about": "Студент, без коммерческого опыта. Работаю с SQL, Python, Java. Ищу работу в команде, которая делает продукт в e-commerce. Тестовое задание — не проблема.",
+    "goal": "job_seek",
+    "lookingFor": [
+      "recruiter",
+      "cto",
+      "founder"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:20",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:20",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p049",
+    "name": "Асқар Ержанов",
+    "role": "student",
+    "experience": 0,
+    "stack": [
+      "JavaScript",
+      "C++",
+      "React"
+    ],
+    "interests": [
+      "gamedev",
+      "opensource",
+      "career",
+      "edtech"
+    ],
+    "about": "Начинаю путь в IT: JavaScript, C++, React. Нужен опытный наставник — разбирать код, готовиться к собеседованиям.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "cto",
+      "backend",
+      "data_scientist"
+    ],
+    "slots": [
+      "11:00",
+      "12:20",
+      "12:40",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:40",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p050",
+    "name": "Әсел Әбенова",
+    "role": "student",
+    "experience": 1,
+    "stack": [
+      "Python",
+      "Java",
+      "SQL",
+      "Flutter"
+    ],
+    "interests": [
+      "career",
+      "hackathons",
+      "gamedev"
+    ],
+    "about": "Student, 1 year of experience. Learning Python, Java, SQL. Looking for a mentor to help with a growth plan and my first pet project.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "cto",
+      "backend",
+      "data_scientist"
+    ],
+    "slots": [
+      "12:20",
+      "12:40",
+      "14:00",
+      "15:40",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p051",
+    "name": "Зарина Исаева",
+    "role": "student",
+    "experience": 1,
+    "stack": [
+      "Java",
+      "SQL",
+      "Python",
+      "Figma"
+    ],
+    "interests": [
+      "hackathons",
+      "career",
+      "opensource"
+    ],
+    "about": "Студент, 1 год опыта. Учу Java, SQL, Python. Ищу ментора, который поможет с планом развития и первым pet-проектом.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "cto",
+      "backend",
+      "data_scientist"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:00",
+      "13:00",
+      "13:40",
+      "14:40",
+      "15:00",
+      "15:40",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p052",
+    "name": "Асқар Рахимов",
+    "role": "student",
+    "experience": 0,
+    "stack": [
+      "JavaScript",
+      "Python",
+      "Java",
+      "Django",
+      "Git",
+      "Pandas"
+    ],
+    "interests": [
+      "hackathons",
+      "gamedev",
+      "opensource",
+      "career"
+    ],
+    "about": "Студент, без коммерческого опыта. Хочу вырасти в финтехе, ищу ментора с опытом в JavaScript, Python, Java.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "cto",
+      "backend",
+      "data_scientist"
+    ],
+    "slots": [
+      "11:20",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "14:00",
+      "14:20",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p053",
+    "name": "Ринат Әбенов",
+    "role": "student",
+    "experience": 0,
+    "stack": [
+      "C++",
+      "Python",
+      "JavaScript",
+      "React",
+      "Pandas",
+      "HTML/CSS"
+    ],
+    "interests": [
+      "ai",
+      "hackathons"
+    ],
+    "about": "Just starting in IT: C++, Python, JavaScript. I need an experienced mentor for code reviews and interview prep.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "cto",
+      "backend",
+      "data_scientist"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "15:20",
+      "15:40",
+      "16:00"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p054",
+    "name": "Камила Рахимова",
+    "role": "student",
+    "experience": 1,
+    "stack": [
+      "C++",
+      "SQL",
+      "Python",
+      "HTML/CSS"
+    ],
+    "interests": [
+      "career",
+      "hackathons"
+    ],
+    "about": "Студент, 1 год опыта. Учу C++, SQL, Python. Ищу ментора, который поможет с планом развития и первым pet-проектом.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "cto",
+      "backend",
+      "data_scientist"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:40",
+      "13:00",
+      "13:40",
+      "14:00",
+      "14:40",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p055",
+    "name": "Арман Жақсылықов",
+    "role": "frontend",
+    "experience": 1,
+    "stack": [
+      "Vue",
+      "JavaScript",
+      "Next.js",
+      "Tailwind",
+      "Angular",
+      "Node.js"
+    ],
+    "interests": [
+      "design",
+      "ecommerce",
+      "startups"
+    ],
+    "about": "Just starting in IT: Vue, JavaScript, Next.js. I need an experienced mentor for code reviews and interview prep.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "frontend",
+      "cto"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:20",
+      "12:40",
+      "14:20",
+      "14:40",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p056",
+    "name": "Дамир Ахметов",
+    "role": "frontend",
+    "experience": 0,
+    "stack": [
+      "Vue",
+      "TypeScript",
+      "Next.js",
+      "HTML/CSS",
+      "Angular",
+      "Playwright"
+    ],
+    "interests": [
+      "remote"
+    ],
+    "about": "Фронтенд-разработчик, без коммерческого опыта. Учу Vue, TypeScript, Next.js. Ищу ментора, который поможет с планом развития и первым pet-проектом.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "frontend",
+      "cto"
+    ],
+    "slots": [
+      "11:40",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "14:00",
+      "14:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p057",
+    "name": "Темірлан Тоқтаров",
+    "role": "backend",
+    "experience": 2,
+    "stack": [
+      "C#",
+      ".NET",
+      "Redis",
+      "PostgreSQL",
+      "Kafka"
+    ],
+    "interests": [
+      "govtech",
+      "ecommerce",
+      "fintech",
+      "hackathons"
+    ],
+    "about": "Начинаю путь в IT: C#, .NET, Redis. Нужен опытный наставник — разбирать код, готовиться к собеседованиям.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "backend",
+      "cto"
+    ],
+    "slots": [
+      "11:20",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "15:20",
+      "15:40",
+      "16:00"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p058",
+    "name": "Мади Ли",
+    "role": "backend",
+    "experience": 0,
+    "stack": [
+      "C#",
+      ".NET",
+      "MongoDB"
+    ],
+    "interests": [
+      "cloud",
+      "logistics",
+      "opensource"
+    ],
+    "about": "Backend developer, no commercial experience yet. Learning C#, .NET, MongoDB. Looking for a mentor to help with a growth plan and my first pet project.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "backend",
+      "cto"
+    ],
+    "slots": [
+      "11:00",
+      "12:00",
+      "12:40",
+      "13:00",
+      "13:20",
+      "14:00",
+      "14:40",
+      "15:20",
+      "16:00"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p059",
+    "name": "Жанель Темірбекова",
+    "role": "data_analyst",
+    "experience": 0,
+    "stack": [
+      "SQL",
+      "Python",
+      "A/B Testing"
+    ],
+    "interests": [
+      "ecommerce",
+      "govtech",
+      "career"
+    ],
+    "about": "IT-ге енді келдім: SQL, Python, A/B Testing. Кодымды қарап, сұхбатқа дайындайтын тәжірибелі тәлімгер керек.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "data_analyst",
+      "cto"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:40",
+      "13:20",
+      "13:40",
+      "14:40",
+      "15:00",
+      "15:40",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p060",
+    "name": "Ілияс Тоқтаров",
+    "role": "data_analyst",
+    "experience": 2,
+    "stack": [
+      "Power BI",
+      "Python",
+      "Product Analytics",
+      "A/B Testing",
+      "Amplitude"
+    ],
+    "interests": [
+      "product",
+      "data"
+    ],
+    "about": "Начинаю путь в IT: Power BI, Python, Product Analytics. Нужен опытный наставник — разбирать код, готовиться к собеседованиям.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "data_analyst",
+      "cto"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "14:00",
+      "14:20",
+      "15:00",
+      "15:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p061",
+    "name": "Мади Ахметов",
+    "role": "designer",
+    "experience": 1,
+    "stack": [
+      "UX Research",
+      "Design Systems",
+      "A/B Testing"
+    ],
+    "interests": [
+      "design",
+      "mobile",
+      "ecommerce"
+    ],
+    "about": "Just starting in IT: UX Research, Design Systems, A/B Testing. I need an experienced mentor for code reviews and interview prep.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "designer",
+      "cto"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:40",
+      "13:20",
+      "13:40",
+      "14:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p062",
+    "name": "Сабина Рахимова",
+    "role": "qa",
+    "experience": 0,
+    "stack": [
+      "Playwright",
+      "Pytest",
+      "Python",
+      "JavaScript",
+      "Jira"
+    ],
+    "interests": [
+      "fintech",
+      "remote"
+    ],
+    "about": "QA engineer, no commercial experience yet. Learning Playwright, Pytest, Python. Looking for a mentor to help with a growth plan and my first pet project.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "qa",
+      "cto"
+    ],
+    "slots": [
+      "12:00",
+      "12:40",
+      "13:00",
+      "13:20",
+      "14:40",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p063",
+    "name": "Жансая Қасымова",
+    "role": "mobile",
+    "experience": 1,
+    "stack": [
+      "Swift",
+      "iOS",
+      "Figma",
+      "CI/CD"
+    ],
+    "interests": [
+      "ecommerce",
+      "fintech",
+      "design",
+      "career"
+    ],
+    "about": "Just starting in IT: Swift, iOS, Figma. I need an experienced mentor for code reviews and interview prep.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "mobile",
+      "cto"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:20",
+      "13:20",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p064",
+    "name": "Алексей Тұрсынов",
+    "role": "product_manager",
+    "experience": 2,
+    "stack": [
+      "Product Analytics",
+      "A/B Testing",
+      "Amplitude",
+      "SQL"
+    ],
+    "interests": [
+      "ai",
+      "product",
+      "startups"
+    ],
+    "about": "Продакт-менеджер, 2 года опыта. Учу Product Analytics, A/B Testing, Amplitude. Ищу ментора, который поможет с планом развития и первым pet-проектом.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "product_manager",
+      "cto"
+    ],
+    "slots": [
+      "11:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p065",
+    "name": "Сабина Әбенова",
+    "role": "ml_engineer",
+    "experience": 2,
+    "stack": [
+      "LLM",
+      "PyTorch",
+      "Python",
+      "Computer Vision"
+    ],
+    "interests": [
+      "opensource",
+      "llm",
+      "startups"
+    ],
+    "about": "Начинаю путь в IT: LLM, PyTorch, Python. Нужен опытный наставник — разбирать код, готовиться к собеседованиям.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "ml_engineer",
+      "cto"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:00",
+      "12:20",
+      "13:20",
+      "13:40",
+      "14:00",
+      "15:00",
+      "15:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p066",
+    "name": "Ерлан Оспанов",
+    "role": "security",
+    "experience": 2,
+    "stack": [
+      "Pentest",
+      "OWASP",
+      "Go",
+      "Docker"
+    ],
+    "interests": [
+      "cloud",
+      "security",
+      "web3",
+      "hackathons"
+    ],
+    "about": "Security engineer, 2 years of experience. Learning Pentest, OWASP, Go. Looking for a mentor to help with a growth plan and my first pet project.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "security",
+      "cto"
+    ],
+    "slots": [
+      "11:20",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:20",
+      "14:00",
+      "15:20",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p067",
+    "name": "Камила Ибраева",
+    "role": "devops",
+    "experience": 1,
+    "stack": [
+      "Kubernetes",
+      "Terraform",
+      "CI/CD",
+      "Ansible",
+      "Go"
+    ],
+    "interests": [
+      "opensource",
+      "iot"
+    ],
+    "about": "IT-ге енді келдім: Kubernetes, Terraform, CI/CD. Кодымды қарап, сұхбатқа дайындайтын тәжірибелі тәлімгер керек.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "devops",
+      "cto"
+    ],
+    "slots": [
+      "12:00",
+      "12:40",
+      "13:00",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p068",
+    "name": "Аружан Оспанова",
+    "role": "data_engineer",
+    "experience": 0,
+    "stack": [
+      "Kafka",
+      "Spark",
+      "Airflow",
+      "dbt",
+      "PostgreSQL"
+    ],
+    "interests": [
+      "fintech",
+      "logistics",
+      "opensource"
+    ],
+    "about": "Дата-инженер, коммерциялық тәжірибем әлі жоқ. Финтех саласында өскім келеді, Kafka, Spark, Airflow бойынша ментор іздеймін.",
+    "goal": "mentor_seek",
+    "lookingFor": [
+      "data_engineer",
+      "cto"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:20",
+      "12:40",
+      "13:40",
+      "14:00",
+      "14:40",
+      "15:20"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p069",
+    "name": "Аида Шәкенова",
+    "role": "backend",
+    "company": "SteppeAI",
+    "experience": 6,
+    "stack": [
+      "Go",
+      "PostgreSQL",
+      "Redis",
+      "Docker"
+    ],
+    "interests": [
+      "logistics",
+      "opensource",
+      "ecommerce",
+      "govtech",
+      "teaching"
+    ],
+    "about": "Бэкенд-разработчик, 6 лет опыта, стек — Go, PostgreSQL, Redis. Могу менторить джунов: код-ревью, карьера, подготовка к собеседованиям.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "backend",
+      "student"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:20",
+      "13:00",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:00",
+      "15:20",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p070",
+    "name": "Жансая Ли",
+    "role": "backend",
+    "company": "AqylEdu",
+    "experience": 9,
+    "stack": [
+      "Node.js",
+      "NestJS",
+      "Kafka",
+      "Kubernetes"
+    ],
+    "interests": [
+      "fintech",
+      "cloud",
+      "hackathons",
+      "teaching"
+    ],
+    "about": "Провожу менторские сессии по Node.js, NestJS, Kafka. Интересно работать с теми, кто растёт в финтехе.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "backend",
+      "student"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:00",
+      "15:40",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p071",
+    "name": "Алексей Мұқанов",
+    "role": "cto",
+    "company": "IrbisMobile",
+    "experience": 6,
+    "stack": [
+      "PostgreSQL",
+      "TypeScript",
+      "Go",
+      "Java",
+      "React"
+    ],
+    "interests": [
+      "teaching",
+      "startups",
+      "cloud",
+      "ai"
+    ],
+    "about": "Финтех саласында 6 жыл жұмыс істедім. Жаңадан бастағандарға PostgreSQL, TypeScript, Go бойынша көмектескім келеді.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "student",
+      "backend",
+      "frontend"
+    ],
+    "slots": [
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:20",
+      "13:40",
+      "14:40",
+      "15:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p072",
+    "name": "Мөлдір Серікова",
+    "role": "cto",
+    "company": "OrdaGovTech",
+    "experience": 9,
+    "stack": [
+      "Python",
+      "PostgreSQL",
+      "TypeScript",
+      "Java"
+    ],
+    "interests": [
+      "cloud",
+      "teaching"
+    ],
+    "about": "Провожу менторские сессии по Python, PostgreSQL, TypeScript. Интересно работать с теми, кто растёт в облачной инфраструктуре.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "student",
+      "backend",
+      "frontend"
+    ],
+    "slots": [
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:40",
+      "14:20",
+      "15:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p073",
+    "name": "Мадина Жақсылықова",
+    "role": "cto",
+    "company": "NomadPay",
+    "experience": 6,
+    "stack": [
+      "AWS",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "Java"
+    ],
+    "interests": [
+      "cloud",
+      "hackathons",
+      "teaching"
+    ],
+    "about": "Тимлид, 6 лет опыта, стек — AWS, PostgreSQL, Redis. Могу менторить джунов: код-ревью, карьера, подготовка к собеседованиям.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "student",
+      "backend",
+      "frontend"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:40",
+      "13:20",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:40",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p074",
+    "name": "Ерасыл Сапаров",
+    "role": "data_scientist",
+    "company": "ZhebeDev",
+    "experience": 6,
+    "stack": [
+      "Pandas",
+      "SQL",
+      "scikit-learn",
+      "TensorFlow",
+      "NLP",
+      "Computer Vision"
+    ],
+    "interests": [
+      "ai",
+      "fintech",
+      "healthtech",
+      "teaching"
+    ],
+    "about": "Провожу менторские сессии по Pandas, SQL, scikit-learn. Интересно работать с теми, кто растёт в AI-продуктах.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "data_scientist",
+      "student"
+    ],
+    "slots": [
+      "11:20",
+      "13:20",
+      "13:40",
+      "15:00",
+      "15:20",
+      "16:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p075",
+    "name": "Олжас Жақсылықов",
+    "role": "data_scientist",
+    "company": "KökTech",
+    "experience": 8,
+    "stack": [
+      "PyTorch",
+      "Pandas",
+      "scikit-learn",
+      "Computer Vision",
+      "Spark"
+    ],
+    "interests": [
+      "healthtech",
+      "agritech",
+      "llm",
+      "teaching"
+    ],
+    "about": "Провожу менторские сессии по PyTorch, Pandas, scikit-learn. Интересно работать с теми, кто растёт в медтехе.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "data_scientist",
+      "student"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:00",
+      "12:20",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p076",
+    "name": "Мөлдір Шәкенова",
+    "role": "ml_engineer",
+    "company": "QalamAI",
+    "experience": 11,
+    "stack": [
+      "Docker",
+      "LLM",
+      "Python",
+      "Computer Vision",
+      "LangChain"
+    ],
+    "interests": [
+      "cloud",
+      "opensource",
+      "startups",
+      "teaching"
+    ],
+    "about": "11 лет в облачной инфраструктуре. Хочу помогать начинающим разобраться в Docker, LLM, Python и не наступать на мои грабли.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "ml_engineer",
+      "student"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:00",
+      "13:00",
+      "13:20",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p077",
+    "name": "Екатерина Оспанова",
+    "role": "devops",
+    "company": "QalamAI",
+    "experience": 8,
+    "stack": [
+      "Linux",
+      "CI/CD",
+      "Kubernetes",
+      "Prometheus",
+      "GCP",
+      "Ansible"
+    ],
+    "interests": [
+      "iot",
+      "remote",
+      "teaching"
+    ],
+    "about": "8 лет в e-commerce. Хочу помогать начинающим разобраться в Linux, CI/CD, Kubernetes и не наступать на мои грабли.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "devops",
+      "student"
+    ],
+    "slots": [
+      "11:20",
+      "12:40",
+      "13:20",
+      "14:20",
+      "15:40",
+      "16:00"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p078",
+    "name": "Ақбота Мұқанова",
+    "role": "devops",
+    "company": "TulparGames",
+    "experience": 9,
+    "stack": [
+      "Terraform",
+      "CI/CD",
+      "Kubernetes",
+      "Go"
+    ],
+    "interests": [
+      "remote",
+      "cloud",
+      "teaching"
+    ],
+    "about": "9 лет в e-commerce. Хочу помогать начинающим разобраться в Terraform, CI/CD, Kubernetes и не наступать на мои грабли.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "devops",
+      "student"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p079",
+    "name": "Ольга Омарова",
+    "role": "product_manager",
+    "company": "ZhebeDev",
+    "experience": 9,
+    "stack": [
+      "A/B Testing",
+      "Amplitude",
+      "Product Analytics",
+      "UX Research",
+      "Scrum",
+      "Figma"
+    ],
+    "interests": [
+      "ai",
+      "product",
+      "edtech",
+      "hackathons",
+      "teaching"
+    ],
+    "about": "A/B Testing, Amplitude, Product Analytics бойынша менторлық сессиялар өткіземін. AI өнімдері саласында өсіп келе жатқандармен жұмыс істеу қызық.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "product_manager",
+      "student"
+    ],
+    "slots": [
+      "11:40",
+      "12:20",
+      "12:40",
+      "13:20",
+      "14:20",
+      "14:40",
+      "15:40"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p080",
+    "name": "Аида Ким",
+    "role": "product_manager",
+    "company": "AqMarket",
+    "experience": 11,
+    "stack": [
+      "Amplitude",
+      "Jira",
+      "Product Analytics",
+      "UX Research",
+      "Figma"
+    ],
+    "interests": [
+      "fintech",
+      "product",
+      "ai",
+      "teaching"
+    ],
+    "about": "Продакт-менеджер, 11 лет опыта, стек — Amplitude, Jira, Product Analytics. Могу менторить джунов: код-ревью, карьера, подготовка к собеседованиям.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "product_manager",
+      "student"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:20",
+      "12:40",
+      "13:00",
+      "15:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p081",
+    "name": "Ұлжан Исаева",
+    "role": "designer",
+    "company": "TulparGames",
+    "experience": 10,
+    "stack": [
+      "Design Systems",
+      "Prototyping",
+      "HTML/CSS"
+    ],
+    "interests": [
+      "product",
+      "startups",
+      "ecommerce",
+      "teaching"
+    ],
+    "about": "10 лет в e-commerce. Хочу помогать начинающим разобраться в Design Systems, Prototyping, HTML/CSS и не наступать на мои грабли.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "designer",
+      "student"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:20",
+      "13:00",
+      "14:00",
+      "14:40",
+      "15:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p082",
+    "name": "Аида Тұрсынова",
+    "role": "frontend",
+    "company": "BerkutSec",
+    "experience": 12,
+    "stack": [
+      "JavaScript",
+      "Next.js",
+      "Playwright"
+    ],
+    "interests": [
+      "remote",
+      "opensource",
+      "ecommerce",
+      "teaching"
+    ],
+    "about": "Финтех саласында 12 жыл жұмыс істедім. Жаңадан бастағандарға JavaScript, Next.js, Playwright бойынша көмектескім келеді.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "frontend",
+      "student"
+    ],
+    "slots": [
+      "11:20",
+      "12:20",
+      "12:40",
+      "13:40",
+      "14:20",
+      "14:40",
+      "16:00"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p083",
+    "name": "Олжас Тұрсынов",
+    "role": "security",
+    "company": "BaspanaTech",
+    "experience": 9,
+    "stack": [
+      "Pentest",
+      "Network Security",
+      "C++",
+      "Kubernetes"
+    ],
+    "interests": [
+      "cloud",
+      "web3",
+      "security",
+      "teaching"
+    ],
+    "about": "Специалист по безопасности, 9 лет опыта, стек — Pentest, Network Security, C++. Могу менторить джунов: код-ревью, карьера, подготовка к собеседованиям.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "security",
+      "student"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:40",
+      "13:00",
+      "13:40",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p084",
+    "name": "Дамир Нұрланов",
+    "role": "mobile",
+    "company": "BaspanaTech",
+    "experience": 6,
+    "stack": [
+      "Kotlin",
+      "Android",
+      "Figma",
+      "CI/CD"
+    ],
+    "interests": [
+      "mobile",
+      "design",
+      "fintech",
+      "teaching"
+    ],
+    "about": "Финтех саласында 6 жыл жұмыс істедім. Жаңадан бастағандарға Kotlin, Android, Figma бойынша көмектескім келеді.",
+    "goal": "mentor_offer",
+    "lookingFor": [
+      "mobile",
+      "student"
+    ],
+    "slots": [
+      "11:40",
+      "12:40",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "15:00",
+      "15:40",
+      "16:20"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p085",
+    "name": "Нұрлан Әбенов",
+    "role": "founder",
+    "company": "AspanFin",
+    "experience": 5,
+    "stack": [
+      "Jira",
+      "Agile",
+      "Product Analytics",
+      "A/B Testing"
+    ],
+    "interests": [
+      "healthtech",
+      "edtech",
+      "ai",
+      "career"
+    ],
+    "about": "Есть идея и первые пользователи в медтехе. Стек: Jira, Agile, Product Analytics. Ищу партнёра в долю — техника или бизнес.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "backend",
+      "fullstack"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:20",
+      "13:20",
+      "13:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p086",
+    "name": "Асқар Жақсылықов",
+    "role": "founder",
+    "company": "AspanFin",
+    "experience": 6,
+    "stack": [
+      "Product Analytics",
+      "Jira",
+      "SQL",
+      "LLM",
+      "A/B Testing"
+    ],
+    "interests": [
+      "agritech",
+      "fintech"
+    ],
+    "about": "Фаундер, 6 лет опыта. Делаю стартап в агротехе, есть прототип. Ищу кофаундера, который закроет то, чего не хватает команде.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "ml_engineer",
+      "mobile"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:00",
+      "15:20",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p087",
+    "name": "Карина Тоқтарова",
+    "role": "founder",
+    "company": "SteppeAI",
+    "experience": 7,
+    "stack": [
+      "Agile",
+      "Jira",
+      "Product Analytics",
+      "SQL",
+      "Figma",
+      "Python"
+    ],
+    "interests": [
+      "ai",
+      "edtech",
+      "healthtech"
+    ],
+    "about": "Фаундер, 7 жыл тәжірибем бар. AI өнімдері саласында стартап жасап жатырмын, прототип бар. Командаға жетпейтін жағын жабатын кофаундер іздеймін.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "backend",
+      "cto"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:40",
+      "15:00",
+      "15:40",
+      "16:40"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p088",
+    "name": "Ілияс Ахметов",
+    "role": "founder",
+    "company": "IrbisMobile",
+    "experience": 2,
+    "stack": [
+      "Agile",
+      "Jira",
+      "Product Analytics",
+      "LLM"
+    ],
+    "interests": [
+      "healthtech",
+      "edtech",
+      "fintech"
+    ],
+    "about": "Хочу запустить свой продукт в медтехе. Владею: Agile, Jira, Product Analytics. Ищу кофаундера с другой стороны — продажи или разработка.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "ml_engineer",
+      "backend"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:00",
+      "12:20",
+      "13:00",
+      "13:20",
+      "14:40",
+      "15:00",
+      "15:40",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p089",
+    "name": "Санжар Сапаров",
+    "role": "fullstack",
+    "company": "KökTech",
+    "experience": 7,
+    "stack": [
+      "Python",
+      "Next.js",
+      "Node.js",
+      "Tailwind",
+      "Docker"
+    ],
+    "interests": [
+      "startups",
+      "ecommerce",
+      "career"
+    ],
+    "about": "Fullstack developer, 7 years of experience. Building a startup in education, prototype is ready. Looking for a co-founder to cover what the team lacks.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "founder",
+      "designer"
+    ],
+    "slots": [
+      "13:00",
+      "13:40",
+      "14:00",
+      "14:40",
+      "15:00",
+      "15:20",
+      "16:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p090",
+    "name": "Денис Омаров",
+    "role": "fullstack",
+    "company": "AltynData",
+    "experience": 3,
+    "stack": [
+      "React",
+      "Node.js",
+      "TypeScript",
+      "NestJS",
+      "Django"
+    ],
+    "interests": [
+      "product",
+      "ecommerce",
+      "opensource"
+    ],
+    "about": "Есть идея и первые пользователи в образовании. Стек: React, Node.js, TypeScript. Ищу партнёра в долю — техника или бизнес.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "founder",
+      "designer"
+    ],
+    "slots": [
+      "11:20",
+      "12:00",
+      "12:20",
+      "13:20",
+      "13:40",
+      "14:20",
+      "14:40",
+      "15:20",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p091",
+    "name": "Олжас Бекенов",
+    "role": "ml_engineer",
+    "company": "TumarLabs",
+    "experience": 8,
+    "stack": [
+      "Python",
+      "Docker",
+      "NLP"
+    ],
+    "interests": [
+      "opensource",
+      "ai"
+    ],
+    "about": "ML-инженер, 8 лет опыта. Делаю стартап в образовании, есть прототип. Ищу кофаундера, который закроет то, чего не хватает команде.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "founder",
+      "designer"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:40",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p092",
+    "name": "Сергей Тұрсынов",
+    "role": "ml_engineer",
+    "company": "KökTech",
+    "experience": 3,
+    "stack": [
+      "Python",
+      "PyTorch",
+      "FastAPI",
+      "Computer Vision"
+    ],
+    "interests": [
+      "startups",
+      "iot",
+      "opensource"
+    ],
+    "about": "Хочу запустить свой продукт в образовании. Владею: Python, PyTorch, FastAPI. Ищу кофаундера с другой стороны — продажи или разработка.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "product_manager",
+      "designer"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:20",
+      "13:40",
+      "14:20",
+      "15:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p093",
+    "name": "Сергей Исаев",
+    "role": "backend",
+    "company": "TumarLabs",
+    "experience": 10,
+    "stack": [
+      "Go",
+      "PostgreSQL",
+      "Kafka",
+      "Kubernetes"
+    ],
+    "interests": [
+      "opensource",
+      "logistics"
+    ],
+    "about": "Backend developer, 10 years of experience. Building a startup in e-commerce, prototype is ready. Looking for a co-founder to cover what the team lacks.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "founder",
+      "designer"
+    ],
+    "slots": [
+      "11:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:00",
+      "15:40",
+      "16:00"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p094",
+    "name": "Анна Иванова",
+    "role": "backend",
+    "company": "AspanFin",
+    "experience": 3,
+    "stack": [
+      "Node.js",
+      "NestJS",
+      "Kafka"
+    ],
+    "interests": [
+      "cloud",
+      "govtech"
+    ],
+    "about": "Өз өнімімді іске қосқым келеді. Node.js, NestJS, Kafka білемін, екінші жағын — сатылым не әзірлеуді — жабатын кофаундер керек.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "founder",
+      "designer"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:40",
+      "13:20",
+      "13:40",
+      "15:20",
+      "15:40",
+      "16:20"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p095",
+    "name": "Нұрлан Жақсылықов",
+    "role": "product_manager",
+    "company": "JolLogistics",
+    "experience": 10,
+    "stack": [
+      "Agile",
+      "A/B Testing",
+      "Scrum",
+      "Figma"
+    ],
+    "interests": [
+      "ecommerce",
+      "ai",
+      "edtech"
+    ],
+    "about": "Хочу запустить свой продукт в e-commerce. Владею: Agile, A/B Testing, Scrum. Ищу кофаундера с другой стороны — продажи или разработка.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "ml_engineer",
+      "mobile"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:00",
+      "12:40",
+      "14:00",
+      "14:40",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p096",
+    "name": "Мади Мусин",
+    "role": "product_manager",
+    "company": "KökTech",
+    "experience": 8,
+    "stack": [
+      "Product Analytics",
+      "Agile",
+      "LLM"
+    ],
+    "interests": [
+      "startups",
+      "ecommerce"
+    ],
+    "about": "Продакт-менеджер, 8 жыл тәжірибем бар. E-commerce саласында стартап жасап жатырмын, прототип бар. Командаға жетпейтін жағын жабатын кофаундер іздеймін.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "mobile",
+      "ml_engineer"
+    ],
+    "slots": [
+      "11:00",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:40",
+      "15:20",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p097",
+    "name": "Мади Петров",
+    "role": "designer",
+    "company": "ZhebeDev",
+    "experience": 9,
+    "stack": [
+      "Prototyping",
+      "Figma",
+      "Design Systems",
+      "Product Analytics",
+      "Blender",
+      "A/B Testing"
+    ],
+    "interests": [
+      "startups",
+      "ecommerce"
+    ],
+    "about": "Өнім дизайнері, 9 жыл тәжірибем бар. Білім беру саласында стартап жасап жатырмын, прототип бар. Командаға жетпейтін жағын жабатын кофаундер іздеймін.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "mobile",
+      "cto"
+    ],
+    "slots": [
+      "11:20",
+      "12:00",
+      "12:40",
+      "14:00",
+      "15:20",
+      "16:20"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p098",
+    "name": "Ерасыл Оспанов",
+    "role": "mobile",
+    "company": "QalamAI",
+    "experience": 5,
+    "stack": [
+      "Swift",
+      "iOS",
+      "CI/CD"
+    ],
+    "interests": [
+      "healthtech",
+      "ecommerce",
+      "hackathons"
+    ],
+    "about": "Мобильный разработчик, 5 лет опыта. Делаю стартап в медтехе, есть прототип. Ищу кофаундера, который закроет то, чего не хватает команде.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "founder",
+      "designer"
+    ],
+    "slots": [
+      "11:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "14:00",
+      "14:20",
+      "15:00",
+      "15:40",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p099",
+    "name": "Ринат Темірбеков",
+    "role": "data_scientist",
+    "company": "NomadPay",
+    "experience": 5,
+    "stack": [
+      "PyTorch",
+      "Pandas",
+      "Python",
+      "Spark",
+      "LLM",
+      "TensorFlow"
+    ],
+    "interests": [
+      "agritech",
+      "ai",
+      "data",
+      "fintech"
+    ],
+    "about": "Өз өнімімді іске қосқым келеді. PyTorch, Pandas, Python білемін, екінші жағын — сатылым не әзірлеуді — жабатын кофаундер керек.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "founder",
+      "designer"
+    ],
+    "slots": [
+      "11:20",
+      "12:40",
+      "15:00",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p100",
+    "name": "Тимур Исаев",
+    "role": "gamedev",
+    "company": "KökTech",
+    "experience": 7,
+    "stack": [
+      "Unity",
+      "C#",
+      "Blender",
+      "Figma"
+    ],
+    "interests": [
+      "design",
+      "startups",
+      "hackathons"
+    ],
+    "about": "Есть идея и первые пользователи в образовании. Стек: Unity, C#, Blender. Ищу партнёра в долю — техника или бизнес.",
+    "goal": "cofounder",
+    "lookingFor": [
+      "product_manager",
+      "designer"
+    ],
+    "slots": [
+      "11:00",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "15:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p101",
+    "name": "Мөлдір Тоқтарова",
+    "role": "frontend",
+    "company": "SteppeAI",
+    "experience": 4,
+    "stack": [
+      "TypeScript",
+      "JavaScript",
+      "Tailwind"
+    ],
+    "interests": [
+      "design",
+      "product"
+    ],
+    "about": "Фронтенд-разработчик. Люблю обсуждать TypeScript, JavaScript, Tailwind и практики команд. Интересны новые знакомства и совместные митапы.",
+    "goal": "exchange",
+    "lookingFor": [
+      "frontend"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:20",
+      "14:40",
+      "15:00",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p102",
+    "name": "Назерке Ли",
+    "role": "backend",
+    "company": "SamalCloud",
+    "experience": 7,
+    "stack": [
+      "C#",
+      ".NET",
+      "MongoDB"
+    ],
+    "interests": [
+      "fintech",
+      "logistics"
+    ],
+    "about": "Бэкенд-разработчик, 7 лет опыта, стек — C#, .NET, MongoDB. Хочу обменяться опытом с коллегами, кто работает в финтехе: архитектура, процессы, инструменты.",
+    "goal": "exchange",
+    "lookingFor": [
+      "backend"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "13:00",
+      "13:40",
+      "15:00",
+      "15:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p103",
+    "name": "Максим Ли",
+    "role": "backend",
+    "company": "DalaSoft",
+    "experience": 8,
+    "stack": [
+      "Node.js",
+      "NestJS",
+      "MongoDB",
+      "Redis"
+    ],
+    "interests": [
+      "cloud",
+      "logistics",
+      "ecommerce"
+    ],
+    "about": "Бэкенд-разработчик, 8 лет опыта, стек — Node.js, NestJS, MongoDB. Хочу обменяться опытом с коллегами, кто работает в облачной инфраструктуре: архитектура, процессы, инструменты.",
+    "goal": "exchange",
+    "lookingFor": [
+      "backend"
+    ],
+    "slots": [
+      "12:20",
+      "12:40",
+      "13:00",
+      "14:20",
+      "14:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p104",
+    "name": "Жансая Ибраева",
+    "role": "devops",
+    "company": "ShanyraqHealth",
+    "experience": 7,
+    "stack": [
+      "Docker",
+      "Kubernetes",
+      "Linux",
+      "Go",
+      "AWS",
+      "Prometheus"
+    ],
+    "interests": [
+      "security",
+      "opensource",
+      "iot",
+      "cloud"
+    ],
+    "about": "DevOps-инженер. Люблю обсуждать Docker, Kubernetes, Linux и практики команд. Интересны новые знакомства и совместные митапы.",
+    "goal": "exchange",
+    "lookingFor": [
+      "devops"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p105",
+    "name": "Назерке Мұқанова",
+    "role": "devops",
+    "company": "JolLogistics",
+    "experience": 2,
+    "stack": [
+      "Terraform",
+      "Linux",
+      "Prometheus"
+    ],
+    "interests": [
+      "cloud",
+      "iot",
+      "remote"
+    ],
+    "about": "DevOps-инженер, 2 года опыта, стек — Terraform, Linux, Prometheus. Хочу обменяться опытом с коллегами, кто работает в облачной инфраструктуре: архитектура, процессы, инструменты.",
+    "goal": "exchange",
+    "lookingFor": [
+      "devops"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:40",
+      "13:00",
+      "13:40",
+      "14:40",
+      "15:40",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p106",
+    "name": "Асқар Шәкенов",
+    "role": "data_engineer",
+    "company": "IrbisMobile",
+    "experience": 6,
+    "stack": [
+      "Python",
+      "Airflow",
+      "Spark",
+      "ClickHouse"
+    ],
+    "interests": [
+      "cloud",
+      "data"
+    ],
+    "about": "Дата-инженер. Люблю обсуждать Python, Airflow, Spark и практики команд. Интересны новые знакомства и совместные митапы.",
+    "goal": "exchange",
+    "lookingFor": [
+      "data_engineer"
+    ],
+    "slots": [
+      "11:00",
+      "12:00",
+      "12:20",
+      "13:00",
+      "13:20",
+      "15:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p107",
+    "name": "Денис Серіков",
+    "role": "data_engineer",
+    "company": "QalamAI",
+    "experience": 2,
+    "stack": [
+      "Kafka",
+      "SQL",
+      "Spark",
+      "AWS",
+      "Docker",
+      "dbt"
+    ],
+    "interests": [
+      "fintech",
+      "logistics",
+      "data",
+      "cloud"
+    ],
+    "about": "Дата-инженер. Люблю обсуждать Kafka, SQL, Spark и практики команд. Интересны новые знакомства и совместные митапы.",
+    "goal": "exchange",
+    "lookingFor": [
+      "data_engineer"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:00",
+      "12:20",
+      "13:40",
+      "14:00",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p108",
+    "name": "Қайрат Ибраев",
+    "role": "qa",
+    "company": "DalaSoft",
+    "experience": 2,
+    "stack": [
+      "Playwright",
+      "Selenium",
+      "Jira",
+      "Python",
+      "JMeter"
+    ],
+    "interests": [
+      "ecommerce",
+      "career",
+      "remote"
+    ],
+    "about": "QA-инженер, 2 года опыта, стек — Playwright, Selenium, Jira. Хочу обменяться опытом с коллегами, кто работает в e-commerce: архитектура, процессы, инструменты.",
+    "goal": "exchange",
+    "lookingFor": [
+      "qa"
+    ],
+    "slots": [
+      "12:00",
+      "12:40",
+      "13:00",
+      "13:40",
+      "14:20",
+      "15:40",
+      "16:00"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p109",
+    "name": "Гүлназ Әбенова",
+    "role": "security",
+    "company": "DalaSoft",
+    "experience": 2,
+    "stack": [
+      "Network Security",
+      "OWASP",
+      "Kubernetes",
+      "Python"
+    ],
+    "interests": [
+      "web3",
+      "cloud",
+      "security"
+    ],
+    "about": "I work with Network Security, OWASP, Kubernetes in cloud infrastructure. Curious to compare approaches and what actually works in production.",
+    "goal": "exchange",
+    "lookingFor": [
+      "security"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "13:00",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:00",
+      "15:20",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "en",
+    "synthetic": true
+  },
+  {
+    "id": "p110",
+    "name": "Артём Бекенов",
+    "role": "security",
+    "company": "TulparGames",
+    "experience": 7,
+    "stack": [
+      "OWASP",
+      "Network Security",
+      "Go"
+    ],
+    "interests": [
+      "web3",
+      "cloud",
+      "security",
+      "fintech"
+    ],
+    "about": "Работаю с OWASP, Network Security, Go в e-commerce. Интересно сравнить подходы и обсудить, что у кого работает в проде.",
+    "goal": "exchange",
+    "lookingFor": [
+      "security"
+    ],
+    "slots": [
+      "11:00",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:20",
+      "15:20",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p111",
+    "name": "Ұлжан Петрова",
+    "role": "gamedev",
+    "company": "AspanFin",
+    "experience": 8,
+    "stack": [
+      "Unity",
+      "C#",
+      "Figma",
+      "Blender"
+    ],
+    "interests": [
+      "startups",
+      "design",
+      "web3",
+      "opensource"
+    ],
+    "about": "Ойын әзірлеуші, 8 жыл тәжірибем бар, стек: Unity, C#, Figma. Білім беру саласындағы әріптестермен тәжірибе алмасқым келеді.",
+    "goal": "exchange",
+    "lookingFor": [
+      "gamedev"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:20",
+      "13:00",
+      "13:20",
+      "15:00",
+      "15:20",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  },
+  {
+    "id": "p112",
+    "name": "Ерлан Ли",
+    "role": "gamedev",
+    "company": "QalamAI",
+    "experience": 8,
+    "stack": [
+      "Unity",
+      "C#",
+      "Blender",
+      "Figma"
+    ],
+    "interests": [
+      "web3",
+      "startups"
+    ],
+    "about": "Разработчик игр, 8 лет опыта, стек — Unity, C#, Blender. Хочу обменяться опытом с коллегами, кто работает в финтехе: архитектура, процессы, инструменты.",
+    "goal": "exchange",
+    "lookingFor": [
+      "gamedev"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:20",
+      "15:00",
+      "16:20"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p113",
+    "name": "Жанель Ахметова",
+    "role": "project_manager",
+    "company": "SaryarqaAnalytics",
+    "experience": 4,
+    "stack": [
+      "Jira",
+      "Agile",
+      "Scrum",
+      "SQL",
+      "Product Analytics"
+    ],
+    "interests": [
+      "career",
+      "remote",
+      "product"
+    ],
+    "about": "Работаю с Jira, Agile, Scrum в e-commerce. Интересно сравнить подходы и обсудить, что у кого работает в проде.",
+    "goal": "exchange",
+    "lookingFor": [
+      "project_manager"
+    ],
+    "slots": [
+      "11:20",
+      "12:00",
+      "12:20",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:00",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p114",
+    "name": "Санжар Исаев",
+    "role": "project_manager",
+    "company": "IrbisMobile",
+    "experience": 3,
+    "stack": [
+      "Agile",
+      "Jira",
+      "SQL",
+      "Product Analytics"
+    ],
+    "interests": [
+      "career",
+      "product"
+    ],
+    "about": "Работаю с Agile, Jira, SQL в образовании. Интересно сравнить подходы и обсудить, что у кого работает в проде.",
+    "goal": "exchange",
+    "lookingFor": [
+      "project_manager"
+    ],
+    "slots": [
+      "11:20",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "14:00",
+      "14:40",
+      "15:00",
+      "15:40",
+      "16:00"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p115",
+    "name": "Зарина Бекенова",
+    "role": "product_manager",
+    "company": "AltynData",
+    "experience": 8,
+    "stack": [
+      "Agile",
+      "Product Analytics",
+      "Scrum",
+      "LLM",
+      "SQL"
+    ],
+    "interests": [
+      "ecommerce",
+      "fintech",
+      "opensource"
+    ],
+    "about": "Работаю с Agile, Product Analytics, Scrum в e-commerce. Интересно сравнить подходы и обсудить, что у кого работает в проде.",
+    "goal": "exchange",
+    "lookingFor": [
+      "product_manager"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "14:00",
+      "14:20",
+      "15:00",
+      "15:40",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p116",
+    "name": "Мадина Жұмабаева",
+    "role": "product_manager",
+    "company": "AqylEdu",
+    "experience": 8,
+    "stack": [
+      "Amplitude",
+      "Jira",
+      "LLM"
+    ],
+    "interests": [
+      "edtech",
+      "startups"
+    ],
+    "about": "Продакт-менеджер. Люблю обсуждать Amplitude, Jira, LLM и практики команд. Интересны новые знакомства и совместные митапы.",
+    "goal": "exchange",
+    "lookingFor": [
+      "product_manager"
+    ],
+    "slots": [
+      "11:00",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "14:40",
+      "15:00",
+      "15:40",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p117",
+    "name": "Назерке Ахметова",
+    "role": "data_analyst",
+    "company": "ZhebeDev",
+    "experience": 8,
+    "stack": [
+      "Python",
+      "SQL",
+      "Product Analytics"
+    ],
+    "interests": [
+      "data",
+      "govtech",
+      "product"
+    ],
+    "about": "Аналитик данных, 8 лет опыта, стек — Python, SQL, Product Analytics. Хочу обменяться опытом с коллегами, кто работает в аналитике данных: архитектура, процессы, инструменты.",
+    "goal": "exchange",
+    "lookingFor": [
+      "data_analyst"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "12:00",
+      "12:20",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "15:00",
+      "15:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p118",
+    "name": "Алина Оспанова",
+    "role": "mobile",
+    "company": "SaryarqaAnalytics",
+    "experience": 5,
+    "stack": [
+      "Flutter",
+      "Dart",
+      "Firebase",
+      "CI/CD"
+    ],
+    "interests": [
+      "fintech",
+      "design",
+      "healthtech",
+      "hackathons"
+    ],
+    "about": "Мобильный разработчик. Люблю обсуждать Flutter, Dart, Firebase и практики команд. Интересны новые знакомства и совместные митапы.",
+    "goal": "exchange",
+    "lookingFor": [
+      "mobile"
+    ],
+    "slots": [
+      "11:00",
+      "11:20",
+      "11:40",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "15:00",
+      "15:40",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p119",
+    "name": "Виктор Әбенов",
+    "role": "ml_engineer",
+    "company": "BaspanaTech",
+    "experience": 3,
+    "stack": [
+      "Docker",
+      "LLM",
+      "TensorFlow"
+    ],
+    "interests": [
+      "cloud",
+      "hackathons"
+    ],
+    "about": "ML-инженер, 3 года опыта, стек — Docker, LLM, TensorFlow. Хочу обменяться опытом с коллегами, кто работает в облачной инфраструктуре: архитектура, процессы, инструменты.",
+    "goal": "exchange",
+    "lookingFor": [
+      "ml_engineer"
+    ],
+    "slots": [
+      "11:20",
+      "11:40",
+      "12:00",
+      "12:40",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:20",
+      "15:00",
+      "15:40",
+      "16:00",
+      "16:20",
+      "16:40"
+    ],
+    "lang": "ru",
+    "synthetic": true
+  },
+  {
+    "id": "p120",
+    "name": "Салтанат Смагулова",
+    "role": "designer",
+    "company": "IrbisMobile",
+    "experience": 5,
+    "stack": [
+      "UX Research",
+      "Prototyping",
+      "HTML/CSS",
+      "Product Analytics"
+    ],
+    "interests": [
+      "startups",
+      "ecommerce",
+      "design"
+    ],
+    "about": "UX Research, Prototyping, HTML/CSS арқылы e-commerce саласында жұмыс істеймін. Кімде не жұмыс істейтінін талқылау қызық.",
+    "goal": "exchange",
+    "lookingFor": [
+      "designer"
+    ],
+    "slots": [
+      "11:00",
+      "11:40",
+      "12:00",
+      "12:20",
+      "13:00",
+      "13:20",
+      "13:40",
+      "14:00",
+      "14:40",
+      "15:00",
+      "15:20",
+      "15:40",
+      "16:00",
+      "16:40"
+    ],
+    "lang": "kk",
+    "synthetic": true
+  }
+]

@@ -1,0 +1,17 @@
+services:
+  tezmeet:
+    build: .
+    image: tezmeet:latest
+    ports:
+      - "${PORT:-8080}:8080"
+    environment:
+      # Кілт міндетті емес: жоқ болса, сервис TF-IDF және шаблондармен толық жұмыс істейді
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-}
+      GEMINI_EMBED_MODEL: ${GEMINI_EMBED_MODEL:-}
+    volumes:
+      - tezmeet-data:/app/var
+    restart: unless-stopped
+
+volumes:
+  tezmeet-data:

@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "tezmeet", "runtimeExecutable": "node", "runtimeArgs": ["server/index.ts"], "port": 8080 }
+  ]
+}
