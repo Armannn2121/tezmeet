@@ -170,7 +170,10 @@ button.row:active, .row.pressable:active { background: var(--cell-pressed); }
 
 .pill-btn { flex: 1; min-width: 0; display: inline-flex; align-items: center; justify-content: center; gap: 5px; height: 36px; padding: 0 8px; border-radius: 18px; font-size: 15px; font-weight: 600; letter-spacing: -0.24px; background: var(--fill); color: var(--label); white-space: nowrap; transition: transform 0.15s var(--spring); }
 .pill-btn:active { transform: scale(0.95); }
-.pill-btn svg { width: 16px; height: 16px; }
+.pill-btn svg { width: 16px; height: 16px; flex: none; }
+.pill-btn .lbl { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.actions + .actions { margin-top: 8px; }
+.pill-btn.primary { background: var(--blue); color: #fff; }
 .pill-btn.green { background: color-mix(in srgb, var(--green) 16%, transparent); color: var(--green); }
 .pill-btn.blue { background: color-mix(in srgb, var(--blue) 15%, transparent); color: var(--blue); }
 .pill-btn.gray { color: var(--label-2); }
@@ -227,7 +230,7 @@ button.row:active, .row.pressable:active { background: var(--cell-pressed); }
 .bubble::selection { background: rgba(255, 255, 255, 0.35); }
 .copy-btn { position: absolute; right: 0; width: 28px; height: 28px; border-radius: 14px; background: var(--fill); color: var(--blue); display: grid; place-items: center; }
 .copy-btn svg { width: 15px; height: 15px; }
-.actions { display: flex; gap: 6px; margin-top: 14px; }
+.actions { display: flex; gap: 8px; margin-top: 14px; }
 
 /* ── Бос күй, жүктеу ──────────────────────────────────── */
 .empty { text-align: center; padding: 48px 32px; color: var(--label-2); }

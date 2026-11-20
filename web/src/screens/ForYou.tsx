@@ -145,12 +145,15 @@ export function ForYou() {
                 </button>
               </div>
             </div>
+            {/* Негізгі әрекет — жазу: чат ашылады, ішінде алғашқы фраза дайын тұрады */}
             <div className="actions">
-              <button type="button" className="pill-btn green wide" onClick={() => feedback(rec, 'met')}><IconCheck /> {t('met')}</button>
-              {/* Жазу: чат ашылады, ішінде алғашқы фраза дайын тұрады */}
-              <button type="button" className="pill-btn blue" onClick={() => openChat(p, line)}><IconChats /> {t('write')}</button>
-              <button type="button" className={`pill-btn icon${booked[p.id] ? ' blue' : ''}`} onClick={() => setMeetWith(p)} aria-label={t('meet')} title={t('meet')}><IconCalendar /></button>
-              <button type="button" className="pill-btn gray icon" onClick={() => feedback(rec, 'skip')} aria-label={t('skip')} title={t('skip')}><IconX /></button>
+              <button type="button" className="pill-btn primary" onClick={() => openChat(p, line)}><IconChats /><span className="lbl">{t('write')}</span></button>
+              <button type="button" className={`pill-btn${booked[p.id] ? ' blue' : ''}`} onClick={() => setMeetWith(p)}><IconCalendar /><span className="lbl">{booked[p.id]?.slot ?? t('meet')}</span></button>
+            </div>
+            {/* Кері байланыс — ТЗ бойынша «познакомились / не подошло», толық жазуымен */}
+            <div className="actions">
+              <button type="button" className="pill-btn green" onClick={() => feedback(rec, 'met')}><IconCheck /><span className="lbl">{t('met')}</span></button>
+              <button type="button" className="pill-btn gray" onClick={() => feedback(rec, 'skip')}><IconX /><span className="lbl">{t('skip')}</span></button>
             </div>
           </article>
         );
