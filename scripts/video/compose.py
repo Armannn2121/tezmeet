@@ -126,17 +126,21 @@ def mask_png(path):
     m.save(path)
 
 # ── Көріністердің ұзақтығы ───────────────────────────────────────
-def vo_len(sid, text):
-    p = os.path.join(VO, f'{sid}.mp3')
+HAS_VO = os.path.isdir(VO) and any(f.endswith('.mp3') for f in os.listdir(VO))
+
+def vo_len(sc):
+    p = os.path.join(VO, f"{sc['id']}.mp3")
     if os.path.exists(p): return probe(p), p
-    return len(text) / 14.5 + 0.3, None  # бағалау: ~14.5 таңба/сек
+    # дауыс жоқ көрініс: дауысы бар нұсқада — қысқа, тек жазумен; әйтпесе — мәтін ұзындығынан бағалау
+    if HAS_VO: return sc.get('silent_seconds', 4.5) - 0.9, None
+    return len(sc['voice']) / 14.5 + 0.3, None
 
 mask = os.path.join(WORK, 'mask.png')
 mask_png(mask)
 clips, timeline = [], []
 for sc in SCRIPT:
     sid = sc['id']
-    vo, vo_path = vo_len(sid, sc['voice'])
+    vo, vo_path = vo_len(sc)
     target = vo + 0.9
     out = os.path.join(WORK, f'{sid}.mp4')
     png = os.path.join(WORK, f'{sid}.png')

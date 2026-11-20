@@ -51,7 +51,7 @@ PORT=80 docker compose up -d --build
 |---|---|
 | Анкеты (120 шт.) | [data/profiles.json](data/profiles.json), [data/profiles.csv](data/profiles.csv) |
 | Презентация (10 слайдов) | [presentation/TezMeet.pdf](presentation/TezMeet.pdf), исходник [presentation/slides.html](presentation/slides.html) |
-| Демо-видео (1:15, 1920×1080) | [presentation/TezMeet-demo.mp4](presentation/TezMeet-demo.mp4) — запись реального приложения; собирается скриптами [scripts/video](scripts/video) |
+| Демо-видео (1:10, 1920×1080, с озвучкой) | [presentation/TezMeet-demo.mp4](presentation/TezMeet-demo.mp4) — запись реального приложения; собирается скриптами [scripts/video](scripts/video) |
 | Сценарий питча на 7 минут с демо | [presentation/PITCH.md](presentation/PITCH.md) |
 | Метрики качества | `npm run eval` — [scripts/eval.ts](scripts/eval.ts) |
 
