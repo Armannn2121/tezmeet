@@ -105,6 +105,35 @@ export function Sheet({ open, onClose, title, left, right, children }: { open: b
   );
 }
 
+// ── UIAlertController стиліндегі ескерту ─────────────────────────
+type AlertAction = { label: string; style?: 'default' | 'cancel' | 'destructive'; run?: () => void };
+export function Alert({ open, title, message, actions, onClose }: { open: boolean; title: string; message?: string; actions: AlertAction[]; onClose: () => void }) {
+  useEffect(() => {
+    if (!open) return;
+    const esc = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+    window.addEventListener('keydown', esc);
+    return () => window.removeEventListener('keydown', esc);
+  }, [open, onClose]);
+  if (!open) return null;
+  return createPortal(
+    <>
+      <div className="sheet-backdrop" style={{ zIndex: 70 }} onClick={onClose} />
+      <div className="alert" role="alertdialog" aria-modal="true" aria-label={title}>
+        <div className="alert-text">
+          <div className="alert-title">{title}</div>
+          {message && <div className="alert-msg">{message}</div>}
+        </div>
+        <div className={`alert-actions${actions.length > 2 ? ' stacked' : ''}`}>
+          {actions.map((a) => (
+            <button key={a.label} type="button" className={a.style ?? 'default'} onClick={() => { haptic(); onClose(); a.run?.(); }}>{a.label}</button>
+          ))}
+        </div>
+      </div>
+    </>,
+    document.body,
+  );
+}
+
 // ── Toast / HUD ────────────────────────────────────────────────
 type ToastMsg = { id: number; text: string; icon?: ReactNode; action?: { label: string; run: () => void } };
 let pushToast: (t: Omit<ToastMsg, 'id'>) => void = () => {};

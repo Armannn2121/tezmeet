@@ -223,6 +223,7 @@ button.row:active, .row.pressable:active { background: var(--cell-pressed); }
 .bubble:active { transform: scale(0.98); }
 .bubble::after { content: ''; position: absolute; left: -6px; bottom: 0; width: 16px; height: 18px; background: var(--bubble); border-bottom-right-radius: 14px; clip-path: path('M16 0 V18 H0 C6 17 9 13 10 6 Z'); }
 .bubble.skeleton { color: transparent; }
+.bubble::selection { background: rgba(255, 255, 255, 0.35); }
 .copy-btn { position: absolute; right: 0; width: 28px; height: 28px; border-radius: 14px; background: var(--fill); color: var(--blue); display: grid; place-items: center; }
 .copy-btn svg { width: 15px; height: 15px; }
 .actions { display: flex; gap: 8px; margin-top: 14px; }
@@ -264,6 +265,22 @@ button.row:active, .row.pressable:active { background: var(--cell-pressed); }
 .search svg { width: 16px; height: 16px; flex: none; }
 .search input { flex: 1; border: 0; outline: 0; background: transparent; color: var(--label); font-size: 17px; }
 .search input::placeholder { color: var(--label-2); }
+
+/* ── Alert ────────────────────────────────────────────── */
+.alert { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 71; width: 270px; border-radius: 14px; overflow: hidden; background: rgba(242, 242, 242, 0.82); -webkit-backdrop-filter: saturate(180%) blur(30px); backdrop-filter: saturate(180%) blur(30px); animation: alertIn 0.3s var(--spring); text-align: center; }
+@media (prefers-color-scheme: dark) { .alert { background: rgba(37, 37, 37, 0.85); } }
+@keyframes alertIn { from { opacity: 0; transform: translate(-50%, -50%) scale(1.12); } }
+.alert-text { padding: 19px 16px 18px; }
+.alert-title { font-size: 17px; font-weight: 600; line-height: 22px; }
+.alert-msg { font-size: 13px; line-height: 18px; margin-top: 3px; letter-spacing: -0.08px; }
+.alert-actions { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; border-top: 0.5px solid var(--sep); }
+.alert-actions.stacked { grid-auto-flow: row; }
+.alert-actions button { height: 44px; font-size: 17px; color: var(--blue); }
+.alert-actions button + button { border-left: 0.5px solid var(--sep); }
+.alert-actions.stacked button + button { border-left: 0; border-top: 0.5px solid var(--sep); }
+.alert-actions button.cancel { font-weight: 600; }
+.alert-actions button.destructive { color: var(--red); }
+.alert-actions button:active { background: var(--fill); }
 
 /* ── HUD / toast ──────────────────────────────────────── */
 .toast { position: fixed; left: 50%; bottom: calc(96px + var(--safe-b)); transform: translateX(-50%); z-index: 60; background: var(--bar); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); border: 0.5px solid var(--sep); color: var(--label); border-radius: 24px; padding: 10px 16px; font-size: 15px; font-weight: 500; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12); animation: toastIn 0.45s var(--spring); white-space: nowrap; max-width: calc(100% - 32px); }

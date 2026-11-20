@@ -21,7 +21,7 @@ type Draft = {
 
 export function ProfileForm({ lang, t, meta, mode, initial, onCancel, onSaved, errorText }: {
   lang: Lang; t: T; meta: Meta; mode: 'create' | 'edit'; initial?: Partial<ProfileInput> | Profile;
-  onCancel: () => void; onSaved: (p: Profile) => void; errorText: (e: unknown) => string;
+  onCancel: () => void; onSaved: (p: Profile, token?: string) => void; errorText: (e: unknown) => string;
 }) {
   const [d, setD] = useState<Draft>(() => ({
     name: initial?.name ?? '', company: initial?.company ?? '', role: initial?.role ?? '', experience: initial?.experience ?? 1,
@@ -46,6 +46,7 @@ export function ProfileForm({ lang, t, meta, mode, initial, onCancel, onSaved, e
   if (!d.goal) missing.push(t('goalSection'));
   if (d.name.trim().length < 2) missing.push(t('name'));
   if (!d.role) missing.push(t('role'));
+  if (d.goal === 'hire' && !d.lookingFor.length) missing.push(t('hiringFor'));
   if (!d.stack.length) missing.push(t('stack'));
   if (!d.interests.length) missing.push(t('interests'));
   if (d.about.trim().length < 10) missing.push(t('about'));
@@ -59,8 +60,11 @@ export function ProfileForm({ lang, t, meta, mode, initial, onCancel, onSaved, e
       slots: d.slots, telegram: d.telegram.trim() || undefined, lang,
     };
     try {
-      const p = mode === 'edit' && initial && 'id' in initial ? await api.updateProfile(initial.id, body) : await api.createProfile(body);
-      onSaved(p);
+      if (mode === 'edit') onSaved(await api.updateProfile(body));
+      else {
+        const { profile, token } = await api.createProfile(body);
+        onSaved(profile, token);
+      }
     } catch (e) {
       toast({ text: errorText(e) });
     } finally {
@@ -86,6 +90,12 @@ export function ProfileForm({ lang, t, meta, mode, initial, onCancel, onSaved, e
         ))}
       </Section>
 
+      {d.goal === 'hire' && (
+        <Section header={t('hiringFor')} footer={t('hiringForFooter')}>
+          <RoleChips roles={meta.roles} lang={lang} selected={d.lookingFor} toggle={(r) => toggle('lookingFor', r)} />
+        </Section>
+      )}
+
       <Section header={t('aboutYou')}>
         <Row>
           <span className="label">{t('name')}</span>
@@ -108,7 +118,7 @@ export function ProfileForm({ lang, t, meta, mode, initial, onCancel, onSaved, e
         </Row>
       </Section>
 
-      <Section header={t('stack')} footer={t('stackFooter')}>
+      <Section header={d.goal === 'hire' ? t('vacancyStack') : t('stack')} footer={d.goal === 'hire' ? t('vacancyStackFooter') : t('stackFooter')}>
         {d.stack.length > 0 && (
           <div className="chips">
             {d.stack.map((s) => (
@@ -140,15 +150,11 @@ export function ProfileForm({ lang, t, meta, mode, initial, onCancel, onSaved, e
         </div>
       </Section>
 
-      <Section header={t('lookingFor')} footer={t('lookingForFooter')}>
-        <div className="chips">
-          {meta.roles.map((r) => (
-            <button key={r.id} type="button" className={`chip${d.lookingFor.includes(r.id) ? ' on' : ''}`} aria-pressed={d.lookingFor.includes(r.id)} onClick={() => toggle('lookingFor', r.id)}>
-              {r.label[lang]}
-            </button>
-          ))}
-        </div>
-      </Section>
+      {d.goal !== 'hire' && (
+        <Section header={t('lookingFor')} footer={t('lookingForFooter')}>
+          <RoleChips roles={meta.roles} lang={lang} selected={d.lookingFor} toggle={(r) => toggle('lookingFor', r)} />
+        </Section>
+      )}
 
       <Section header={t('slots')} footer={t('slotsFooter')}>
         <div className="slot-grid">
@@ -183,17 +189,33 @@ export function ProfileForm({ lang, t, meta, mode, initial, onCancel, onSaved, e
         </Section>
       </Sheet>
 
-      <StackSheet open={stackSheet} onClose={() => setStackSheet(false)} t={t} all={meta.stack} role={d.role} selected={d.stack} toggle={(s) => toggle('stack', s)}
+      <StackSheet open={stackSheet} onClose={() => setStackSheet(false)} t={t} all={meta.stack}
+        roles={d.goal === 'hire' ? (d.lookingFor.length ? d.lookingFor : ['backend', 'frontend', 'ml_engineer']) : d.role ? [d.role] : []}
+        selected={d.stack} toggle={(s) => toggle('stack', s)}
         add={(s) => setD((x) => (x.stack.some((y) => y.toLowerCase() === s.toLowerCase()) ? x : { ...x, stack: [...x.stack, s] }))} />
     </div>
   );
 }
 
-function StackSheet({ open, onClose, t, all, role, selected, toggle, add }: {
-  open: boolean; onClose: () => void; t: T; all: string[]; role: RoleId | ''; selected: string[]; toggle: (s: string) => void; add: (s: string) => void;
+function RoleChips({ roles, lang, selected, toggle }: { roles: Meta['roles']; lang: Lang; selected: RoleId[]; toggle: (r: RoleId) => void }) {
+  return (
+    <div className="chips">
+      {roles.map((r) => (
+        <button key={r.id} type="button" className={`chip${selected.includes(r.id) ? ' on' : ''}`} aria-pressed={selected.includes(r.id)} onClick={() => toggle(r.id)}>
+          {r.label[lang]}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+// Жалдаушыға — өзінің рекрутинг дағдылары емес, іздейтін рөлдерінің стегі ұсынылады
+function StackSheet({ open, onClose, t, all, roles, selected, toggle, add }: {
+  open: boolean; onClose: () => void; t: T; all: string[]; roles: RoleId[]; selected: string[]; toggle: (s: string) => void; add: (s: string) => void;
 }) {
   const [q, setQ] = useState('');
-  const suggested = useMemo(() => (role ? [...new Set(ROLE_FAMILIES[role].flatMap((f) => STACK_FAMILIES[f] ?? []))].slice(0, 14) : []), [role]);
+  const key = roles.join(',');
+  const suggested = useMemo(() => [...new Set(roles.flatMap((r) => ROLE_FAMILIES[r].flatMap((f) => STACK_FAMILIES[f] ?? [])))].slice(0, 16), [key]); // eslint-disable-line react-hooks/exhaustive-deps
   const query = q.trim().toLowerCase();
   const list = query ? all.filter((s) => s.toLowerCase().includes(query)) : all;
   const exact = all.some((s) => s.toLowerCase() === query) || selected.some((s) => s.toLowerCase() === query);

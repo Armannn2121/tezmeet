@@ -16,18 +16,24 @@ export function ForYou() {
   const [leaving, setLeaving] = useState<Record<string, 'left' | 'right'>>({});
   const [person, setPerson] = useState<Recommendation | null>(null);
   const [meetWith, setMeetWith] = useState<Profile | null>(null);
+  const [booked, setBooked] = useState<Record<string, string>>({}); // адам id → «13:00»
   const aiAsked = useRef(new Set<string>());
 
   const load = useCallback(async () => {
     setError(null);
     try {
-      setData(await api.recommendations(user.id, lang));
+      setData(await api.recommendations(lang));
     } catch (e) {
       setError(errorText(e));
     }
-  }, [user.id, lang, errorText]);
+  }, [lang, errorText]);
 
   useEffect(() => { load(); }, [load]);
+
+  const loadMeetings = useCallback(() => {
+    api.meetings().then((ms) => setBooked(Object.fromEntries(ms.map((m) => [m.other.id, m.slot])))).catch(() => {});
+  }, []);
+  useEffect(() => { loadMeetings(); }, [loadMeetings]);
 
   // LLM алғашқы фразасы — фондық түрде, ұсыныстар бұрыннан экранда
   useEffect(() => {
@@ -36,24 +42,39 @@ export function ForYou() {
     if (!ids.length) return;
     ids.forEach((id) => aiAsked.current.add(id));
     setAiLoading(true);
-    api.icebreakers(user.id, ids, lang)
+    api.icebreakers(ids, lang)
       .then((r) => setAi((prev) => ({ ...prev, ...r.lines })))
       .catch(() => {})
       .finally(() => setAiLoading(false));
-  }, [data, meta.ai.llm, user.id, lang]);
+  }, [data, meta.ai.llm, lang]);
+
+  // Буфер жабық болса (кейбір браузерлер мен webview), мәтінді белгілеп, қолмен көшіруді ұсынамыз
+  const copyLine = async (line: string, el: HTMLElement) => {
+    haptic();
+    if (await copyText(line)) {
+      toast({ text: t('copied'), icon: <IconCopy style={{ color: 'var(--blue)' }} /> });
+      return;
+    }
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    const sel = window.getSelection();
+    sel?.removeAllRanges();
+    sel?.addRange(range);
+    toast({ text: t('copyManual'), icon: <IconCopy style={{ color: 'var(--orange)' }} /> });
+  };
 
   const feedback = async (rec: Recommendation, verdict: Verdict) => {
     haptic();
     const id = rec.profile.id;
     setLeaving((l) => ({ ...l, [id]: verdict === 'met' ? 'right' : 'left' }));
     try {
-      const [next] = await Promise.all([api.feedback(user.id, id, verdict, lang), new Promise((r) => setTimeout(r, 320))]);
+      const [next] = await Promise.all([api.feedback(id, verdict, lang), new Promise((r) => setTimeout(r, 320))]);
       setData(next);
       setLeaving({});
       toast({
         text: verdict === 'met' ? `${rec.profile.name.split(' ')[0]} → ${t('myContacts')}` : t('recalculated'),
         icon: verdict === 'met' ? <IconCheck style={{ color: 'var(--green)' }} /> : <IconRefresh style={{ color: 'var(--blue)' }} />,
-        action: { label: t('undo'), run: async () => setData(await api.feedback(user.id, id, 'undo', lang)) },
+        action: { label: t('undo'), run: async () => setData(await api.feedback(id, 'undo', lang)) },
       });
     } catch (e) {
       setLeaving({});
@@ -114,18 +135,18 @@ export function ForYou() {
               </div>
               <div style={{ position: 'relative' }}>
                 <div className="bubble" role="button" tabIndex={0} title={t('copy')}
-                  onClick={async () => { if (await copyText(line)) toast({ text: t('copied'), icon: <IconCopy style={{ color: 'var(--blue)' }} /> }); }}>
+                  onClick={(e) => copyLine(line, e.currentTarget)}>
                   {line}
                 </div>
                 <button type="button" className="copy-btn" style={{ top: 'calc(50% - 14px)' }} aria-label={t('copy')}
-                  onClick={async () => { if (await copyText(line)) toast({ text: t('copied'), icon: <IconCopy style={{ color: 'var(--blue)' }} /> }); }}>
+                  onClick={(e) => copyLine(line, e.currentTarget.parentElement!.querySelector('.bubble') as HTMLElement)}>
                   <IconCopy />
                 </button>
               </div>
             </div>
             <div className="actions">
               <button type="button" className="pill-btn green wide" onClick={() => feedback(rec, 'met')}><IconCheck /> {t('met')}</button>
-              <button type="button" className="pill-btn blue" onClick={() => setMeetWith(p)}><IconCalendar /> {t('meet')}</button>
+              <button type="button" className="pill-btn blue" onClick={() => setMeetWith(p)}><IconCalendar /> {booked[p.id] ?? t('meet')}</button>
               <button type="button" className="pill-btn gray icon" onClick={() => feedback(rec, 'skip')} aria-label={t('skip')} title={t('skip')}><IconX /></button>
             </div>
           </article>
@@ -149,7 +170,7 @@ export function ForYou() {
       )}
 
       <PersonSheet person={person?.profile ?? null} rec={person ?? undefined} me={user} onClose={() => setPerson(null)} />
-      <MeetSheet person={meetWith} me={user} onClose={() => setMeetWith(null)} />
+      <MeetSheet person={meetWith} onClose={() => setMeetWith(null)} onChanged={loadMeetings} />
     </div>
   );
 }

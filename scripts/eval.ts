@@ -40,8 +40,25 @@ for (const p of seed) {
   }
 }
 times.sort((a, b) => a - b);
+
+// 2) Түсіндірме 1–2 сөйлем болуы керек (ТЗ) — барлық 120 анкета × 3 тіл
+let long = 0;
+let explained = 0;
+for (const l of ['kk', 'ru', 'en'] as const) {
+  for (const p of seed) {
+    for (const it of m.recommend(p, l, { exclude: new Set(personas.map((x) => x.id)), skipped: [] }).items) {
+      explained++;
+      const n = it.explanation.split(/(?<=[.!?])\s+/).filter(Boolean).length;
+      if (n < 1 || n > 2) {
+        long++;
+        if (long <= 3) console.log(`  >2 sentences [${l}]: ${it.explanation}`);
+      }
+    }
+  }
+}
 console.log(`goal violations: ${violations}/${total}`);
 console.log(`primary-goal matches (fit=1): ${((reciprocal / total) * 100).toFixed(1)}%`);
+console.log(`explanations outside 1–2 sentences (kk/ru/en): ${long}/${explained}`);
 console.log(`latency per user: p50 ${times[times.length >> 1].toFixed(2)} ms, max ${times[times.length - 1].toFixed(2)} ms`);
 
 if (!quiet) {
@@ -56,4 +73,4 @@ if (!quiet) {
     }
   }
 }
-if (violations) process.exit(1);
+if (violations || long) process.exit(1);

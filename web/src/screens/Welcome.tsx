@@ -3,7 +3,7 @@ import type { ProfileInput } from '../../../shared/types.ts';
 import type { Meta } from '../api.ts';
 import { IconBolt, IconBubble, IconCalendar, IconPin } from '../components/icons.tsx';
 import { Segmented } from '../components/ui.tsx';
-import type { T } from '../i18n.ts';
+import { fmtDate, type T } from '../i18n.ts';
 
 // Мысал анкета: жюри жолды 30 секундта көре алуы үшін (бәрін өзгертуге болады)
 const SAMPLES: Record<Lang, Partial<ProfileInput>> = {
@@ -24,7 +24,7 @@ const SAMPLES: Record<Lang, Partial<ProfileInput>> = {
 export function Welcome({ lang, setLang, t, meta, onStart, onSample }: {
   lang: Lang; setLang: (l: Lang) => void; t: T; meta: Meta; onStart: () => void; onSample: (p: Partial<ProfileInput>) => void;
 }) {
-  const date = new Date(meta.event.date + 'T00:00:00').toLocaleDateString(lang === 'kk' ? 'kk-KZ' : lang === 'en' ? 'en-GB' : 'ru-RU', { day: 'numeric', month: 'long' });
+  const date = fmtDate(meta.event.date, lang);
   return (
     <div className="app">
       <div className="welcome">

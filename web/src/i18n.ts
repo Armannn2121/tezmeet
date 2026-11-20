@@ -38,6 +38,10 @@ const dict = {
   about: { kk: '«Өзім туралы»', ru: '«О себе»', en: '“About me”' },
   aboutPh: { kk: 'Немен айналысасыз, не іздейсіз, немен бөлісе аласыз? 2–3 сөйлем.', ru: 'Чем занимаетесь, что ищете, чем можете поделиться? 2–3 предложения.', en: 'What do you do, what are you looking for, what can you share? 2–3 sentences.' },
   aboutFooter: { kk: 'Мәтін мағынасы бойынша салыстырылады — нақты жазсаңыз, ұсыныс дәлірек болады.', ru: 'Текст сравнивается по смыслу — чем конкретнее, тем точнее подбор.', en: 'Text is compared by meaning — the more specific, the better the match.' },
+  hiringFor: { kk: 'Кімді жалдайсыз', ru: 'Кого нанимаете', en: 'Who are you hiring' },
+  hiringForFooter: { kk: 'Міндетті: үміткерлер осы рөлдер бойынша таңдалады.', ru: 'Обязательно: кандидаты подбираются под эти роли.', en: 'Required: candidates are matched to these roles.' },
+  vacancyStack: { kk: 'Вакансия стегі', ru: 'Стек вакансии', en: 'Stack you are hiring for' },
+  vacancyStackFooter: { kk: 'Үміткерге қажет технологиялар — олар бойынша сәйкестік есептеледі.', ru: 'Технологии, которые нужны кандидату, — по ним считается совпадение.', en: 'Technologies the candidate needs — the match is computed on them.' },
   lookingFor: { kk: 'Кіммен танысқыңыз келеді', ru: 'С кем хотите познакомиться', en: 'Who do you want to meet' },
   lookingForFooter: { kk: 'Міндетті емес: таңдалған рөлдер жоғары тұрады.', ru: 'Необязательно: выбранные роли получат приоритет.', en: 'Optional: selected roles get priority.' },
   slots: { kk: '1:1 кездесуге бос уақыт', ru: 'Свободное время для встреч 1:1', en: 'Free time for 1:1 meetings' },
@@ -57,6 +61,7 @@ const dict = {
   opener: { kk: 'Алғашқы фраза', ru: 'Первая фраза', en: 'Opening line' },
   aiOpener: { kk: 'AI жекеледі', ru: 'AI персонализировал', en: 'AI-personalised' },
   copy: { kk: 'Көшіру', ru: 'Копировать', en: 'Copy' },
+  copyManual: { kk: 'Мәтін белгіленді — қолмен көшіріңіз', ru: 'Текст выделен — скопируйте вручную', en: 'Text selected — copy it manually' },
   copied: { kk: 'Көшірілді', ru: 'Скопировано', en: 'Copied' },
   met: { kk: 'Таныстық', ru: 'Познакомились', en: 'Met' },
   skip: { kk: 'Сәйкес емес', ru: 'Не подошло', en: 'Not a fit' },
@@ -107,7 +112,7 @@ const dict = {
   hall: { kk: 'Зал', ru: 'Зал', en: 'Hall' },
   hallSub: { kk: 'Ұйымдастырушы дашборды', ru: 'Дашборд организатора', en: 'Organizer dashboard' },
   participants: { kk: 'Қатысушы', ru: 'Участников', en: 'Attendees' },
-  registered: { kk: 'тіркелген', ru: 'зарегистрировались', en: 'signed up' },
+  registered: { kk: 'анкета толтырған: {n}', ru: 'заполнили анкету: {n}', en: 'filled in the form: {n}' },
   meetingsBooked: { kk: 'Кездесу', ru: 'Встреч', en: 'Meetings' },
   metRate: { kk: 'Таныстық үлесі', ru: 'Доля «познакомились»', en: '“Met” rate' },
   supplyDemand: { kk: 'Сұраныс пен ұсыныс', ru: 'Спрос и предложение', en: 'Supply and demand' },
@@ -129,8 +134,10 @@ const dict = {
   on: { kk: 'Қосулы', ru: 'Включено', en: 'On' },
   off: { kk: 'Шаблон', ru: 'Шаблон', en: 'Template' },
   warming: { kk: 'Дайындалуда', ru: 'Готовится', en: 'Warming up' },
+  signOut: { kk: 'Шығу', ru: 'Выйти', en: 'Sign out' },
   logout: { kk: 'Анкетаны осы құрылғыдан шығару', ru: 'Выйти из анкеты на этом устройстве', en: 'Sign out of this profile on this device' },
-  logoutConfirm: { kk: 'Анкета серверде қалады, бірақ бұл құрылғыда жаңа анкета толтырасыз. Жалғастыру керек пе?', ru: 'Анкета останется на сервере, но на этом устройстве вы начнёте заново. Продолжить?', en: 'Your profile stays on the server, but you will start over on this device. Continue?' },
+  logoutTitle: { kk: 'Анкетадан шығу керек пе?', ru: 'Выйти из анкеты?', en: 'Sign out of this profile?' },
+  logoutConfirm: { kk: 'Анкета серверде қалады, бірақ бұл құрылғыда жаңа анкета толтырасыз.', ru: 'Анкета останется на сервере, но на этом устройстве вы начнёте заново.', en: 'Your profile stays on the server, but you will start over on this device.' },
   howItWorks: { kk: 'Қалай жұмыс істейді', ru: 'Как это работает', en: 'How it works' },
   how1: { kk: 'Мақсаттар сүзгісі: сәйкес келмейтін мақсаттар көрсетілмейді', ru: 'Фильтр целей: несовместимые цели не показываются', en: 'Goal filter: incompatible goals are never shown' },
   how2: { kk: 'Балл: мақсат, рөл, стек, мәтін мағынасы, қызығушылық, тәжірибе', ru: 'Скоринг: цель, роль, стек, смысл текста, интересы, опыт', en: 'Scoring: goal, role, stack, text meaning, interests, experience' },
@@ -143,6 +150,17 @@ const dict = {
 } satisfies Record<string, Record<Lang, string>>;
 
 export type Key = keyof typeof dict;
+
+// Браузерлердің бәрінде kk-KZ локалі жоқ (Chrome «M11 21» шығарады) — ай атауларын өзіміз береміз
+const MONTHS: Record<Lang, string[]> = {
+  kk: ['қаңтар', 'ақпан', 'наурыз', 'сәуір', 'мамыр', 'маусым', 'шілде', 'тамыз', 'қыркүйек', 'қазан', 'қараша', 'желтоқсан'],
+  ru: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'],
+  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+};
+export function fmtDate(iso: string, lang: Lang) {
+  const [, m, d] = iso.split('-').map(Number);
+  return lang === 'en' ? `${MONTHS.en[m - 1]} ${d}` : `${d} ${MONTHS[lang][m - 1]}`;
+}
 
 export function fmtYears(n: number, lang: Lang) {
   if (n === 0) return dict.noExp[lang];

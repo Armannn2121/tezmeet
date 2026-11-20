@@ -1,12 +1,15 @@
+import { useState } from 'react';
 import { goalLabel, interestLabel } from '../../../shared/catalog.ts';
 import { useApp } from '../App.tsx';
 import { IconBolt, IconBubble, IconPin, IconRefresh, IconSparkles } from '../components/icons.tsx';
 import { metaLine } from '../components/people.tsx';
-import { Avatar, NavBar, Row, Section, Segmented } from '../components/ui.tsx';
+import { fmtDate } from '../i18n.ts';
+import { Alert, Avatar, NavBar, Row, Section, Segmented } from '../components/ui.tsx';
 
 export function Me() {
   const { t, lang, setLang, user, meta, editProfile, setUser } = useApp();
   const embed = meta.ai.embeddings;
+  const [confirmOut, setConfirmOut] = useState(false);
   return (
     <div className="screen">
       <NavBar title={t('me')} right={<button className="nav-btn" onClick={editProfile}>{t('edit')}</button>} />
@@ -33,7 +36,7 @@ export function Me() {
       <Section header={t('event')}>
         <Row className="icon-row">
           <div className="sq-icon" style={{ background: 'var(--red)' }}><IconPin /></div>
-          <span className="title">{meta.event.name}<div className="sub">{meta.event.venue[lang]} · {meta.event.date}</div></span>
+          <span className="title">{meta.event.name}<div className="sub">{meta.event.venue[lang]} · {fmtDate(meta.event.date, lang)}</div></span>
         </Row>
       </Section>
 
@@ -55,8 +58,11 @@ export function Me() {
       </Section>
 
       <Section>
-        <Row className="danger" onClick={() => { if (confirm(t('logoutConfirm'))) setUser(null); }}>{t('logout')}</Row>
+        <Row className="danger" onClick={() => setConfirmOut(true)}>{t('logout')}</Row>
       </Section>
+
+      <Alert open={confirmOut} title={t('logoutTitle')} message={t('logoutConfirm')} onClose={() => setConfirmOut(false)}
+        actions={[{ label: t('cancel'), style: 'cancel' }, { label: t('signOut'), style: 'destructive', run: () => setUser(null) }]} />
     </div>
   );
 }

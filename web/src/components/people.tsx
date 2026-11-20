@@ -87,25 +87,43 @@ export function PersonSheet({ person, rec, me, onClose, showContact }: { person:
 }
 
 // 1:1 кездесу белгілеу: ортақ бос слоттар
-export function MeetSheet({ person, me, onClose, onBooked }: { person: Profile | null; me: Profile; onClose: () => void; onBooked?: (m: MeetingView) => void }) {
+export function MeetSheet({ person, onClose, onChanged }: { person: Profile | null; onClose: () => void; onChanged?: () => void }) {
   const { t, errorText } = useApp();
   const [slots, setSlots] = useState<string[] | null>(null);
+  const [existing, setExisting] = useState<MeetingView | null>(null);
   const [pick, setPick] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   useEffect(() => {
     if (!person) return;
     setSlots(null);
+    setExisting(null);
     setPick(null);
-    api.freeSlots(me.id, person.id).then((s) => { setSlots(s); setPick(s[0] ?? null); }).catch((e) => { setSlots([]); toast({ text: errorText(e) }); });
-  }, [person, me.id, errorText]);
+    api.freeSlots(person.id)
+      .then((r) => { setSlots(r.slots); setExisting(r.existing); setPick(r.slots[0] ?? null); })
+      .catch((e) => { setSlots([]); toast({ text: errorText(e) }); });
+  }, [person, errorText]);
+  const cancel = async () => {
+    if (!existing) return;
+    setBusy(true);
+    try {
+      await api.cancelMeeting(existing.id);
+      haptic();
+      onChanged?.();
+      onClose();
+    } catch (e) {
+      toast({ text: errorText(e) });
+    } finally {
+      setBusy(false);
+    }
+  };
   const book = async () => {
     if (!person || !pick) return;
     setBusy(true);
     try {
-      const m = await api.book(me.id, person.id, pick);
+      const m = await api.book(person.id, pick);
       haptic();
       toast({ text: `${t('scheduleTitle')}: ${m.slot}, ${t('table', { n: m.table })}`, icon: <IconCheck style={{ color: 'var(--green)' }} /> });
-      onBooked?.(m);
+      onChanged?.();
       onClose();
     } catch (e) {
       toast({ text: errorText(e) });
@@ -121,6 +139,20 @@ export function MeetSheet({ person, me, onClose, onBooked }: { person: Profile |
             <Avatar name={person.name} />
             <h2 style={{ fontSize: 20, marginTop: 8 }}>{person.name}</h2>
           </div>
+          {existing ? (
+            <>
+              <Section header={t('scheduleTitle')}>
+                <div className="row tall">
+                  <div className="meeting-time">{existing.slot}</div>
+                  <span className="title"><div style={{ fontWeight: 600 }}>{t('table', { n: existing.table })}</div><div className="sub">20 min</div></span>
+                </div>
+              </Section>
+              <Section>
+                <Row className="danger" onClick={cancel}>{busy ? <Spinner /> : t('cancelMeeting')}</Row>
+              </Section>
+            </>
+          ) : (
+          <>
           <Section header={t('pickSlot')} footer={slots?.length ? t('pickSlotFooter') : undefined}>
             {slots === null ? (
               <div className="center" style={{ minHeight: 80 }}><Spinner /></div>
@@ -141,6 +173,8 @@ export function MeetSheet({ person, me, onClose, onBooked }: { person: Profile |
               {busy ? <Spinner /> : <><IconClock width={20} height={20} /> {t('book')}{pick ? ` · ${pick}` : ''}</>}
             </button>
           </div>
+          </>
+          )}
         </>
       )}
     </Sheet>

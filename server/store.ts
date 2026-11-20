@@ -2,21 +2,22 @@
 // қатысушылар енгізген анкеталар, кері байланыс, кездесулер (var/state.json).
 // 300+ адамдық митап үшін жадта ұстау жеткілікті; файлға атомарлы түрде жазылады.
 
+import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Booth, Feedback, Meeting, Profile } from '../shared/types.ts';
 import { CONFIG } from './config.ts';
 
-type State = { users: Profile[]; feedback: Feedback[]; meetings: Meeting[] };
+// tokens: userId → sha256(құпия токен). Токеннің өзі тек қатысушының браузерінде сақталады.
+type State = { users: Profile[]; feedback: Feedback[]; meetings: Meeting[]; tokens: Record<string, string> };
 
 const stateFile = join(CONFIG.varDir, 'state.json');
 
 export const seed: Profile[] = JSON.parse(readFileSync(join(CONFIG.dataDir, 'profiles.json'), 'utf8'));
 export const booths: Booth[] = JSON.parse(readFileSync(join(CONFIG.dataDir, 'booths.json'), 'utf8'));
 
-const state: State = existsSync(stateFile)
-  ? { users: [], feedback: [], meetings: [], ...JSON.parse(readFileSync(stateFile, 'utf8')) }
-  : { users: [], feedback: [], meetings: [] };
+const empty = (): State => ({ users: [], feedback: [], meetings: [], tokens: {} });
+const state: State = existsSync(stateFile) ? { ...empty(), ...JSON.parse(readFileSync(stateFile, 'utf8')) } : empty();
 
 const byId = new Map<string, Profile>();
 for (const p of [...seed, ...state.users]) byId.set(p.id, p);
@@ -33,6 +34,25 @@ function persist() {
   clearTimeout(timer);
   timer = setTimeout(flush, 200);
 }
+
+const sha = (s: string) => createHash('sha256').update(s).digest('hex');
+const byToken = new Map(Object.entries(state.tokens).map(([id, h]) => [h, id]));
+
+export function setToken(userId: string, token: string) {
+  const h = sha(token);
+  state.tokens[userId] = h;
+  byToken.set(h, userId);
+  persist();
+}
+
+export function userByToken(token: string): Profile | undefined {
+  const id = byToken.get(sha(token));
+  return id ? byId.get(id) : undefined;
+}
+
+// B адамы A-ны «Познакомились» деп белгіледі ме — сонда ғана A B-ның Telegram-ын көреді
+export const markedMet = (owner: string, viewer: string) =>
+  state.feedback.some((f) => f.userId === owner && f.targetId === viewer && f.verdict === 'met');
 
 export const allProfiles = () => [...byId.values()];
 export const getProfile = (id: string) => byId.get(id);

@@ -11,6 +11,7 @@ export type PairInfo = {
   expDiff: number; // B.experience - A.experience
   complement: boolean;
   roleHit: boolean;
+  hiresFor: RoleId[]; // b жалдайтын рөлдер: таңдалғаны не мәтін мен стектен шығарылғаны
   semantic: number;
 };
 
@@ -47,7 +48,13 @@ const RU_ACC: Record<RoleId, [string, string]> = {
   designer: ['UI/UX дизайнера', 'UI/UX дизайнеров'], product_manager: ['продакт-менеджера', 'продакт-менеджеров'], project_manager: ['проджект-менеджера', 'проджект-менеджеров'],
   cto: ['тимлида', 'тимлидов'], founder: ['фаундера', 'фаундеров'], recruiter: ['рекрутера', 'рекрутеров'], student: ['студента', 'студентов'],
 };
-const plural = (r: RoleId, lang: Lang) => (lang === 'ru' ? RU_ACC[r][1] : lang === 'en' ? role(r, 'en').replace(/(\w+)$/, (w) => (/HR|lead$/.test(w) ? w : w + 's')) : role(r, lang));
+const EN_PLURAL: Record<RoleId, string> = {
+  frontend: 'frontend developers', backend: 'backend developers', fullstack: 'fullstack developers', mobile: 'mobile developers',
+  data_scientist: 'data scientists', ml_engineer: 'ML engineers', data_analyst: 'data analysts', data_engineer: 'data engineers',
+  devops: 'DevOps engineers', qa: 'QA engineers', security: 'security engineers', gamedev: 'game developers', designer: 'UI/UX designers',
+  product_manager: 'product managers', project_manager: 'project managers', cto: 'team leads', founder: 'founders', recruiter: 'recruiters', student: 'students',
+};
+const plural = (r: RoleId, lang: Lang) => (lang === 'ru' ? RU_ACC[r][1] : lang === 'en' ? EN_PLURAL[r] : role(r, lang));
 const accusative = (r: RoleId, lang: Lang) => (lang === 'ru' ? RU_ACC[r][0] : role(r, lang));
 const roles = (rs: RoleId[] | undefined, lang: Lang) => list((rs ?? []).map((r) => plural(r, lang)), lang, 2);
 
@@ -64,15 +71,16 @@ export function explain(a: Profile, b: Profile, x: PairInfo, lang: Lang): string
   if (lang === 'ru') {
     switch (b.goal) {
       case 'hire':
-        s1 = `${n} нанимает ${roles(b.lookingFor, 'ru') || 'специалистов'}${company ? ` в ${company}` : ''}` +
+        s1 = `${n} нанимает ${roles(x.hiresFor, 'ru') || 'специалистов'}${company ? ` в ${company}` : ''}` +
           (a.goal === 'job_seek' && x.roleHit ? (shared ? ` — это ваша роль, и нужен ваш стек: ${st}.` : ' — это как раз ваша роль.') : shared ? ` — команде близок ваш стек: ${st}.` : '.');
         break;
       case 'job_seek':
         s1 = `${n} — ${role(b.role, 'ru')} (${b.experience ? `${years(b.experience, 'ru')} опыта` : 'без опыта'}) и ищет работу` + (shared ? ` — знает ${st}, что вам нужно.` : '.');
         break;
       case 'mentor_offer':
-        s1 = `${n} — ${role(b.role, 'ru')} с опытом ${years(b.experience, 'ru')} и менторит` + (shared ? ` по ${st}.` : '.') +
-          (x.expDiff >= 3 ? ` Это на ${years(x.expDiff, 'ru')} больше вашего.` : '');
+        // Тәжірибе айырмасы сол сөйлемнің ішінде — түсіндірме 2 сөйлемнен аспауы керек
+        s1 = `${n} — ${role(b.role, 'ru')} с опытом ${years(b.experience, 'ru')}` + (x.expDiff >= 3 ? ` (на ${years(x.expDiff, 'ru')} больше вашего)` : '') +
+          ` и менторит` + (shared ? ` по ${st}.` : '.');
         break;
       case 'mentor_seek':
         s1 = `${n} ищет ментора по ${st}` + (x.expDiff <= -2 ? ` — у вас на ${years(-x.expDiff, 'ru')} больше опыта.` : '.');
@@ -92,15 +100,15 @@ export function explain(a: Profile, b: Profile, x: PairInfo, lang: Lang): string
   if (lang === 'kk') {
     switch (b.goal) {
       case 'hire':
-        s1 = `${n}${company ? ` (${company})` : ''} жұмысқа ${roles(b.lookingFor, 'kk') || 'маман'} іздейді` +
+        s1 = `${n}${company ? ` (${company})` : ''} жұмысқа ${roles(x.hiresFor, 'kk') || 'маман'} іздейді` +
           (a.goal === 'job_seek' && x.roleHit ? (shared ? ` — бұл сіздің рөліңіз, әрі сіздің стегіңіз керек: ${st}.` : ' — бұл дәл сіздің рөліңіз.') : shared ? ` — командасының стегі сізге жақын: ${st}.` : '.');
         break;
       case 'job_seek':
         s1 = `${n} — ${role(b.role, 'kk')}, ${b.experience ? `${years(b.experience, 'kk')} тәжірибесі бар` : 'тәжірибесі әлі жоқ'}, жұмыс іздейді` + (shared ? ` — сізге керек ${st} біледі.` : '.');
         break;
       case 'mentor_offer':
-        s1 = `${n} — ${years(b.experience, 'kk')} тәжірибесі бар ${role(b.role, 'kk')}, менторлыққа дайын` + (shared ? ` (${st}).` : '.') +
-          (x.expDiff >= 3 ? ` Тәжірибесі сізден ${years(x.expDiff, 'kk')} көп.` : '');
+        s1 = `${n} — ${role(b.role, 'kk')}, тәжірибесі ${years(b.experience, 'kk')}` + (x.expDiff >= 3 ? ` (сізден ${years(x.expDiff, 'kk')} көп)` : '') +
+          `, менторлыққа дайын` + (shared ? `: ${st}.` : '.');
         break;
       case 'mentor_seek':
         s1 = `${n} ${st} бойынша ментор іздейді` + (x.expDiff <= -2 ? ` — сіздің тәжірибеңіз ${years(-x.expDiff, 'kk')} көп.` : '.');
@@ -119,15 +127,15 @@ export function explain(a: Profile, b: Profile, x: PairInfo, lang: Lang): string
 
   switch (b.goal) {
     case 'hire':
-      s1 = `${n} is hiring ${roles(b.lookingFor, 'en') || 'specialists'}${company ? ` at ${company}` : ''}` +
+      s1 = `${n} is hiring ${roles(x.hiresFor, 'en') || 'specialists'}${company ? ` at ${company}` : ''}` +
         (a.goal === 'job_seek' && x.roleHit ? (shared ? ` — your role, and they need your stack: ${st}.` : ' — exactly your role.') : shared ? ` — the team uses your stack: ${st}.` : '.');
       break;
     case 'job_seek':
       s1 = `${n} is a ${role(b.role, 'en')} ${b.experience ? `with ${years(b.experience, 'en')} of experience` : 'without experience yet'} looking for a job` + (shared ? ` — knows ${st}, which you need.` : '.');
       break;
     case 'mentor_offer':
-      s1 = `${n} is a ${role(b.role, 'en')} with ${years(b.experience, 'en')} of experience who mentors` + (shared ? ` in ${st}.` : '.') +
-        (x.expDiff >= 3 ? ` That is ${years(x.expDiff, 'en')} more than you.` : '');
+      s1 = `${n} is a ${role(b.role, 'en')} with ${years(b.experience, 'en')} of experience` + (x.expDiff >= 3 ? ` (${years(x.expDiff, 'en')} more than you)` : '') +
+        ` who mentors` + (shared ? ` in ${st}.` : '.');
       break;
     case 'mentor_seek':
       s1 = `${n} is looking for a mentor in ${st}` + (x.expDiff <= -2 ? ` — you have ${years(-x.expDiff, 'en')} more experience.` : '.');
@@ -150,7 +158,7 @@ export function icebreaker(a: Profile, b: Profile, x: PairInfo, lang: Lang): str
   const topic = x.sharedInterests[0] ? interestLabel(x.sharedInterests[0], lang) : '';
   if (lang === 'ru') {
     switch (b.goal) {
-      case 'hire': return `Здравствуйте, ${n}! Вижу, вы ищете ${roles(b.lookingFor, 'ru') || 'людей в команду'}. ${a.experience ? `У меня ${years(a.experience, 'ru')} опыта с ${list(a.stack, 'ru', 2)}` : `Я изучаю ${list(a.stack, 'ru', 2)} и ищу первую работу`} — расскажете, какие задачи у команды?`;
+      case 'hire': return `Здравствуйте, ${n}! Вижу, вы ищете ${roles(x.hiresFor, 'ru') || 'людей в команду'}. ${a.experience ? `У меня ${years(a.experience, 'ru')} опыта с ${list(a.stack, 'ru', 2)}` : `Я изучаю ${list(a.stack, 'ru', 2)} и ищу первую работу`} — расскажете, какие задачи у команды?`;
       case 'job_seek': return `Привет, ${n}! Мы${a.company ? ` в ${a.company}` : ''} как раз ищем ${accusative(b.role, 'ru')} со знанием ${st}. Есть 10 минут поговорить о вакансии?`;
       case 'mentor_offer': return `Привет, ${n}! Я развиваюсь в ${st}, и мне очень пригодился бы совет человека с вашим опытом. Можно задать пару вопросов о росте?`;
       case 'mentor_seek': return `Привет, ${n}! Вижу, вы изучаете ${st}. Я давно с этим работаю — могу подсказать, с чего начать. Найдём 15 минут?`;
@@ -160,7 +168,7 @@ export function icebreaker(a: Profile, b: Profile, x: PairInfo, lang: Lang): str
   }
   if (lang === 'kk') {
     switch (b.goal) {
-      case 'hire': return `Сәлеметсіз бе, ${n}! Командаңызға ${roles(b.lookingFor, 'kk') || 'маман'} іздейтініңізді көрдім. ${a.experience ? `Менде ${list(a.stack, 'kk', 2)} бойынша ${years(a.experience, 'kk')} тәжірибе бар` : `Мен ${list(a.stack, 'kk', 2)} үйреніп, алғашқы жұмысымды іздеп жүрмін`} — командаңыздың міндеттері туралы айтып бересіз бе?`;
+      case 'hire': return `Сәлеметсіз бе, ${n}! Командаңызға ${roles(x.hiresFor, 'kk') || 'маман'} іздейтініңізді көрдім. ${a.experience ? `Менде ${list(a.stack, 'kk', 2)} бойынша ${years(a.experience, 'kk')} тәжірибе бар` : `Мен ${list(a.stack, 'kk', 2)} үйреніп, алғашқы жұмысымды іздеп жүрмін`} — командаңыздың міндеттері туралы айтып бересіз бе?`;
       case 'job_seek': return `Сәлем, ${n}! Біз${a.company ? ` (${a.company})` : ''} ${st} білетін ${role(b.role, 'kk')} іздеп жүрміз. Вакансия туралы 10 минут сөйлесейік пе?`;
       case 'mentor_offer': return `Сәлеметсіз бе, ${n}! Мен ${st} бағытында дамып жүрмін, сіздің тәжірибеңіздегі адамның кеңесі өте керек. Бірнеше сұрақ қоюға бола ма?`;
       case 'mentor_seek': return `Сәлем, ${n}! ${st} үйреніп жүргеніңізді көрдім. Мен бұл бағытта көптен бері жұмыс істеймін — неден бастау керегін айтып бере аламын. 15 минут табамыз ба?`;
@@ -169,7 +177,7 @@ export function icebreaker(a: Profile, b: Profile, x: PairInfo, lang: Lang): str
     }
   }
   switch (b.goal) {
-    case 'hire': return `Hi ${n}! I saw you're hiring ${roles(b.lookingFor, 'en') || 'people'}. ${a.experience ? `I have ${years(a.experience, 'en')} with ${list(a.stack, 'en', 2)}` : `I'm learning ${list(a.stack, 'en', 2)} and looking for my first job`} — could you tell me what the team is working on?`;
+    case 'hire': return `Hi ${n}! I saw you're hiring ${roles(x.hiresFor, 'en') || 'people'}. ${a.experience ? `I have ${years(a.experience, 'en')} with ${list(a.stack, 'en', 2)}` : `I'm learning ${list(a.stack, 'en', 2)} and looking for my first job`} — could you tell me what the team is working on?`;
     case 'job_seek': return `Hi ${n}! We${a.company ? ` at ${a.company}` : ''} are looking for a ${role(b.role, 'en')} who knows ${st}. Got 10 minutes to chat about the role?`;
     case 'mentor_offer': return `Hi ${n}! I'm growing in ${st} and would really value advice from someone with your experience. Mind if I ask a couple of questions?`;
     case 'mentor_seek': return `Hi ${n}! I see you're learning ${st}. I've worked with it for years — happy to share where to start. Shall we find 15 minutes?`;

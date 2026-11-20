@@ -7,7 +7,7 @@
 //      адамға ұқсас (рөлі мен мақсаты бірдей) кандидаттардың балы төмендейді.
 //   4. Әртүрлілік (MMR): бес адам бір компаниядан не бір рөлден болмауы үшін.
 
-import { GOAL_FIT, ROLES, roleLabel, interestLabel, type GoalId, type Lang, type RoleId } from '../shared/catalog.ts';
+import { GOAL_FIT, ROLES, STACK_FAMILIES, roleLabel, interestLabel, type GoalId, type Lang, type RoleId } from '../shared/catalog.ts';
 import type { Booth, BoothRec, Profile, Recommendation } from '../shared/types.ts';
 import { cached, cosine } from './embed.ts';
 import { explain, icebreaker, reasonsOf, type PairInfo } from './explain.ts';
@@ -46,6 +46,49 @@ function roleFit(want: RoleId[] | undefined, r: RoleId): number {
   return 0;
 }
 
+// «Кімді іздейді» таңдалмаса — «өзім туралы» мәтіні мен стектен шығарамыз.
+// Мысалы: «нанимаем ML-инженеров» → ml_engineer; PyTorch + LLM → ml_engineer, data_scientist.
+const ROLE_WORDS: [RoleId, RegExp][] = [
+  ['frontend', /front-?end|фронтенд|фронт-энд/i],
+  ['backend', /back-?end|бэкенд|бекенд/i],
+  ['fullstack', /full-?stack|фулл?стек/i],
+  ['mobile', /mobile|мобиль|\bios\b|android|flutter/i],
+  ['data_scientist', /data scien|дата.?сайен|датасаен/i],
+  ['ml_engineer', /\bml\b|ml-|machine learning|машинн|llm|нейросет/i],
+  ['data_analyst', /analyst|аналитик|талдаушы/i],
+  ['data_engineer', /data engineer|дата-инженер|data-инженер/i],
+  ['devops', /devops|\bsre\b|девопс/i],
+  ['qa', /\bqa\b|qa-|тестиров|тестировщ|tester/i],
+  ['security', /secur|безопасн|қауіпсіз|pentest|пентест/i],
+  ['gamedev', /gamedev|game dev|геймдев|ойын/i],
+  ['designer', /design|дизайн/i],
+  ['product_manager', /product manager|продакт|өнім менеджер/i],
+  ['project_manager', /project manager|проджект|жоба менеджер/i],
+];
+const FAMILY_ROLES: Record<string, RoleId[]> = {
+  frontend: ['frontend', 'fullstack'], backend_js: ['backend', 'fullstack'], python: ['backend'], jvm: ['backend'], dotnet: ['backend'],
+  go: ['backend'], php: ['backend'], mobile: ['mobile'], ml: ['ml_engineer', 'data_scientist'], data: ['data_analyst', 'data_engineer'],
+  infra: ['devops'], qa: ['qa'], design: ['designer'], product: ['product_manager'], security: ['security'], game: ['gamedev'], db: ['backend'],
+};
+// Тіл мен негізгі фреймворк рөлді анық көрсетеді; ДҚ, брокер, инфрақұрылым — әлсіз белгі
+const WEAK_FAMILIES = new Set(['data', 'db', 'infra', 'tools', 'systems']);
+
+export function inferTargets(p: Profile): RoleId[] {
+  if (p.lookingFor?.length) return p.lookingFor;
+  const fromText = ROLE_WORDS.filter(([, re]) => re.test(p.about)).map(([r]) => r);
+  if (fromText.length) return fromText.slice(0, 4);
+  const votes = new Map<RoleId, number>();
+  for (const tech of p.stack) {
+    for (const [fam, items] of Object.entries(STACK_FAMILIES)) {
+      if (!items.some((i) => i.toLowerCase() === tech.toLowerCase())) continue;
+      const w = WEAK_FAMILIES.has(fam) ? 1 : 2;
+      for (const r of FAMILY_ROLES[fam] ?? []) votes.set(r, (votes.get(r) ?? 0) + w);
+    }
+  }
+  const max = Math.max(0, ...votes.values());
+  return max ? [...votes].filter(([, n]) => n >= max * 0.8).map(([r]) => r).slice(0, 3) : [];
+}
+
 // Анкетаның мәтіндік көрінісі — эмбеддинг пен TF-IDF үшін
 export function docText(p: Profile): string {
   return [
@@ -60,10 +103,16 @@ export function docText(p: Profile): string {
 export class Matcher {
   tfidf = new TfIdf();
   private profiles: Profile[] = [];
+  private targets = new Map<string, RoleId[]>();
 
   index(profiles: Profile[]) {
     this.profiles = profiles;
     this.tfidf.build(profiles.map((p) => ({ id: p.id, text: docText(p) })));
+    this.targets = new Map(profiles.map((p) => [p.id, inferTargets(p)]));
+  }
+
+  private want(p: Profile): RoleId[] {
+    return this.targets.get(p.id) ?? inferTargets(p);
   }
 
   semantic(a: Profile, b: Profile): { value: number; source: 'gemini' | 'tfidf' } {
@@ -82,10 +131,10 @@ export class Matcher {
     let rf: number;
     let roleHit = false;
     if (a.goal === 'job_seek' && b.goal === 'hire') {
-      rf = roleFit(b.lookingFor, a.role);
+      rf = roleFit(this.want(b), a.role);
       roleHit = rf === 1;
     } else if (a.goal === 'hire' && (b.goal === 'job_seek' || b.goal === 'mentor_seek')) {
-      rf = roleFit(a.lookingFor, b.role);
+      rf = roleFit(this.want(a), b.role);
       roleHit = rf === 1;
     } else {
       rf = 0.65 * roleFit(a.lookingFor, b.role) + 0.35 * roleFit(b.lookingFor, a.role);
@@ -119,7 +168,7 @@ export class Matcher {
     const rest = W.role * rf + W.stack * st.score + W.semantic * sem.value + W.interests * intScore + W.exp * exp;
     let score = W.goal * g + rest * (0.35 + 0.65 * g);
     if (a.goal === 'cofounder' && b.goal === 'cofounder' && !complement) score *= 0.82;
-    const info: PairInfo = { sharedStack: st.shared, sharedInterests: ints, expDiff: diff, complement, roleHit, semantic: sem.value };
+    const info: PairInfo = { sharedStack: st.shared, sharedInterests: ints, expDiff: diff, complement, roleHit, semantic: sem.value, hiresFor: b.goal === 'hire' ? this.want(b) : [] };
     return { score, g, info, semSource: sem.source };
   }
 
@@ -135,8 +184,11 @@ export class Matcher {
       semSource = r.semSource;
       let score = r.score;
       // «Сәйкес келмеді» — ұқсас кандидаттарды төмендету
+      // Бірақ адам өзі іздеп отырған рөлді (мысалы, жалдаушыға ML-инженер) жазаламаймыз:
+      // бір адам сәйкес келмеді деген сөз — бүкіл рөл сәйкес келмеді деген емес
+      const wanted = this.want(a).includes(b.role);
       for (const s of opts.skipped) {
-        if (s.role === b.role && s.goal === b.goal) score *= 0.85;
+        if (s.role === b.role && s.goal === b.goal && !wanted) score *= 0.85;
         else if (s.company && s.company === b.company) score *= 0.92;
       }
       cands.push({ p: b, score, g: r.g, info: r.info });

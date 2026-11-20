@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { Lang } from '../../shared/catalog.ts';
 import type { Profile, ProfileInput } from '../../shared/types.ts';
-import { api, ApiError, type Meta } from './api.ts';
+import { api, ApiError, setApiToken, type Meta } from './api.ts';
 import { IconCalendar, IconChart, IconPeople, IconPerson, Spinner } from './components/icons.tsx';
 import { ToastHost } from './components/ui.tsx';
 import { ERRORS, makeT, type T } from './i18n.ts';
@@ -21,7 +21,7 @@ type Ctx = {
   t: T;
   meta: Meta;
   user: Profile;
-  setUser: (p: Profile | null) => void;
+  setUser: (p: Profile | null, token?: string) => void;
   errorText: (e: unknown) => string;
   editProfile: () => void;
   go: (tab: Tab) => void;
@@ -72,12 +72,14 @@ export default function App() {
     try {
       const m = await api.meta();
       setMeta(m);
-      const id = ls.get('tm.user');
-      if (id) {
+      const token = ls.get('tm.token');
+      ls.set('tm.user', null); // ескі нұсқаның кілті
+      if (token) {
+        setApiToken(token);
         try {
-          setUserState(await api.getProfile(id));
+          setUserState(await api.me());
         } catch (e) {
-          if (e instanceof ApiError && e.code === 'profile_not_found') ls.set('tm.user', null);
+          if (e instanceof ApiError && e.code === 'unauthorized') { ls.set('tm.token', null); setApiToken(null); }
           else throw e;
         }
       }
@@ -102,9 +104,10 @@ export default function App() {
     window.scrollTo({ top: 0 });
   }, []);
 
-  const setUser = useCallback((p: Profile | null) => {
+  const setUser = useCallback((p: Profile | null, token?: string) => {
     setUserState(p);
-    ls.set('tm.user', p ? p.id : null);
+    if (token) { ls.set('tm.token', token); setApiToken(token); }
+    if (!p) { ls.set('tm.token', null); setApiToken(null); }
   }, []);
 
   const errorText = useCallback((e: unknown) => {
@@ -143,7 +146,7 @@ export default function App() {
           mode={form.mode}
           initial={form.mode === 'edit' ? user ?? undefined : form.initial}
           onCancel={() => setForm(null)}
-          onSaved={(p) => { setUser(p); setForm(null); go('for-you'); }}
+          onSaved={(p, token) => { setUser(p, token); setForm(null); go('for-you'); }}
           errorText={errorText}
         />
         <ToastHost />
@@ -155,7 +158,7 @@ export default function App() {
   return (
     <AppCtx.Provider value={ctx}>
       <div className="app">
-        {tab === 'for-you' && <ForYou key={`${user.id}-${lang}`} />}
+        {tab === 'for-you' && <ForYou key={`${user.id}-${lang}-${user.updatedAt ?? ''}`} />}
         {tab === 'meetings' && <Meetings />}
         {tab === 'hall' && <Hall />}
         {tab === 'me' && <Me />}

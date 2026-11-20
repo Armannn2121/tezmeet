@@ -16,9 +16,10 @@ export type Profile = {
   lang: Lang;
   synthetic?: boolean;
   createdAt?: string;
+  updatedAt?: string;
 };
 
-export type ProfileInput = Omit<Profile, 'id' | 'synthetic' | 'createdAt'>;
+export type ProfileInput = Omit<Profile, 'id' | 'synthetic' | 'createdAt' | 'updatedAt'>;
 
 export type ReasonKind = 'goal' | 'role' | 'stack' | 'interests' | 'semantic' | 'experience' | 'complement';
 

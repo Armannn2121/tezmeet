@@ -15,7 +15,7 @@ export function Meetings() {
 
   const load = useCallback(async () => {
     try {
-      const [m, c] = await Promise.all([api.meetings(user.id), api.contacts(user.id)]);
+      const [m, c] = await Promise.all([api.meetings(), api.contacts()]);
       setMeetings(m);
       setContacts(c);
     } catch (e) {
@@ -23,14 +23,14 @@ export function Meetings() {
       setMeetings([]);
       setContacts([]);
     }
-  }, [user.id, errorText]);
+  }, [errorText]);
 
   useEffect(() => { load(); }, [load]);
 
   const cancel = async (m: MeetingView) => {
     haptic();
     try {
-      await api.cancelMeeting(m.id, user.id);
+      await api.cancelMeeting(m.id);
       setMeetings((xs) => xs?.filter((x) => x.id !== m.id) ?? null);
     } catch (e) {
       toast({ text: errorText(e) });
