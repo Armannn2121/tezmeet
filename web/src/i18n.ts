@@ -137,6 +137,7 @@ const dict = {
   signOut: { kk: 'Жою', ru: 'Удалить', en: 'Delete' },
   logout: { kk: 'Анкетаны жою', ru: 'Удалить анкету', en: 'Delete profile' },
   logoutTitle: { kk: 'Анкетаны жою керек пе?', ru: 'Удалить анкету?', en: 'Delete your profile?' },
+  expiresNote: { kk: 'Анкета мен оның чаттары {h} сағаттан кейін өзі өшеді: {at}.', ru: 'Анкета и её чаты удалятся сами через {h} ч: {at}.', en: 'Your profile and its chats delete themselves after {h} hours: {at}.' },
   logoutConfirm: { kk: 'Анкета, чаттар мен кездесулер толық өшеді, сізді енді ешкімге ұсынбаймыз.', ru: 'Анкета, чаты и встречи удалятся полностью — вас больше никому не порекомендуют.', en: 'Your profile, chats and meetings will be deleted, and you will no longer be recommended to anyone.' },
   howItWorks: { kk: 'Қалай жұмыс істейді', ru: 'Как это работает', en: 'How it works' },
   how1: { kk: 'Мақсаттар сүзгісі: сәйкес келмейтін мақсаттар көрсетілмейді', ru: 'Фильтр целей: несовместимые цели не показываются', en: 'Goal filter: incompatible goals are never shown' },
@@ -198,6 +199,9 @@ export function fmtDate(iso: string, lang: Lang) {
 const hhmm = (d: Date) => `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 const sameDay = (a: Date, b: Date) => a.toDateString() === b.toDateString();
 const dayMonth = (d: Date, lang: Lang) => (lang === 'en' ? `${MONTHS.en[d.getMonth()].slice(0, 3)} ${d.getDate()}` : `${d.getDate()} ${MONTHS[lang][d.getMonth()].slice(0, 3)}`);
+
+// Күн мен уақыт: «23 қар, 08:40»
+export const fmtDateTime = (iso: string, lang: Lang) => `${dayMonth(new Date(iso), lang)}, ${hhmm(new Date(iso))}`;
 
 // Чат тізімі: бүгін — «14:05», кеше — «Кеше», ертерек — «20 қар»
 export function fmtChatTime(iso: string, lang: Lang, t: (k: 'yesterday') => string) {

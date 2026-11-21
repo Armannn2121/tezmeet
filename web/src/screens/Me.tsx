@@ -4,7 +4,7 @@ import { api } from '../api.ts';
 import { useApp } from '../App.tsx';
 import { IconBolt, IconBubble, IconPin, IconRefresh, IconSparkles } from '../components/icons.tsx';
 import { metaLine } from '../components/people.tsx';
-import { fmtDate } from '../i18n.ts';
+import { fmtDate, fmtDateTime } from '../i18n.ts';
 import { Alert, Avatar, NavBar, Row, Section, Segmented } from '../components/ui.tsx';
 
 export function Me() {
@@ -58,7 +58,7 @@ export function Me() {
         <Row className="icon-row tall"><div className="sq-icon" style={{ background: 'var(--orange)' }}><IconRefresh /></div><span className="title" style={{ fontSize: 15 }}>{t('how3')}</span></Row>
       </Section>
 
-      <Section>
+      <Section footer={user.createdAt && t('expiresNote', { h: meta.profileTtlHours, at: fmtDateTime(new Date(Date.parse(user.createdAt) + meta.profileTtlHours * 3_600_000).toISOString(), lang) })}>
         <Row className="danger" onClick={() => setConfirmOut(true)}>{t('logout')}</Row>
       </Section>
 

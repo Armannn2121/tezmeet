@@ -4,7 +4,7 @@
 
 import assert from 'node:assert/strict';
 import { spawn, type ChildProcess } from 'node:child_process';
-import { mkdtempSync, rmSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { GOAL_FIT, type GoalId } from '../shared/catalog.ts';
@@ -352,6 +352,24 @@ async function main() {
     assert.equal(me.body.name, hirer.name);
     assert.equal((await call<Profile[]>('GET', '/api/me/contacts', { token: B.token })).body.length, 1);
     assert.equal((await call<ChatThread>('GET', `/api/me/chats/${A.p.id}`, { token: B.token })).body.messages.length, 2, 'messages persist');
+  });
+
+  await test('profiles delete themselves after 48 hours, with their chats', async () => {
+    assert.equal((await call('GET', '/api/meta')).body.profileTtlHours, 48);
+    await new Promise((r) => setTimeout(r, 400));
+    await stop();
+    // A-ның анкетасын 49 сағат бұрын жасалғандай етеміз
+    const file = join(dataDir, 'state.json');
+    const st = JSON.parse(readFileSync(file, 'utf8'));
+    st.users.find((u: Profile) => u.id === A.p.id).createdAt = new Date(Date.now() - 49 * 3_600_000).toISOString();
+    writeFileSync(file, JSON.stringify(st));
+    await start();
+    assert.equal((await call('GET', '/api/me', { token: A.token })).status, 401, 'expired token');
+    assert.equal((await call('GET', `/api/profiles/${A.p.id}`)).status, 404);
+    const chats = (await call('GET', '/api/me/chats', { token: B.token })).body.chats;
+    assert.ok(!chats.some((c: { other: Profile }) => c.other.id === A.p.id), 'chat with expired profile gone');
+    assert.equal((await call('GET', '/api/me', { token: B.token })).status, 200, 'fresh profile stays');
+    assert.equal((await call('GET', '/api/health')).body.profiles, 122, 'demo profiles stay');
   });
 
   await stop();

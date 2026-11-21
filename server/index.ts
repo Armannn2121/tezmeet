@@ -91,8 +91,25 @@ const bearer = (req: IncomingMessage) => {
 function auth(req: IncomingMessage): Profile {
   const token = bearer(req);
   const p = token ? store.userByToken(token) : undefined;
-  if (!p) throw new HttpError(401, 'unauthorized');
+  if (p && store.isExpired(p)) sweep();
+  if (!p || store.isExpired(p)) throw new HttpError(401, 'unauthorized');
   return p;
+}
+
+// Анкетаны чаттарымен, кездесулерімен және токенімен бірге өшіру
+function dropUser(id: string) {
+  store.removeUser(id);
+  for (const r of subscribers.get(id) ?? []) r.end();
+  subscribers.delete(id);
+}
+
+// 48 сағат өткен анкеталар өзі өшеді: іске қосылғанда және әр минут сайын
+function sweep() {
+  const ids = store.expiredUsers();
+  if (!ids.length) return;
+  ids.forEach(dropUser);
+  matcher.index(store.allProfiles());
+  console.log(`expired profiles removed: ${ids.length}`);
 }
 
 // Бөтен адамға көрсетілетін профиль: Telegram тек ол адам сізді «Познакомились» деп белгілесе
@@ -289,7 +306,7 @@ async function api(req: IncomingMessage, res: ServerResponse, url: URL) {
     return send(res, 200, { ok: true, profiles: store.allProfiles().length, embeddings: embedStatus, llm: llmEnabled() });
   }
   if (m === 'GET' && path === '/api/meta') {
-    return send(res, 200, { event: EVENT, roles: ROLES, goals: GOALS, interests: INTERESTS, stack: STACK, slots: SLOTS, ai: { embeddings: embedStatus, llm: llmEnabled() } });
+    return send(res, 200, { event: EVENT, roles: ROLES, goals: GOALS, interests: INTERESTS, stack: STACK, slots: SLOTS, ai: { embeddings: embedStatus, llm: llmEnabled() }, profileTtlHours: CONFIG.profileTtlMs / 3_600_000 });
   }
   if (m === 'POST' && path === '/api/profiles') {
     limit(req, 'create', 30);
@@ -324,10 +341,8 @@ async function api(req: IncomingMessage, res: ServerResponse, url: URL) {
     }
     // «Шығу» — анкета серверден де өшеді, басқаларға ұсынылмайды
     if (m === 'DELETE' && sub === '') {
-      store.removeUser(me.id);
+      dropUser(me.id);
       matcher.index(store.allProfiles());
-      for (const r of subscribers.get(me.id) ?? []) r.end();
-      subscribers.delete(me.id);
       return send(res, 200, { ok: true });
     }
     if (m === 'GET' && sub === 'events') return openEvents(req, res, me);
@@ -470,6 +485,9 @@ const server = createServer(async (req, res) => {
     send(res, 500, { error: 'internal' });
   }
 });
+
+sweep();
+setInterval(sweep, 60_000).unref();
 
 server.listen(CONFIG.port, () => {
   console.log(`TezMeet: http://localhost:${CONFIG.port}  (profiles: ${store.allProfiles().length}, gemini: ${embedEnabled() ? 'on' : 'off'})`);

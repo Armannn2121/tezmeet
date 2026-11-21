@@ -37,6 +37,7 @@ export type Meta = {
   stack: string[];
   slots: string[];
   ai: { embeddings: 'off' | 'warming' | 'ready' | 'error'; llm: boolean };
+  profileTtlHours: number;
 };
 
 export type Dashboard = {

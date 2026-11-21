@@ -85,6 +85,10 @@ export function removeUser(id: string) {
   persist();
 }
 
+// Қатысушы анкетасы CONFIG.profileTtlMs (48 сағат) өткен соң өшеді; демо-анкеталар қалады
+export const isExpired = (p: Profile, now = Date.now()) => !p.synthetic && now - Date.parse(p.createdAt ?? '') >= CONFIG.profileTtlMs;
+export const expiredUsers = () => state.users.filter((u) => isExpired(u)).map((u) => u.id);
+
 // Бір адам бір анкетаны қайта-қайта жасамасын: аты мен «өзім туралы» мәтіні бірдей болса — көшірме
 const norm = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
 export const findDuplicate = (p: Profile) =>

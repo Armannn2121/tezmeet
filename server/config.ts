@@ -26,4 +26,6 @@ export const CONFIG = {
   embedModel: process.env.GEMINI_EMBED_MODEL || 'gemini-embedding-001',
   chatModels: [...new Set([process.env.GEMINI_MODEL, 'gemini-3.6-flash', 'gemini-3.8-flash', 'gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'].filter(Boolean))] as string[],
   adminToken: process.env.ADMIN_TOKEN || '',
+  // Қатысушы анкетасы осынша уақыттан кейін чаттарымен бірге өзі өшеді
+  profileTtlMs: Number(process.env.PROFILE_TTL_HOURS || 48) * 3_600_000,
 };
