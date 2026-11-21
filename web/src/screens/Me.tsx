@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { goalLabel, interestLabel } from '../../../shared/catalog.ts';
+import { api } from '../api.ts';
 import { useApp } from '../App.tsx';
 import { IconBolt, IconBubble, IconPin, IconRefresh, IconSparkles } from '../components/icons.tsx';
 import { metaLine } from '../components/people.tsx';
@@ -62,7 +63,7 @@ export function Me() {
       </Section>
 
       <Alert open={confirmOut} title={t('logoutTitle')} message={t('logoutConfirm')} onClose={() => setConfirmOut(false)}
-        actions={[{ label: t('cancel'), style: 'cancel' }, { label: t('signOut'), style: 'destructive', run: () => setUser(null) }]} />
+        actions={[{ label: t('cancel'), style: 'cancel' }, { label: t('signOut'), style: 'destructive', run: () => api.deleteMe().catch(() => {}).finally(() => setUser(null)) }]} />
     </div>
   );
 }

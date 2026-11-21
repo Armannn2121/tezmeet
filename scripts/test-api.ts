@@ -305,6 +305,24 @@ async function main() {
     assert.equal((await call('PUT', '/api/me', { body: seeker })).status, 401, 'no token, no edit');
   });
 
+  await test('no duplicate profiles; delete removes everything', async () => {
+    const dup = await call('POST', '/api/profiles', { body: { ...hirer, name: ' тест  рекрутер ', about: hirer.about.toUpperCase() + '!' } });
+    assert.equal(dup.status, 409);
+    assert.equal(dup.body.error, 'profile_exists');
+    const d = await call<{ profile: Profile; token: string }>('POST', '/api/profiles', { body: { ...seeker, name: 'Тест Удаляемый', about: 'Временная анкета для проверки удаления' } });
+    assert.equal(d.status, 201);
+    const D = d.body;
+    assert.equal((await call('POST', `/api/me/chats/${A.p.id}`, { token: D.token, body: { text: 'Привет!' } })).status, 201);
+    assert.equal((await call('DELETE', '/api/me')).status, 401, 'no token, no delete');
+    assert.equal((await call('DELETE', '/api/me', { token: D.token })).status, 200);
+    assert.equal((await call('GET', '/api/me', { token: D.token })).status, 401, 'token revoked');
+    assert.equal((await call('GET', `/api/profiles/${D.profile.id}`)).status, 404);
+    const chats = (await call('GET', '/api/me/chats', { token: A.token })).body.chats;
+    assert.ok(!chats.some((c: { other: Profile }) => c.other.id === D.profile.id), 'chat gone');
+    const recs = (await call<RecResponse>('GET', '/api/me/recommendations', { token: B.token })).body;
+    assert.ok(!recs.items.some((i) => i.profile.id === D.profile.id), 'not recommended');
+  });
+
   await test('organizer dashboard reflects activity', async () => {
     const d = (await call('GET', '/api/dashboard')).body;
     assert.equal(d.total, 123);

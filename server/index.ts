@@ -294,6 +294,7 @@ async function api(req: IncomingMessage, res: ServerResponse, url: URL) {
   if (m === 'POST' && path === '/api/profiles') {
     limit(req, 'create', 30);
     const p = validateProfile(await readJson(req), randomUUID());
+    if (store.findDuplicate(p)) throw new HttpError(409, 'profile_exists');
     const token = randomBytes(24).toString('base64url');
     store.upsertUser(p);
     store.setToken(p.id, token);
@@ -320,6 +321,14 @@ async function api(req: IncomingMessage, res: ServerResponse, url: URL) {
       matcher.index(store.allProfiles());
       await embedOne(p);
       return send(res, 200, p);
+    }
+    // «Шығу» — анкета серверден де өшеді, басқаларға ұсынылмайды
+    if (m === 'DELETE' && sub === '') {
+      store.removeUser(me.id);
+      matcher.index(store.allProfiles());
+      for (const r of subscribers.get(me.id) ?? []) r.end();
+      subscribers.delete(me.id);
+      return send(res, 200, { ok: true });
     }
     if (m === 'GET' && sub === 'events') return openEvents(req, res, me);
     if (m === 'GET' && sub === 'chats') return send(res, 200, chatList(me));

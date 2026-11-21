@@ -70,6 +70,26 @@ export function upsertUser(p: Profile) {
   persist();
 }
 
+// Анкетаны толық жою: токен, кері байланыс, кездесулер, хабарламалар бірге өшеді
+export function removeUser(id: string) {
+  if (!state.users.some((u) => u.id === id)) return;
+  state.users = state.users.filter((u) => u.id !== id);
+  byId.delete(id);
+  const h = state.tokens[id];
+  if (h) byToken.delete(h);
+  delete state.tokens[id];
+  state.feedback = state.feedback.filter((f) => f.userId !== id && f.targetId !== id);
+  state.meetings = state.meetings.filter((m) => m.a !== id && m.b !== id);
+  state.messages = state.messages.filter((m) => m.from !== id && m.to !== id);
+  for (const k of Object.keys(state.reads)) if (k.split(':').includes(id)) delete state.reads[k];
+  persist();
+}
+
+// Бір адам бір анкетаны қайта-қайта жасамасын: аты мен «өзім туралы» мәтіні бірдей болса — көшірме
+const norm = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+export const findDuplicate = (p: Profile) =>
+  [...byId.values()].find((x) => x.id !== p.id && norm(x.name) === norm(p.name) && norm(x.about) === norm(p.about));
+
 export function feedbackOf(userId: string) {
   return state.feedback.filter((f) => f.userId === userId);
 }

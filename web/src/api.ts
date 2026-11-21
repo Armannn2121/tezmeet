@@ -59,6 +59,7 @@ export const api = {
   meta: () => req<Meta>('/api/meta'),
   createProfile: (p: ProfileInput) => req<{ profile: Profile; token: string }>('/api/profiles', { method: 'POST', body: json(p) }),
   me: () => req<Profile>('/api/me'),
+  deleteMe: () => req<{ ok: true }>('/api/me', { method: 'DELETE' }),
   updateProfile: (p: ProfileInput) => req<Profile>('/api/me', { method: 'PUT', body: json(p) }),
   recommendations: (lang: Lang) => req<RecResponse>(`/api/me/recommendations?lang=${lang}`),
   icebreakers: (targetIds: string[], lang: Lang) =>
